@@ -128,7 +128,7 @@ function ProjectDetailPage({ project }) {
                 document.getElementById("contato")?.scrollIntoView({ behavior: "smooth" });
               }, 50);
             }}
-            className="inline-block px-6 py-3 rounded-md text-sm font-semibold"
+            className="inline-block px-6 py-3 rounded-md text-sm font-semibold transition-transform hover:scale-[1.03]"
             style={{ background: "#3B6EF5", color: "#fff" }}
           >
             Quero um site assim
@@ -504,6 +504,22 @@ export default function FreelanceDevSite() {
   const [openFaq, setOpenFaq] = useState(0);
   const [formStatus, setFormStatus] = useState("idle");
   const [route, setRoute] = useState(() => window.location.hash);
+  const phoneRef = useRef(null);
+
+  useEffect(() => {
+    const onScroll = () => {
+      if (!phoneRef.current) return;
+      const rect = phoneRef.current.getBoundingClientRect();
+      const viewportCenter = window.innerHeight / 2;
+      const elementCenter = rect.top + rect.height / 2;
+      const distance = elementCenter - viewportCenter;
+      const offset = Math.max(-40, Math.min(40, distance * -0.08));
+      phoneRef.current.style.transform = `translateY(${offset}px)`;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     const onHashChange = () => setRoute(window.location.hash);
@@ -571,7 +587,7 @@ export default function FreelanceDevSite() {
             ))}
             <a
               href="#contato"
-              className="text-sm font-semibold px-4 py-2 rounded-md text-white"
+              className="text-sm font-semibold px-4 py-2 rounded-md text-white transition-transform hover:scale-[1.03]"
               style={{ background: "#3B6EF5" }}
             >
               Solicitar orçamento
@@ -614,7 +630,7 @@ export default function FreelanceDevSite() {
             <div className="flex flex-wrap gap-4">
               <a
                 href="#contato"
-                className="px-6 py-3 rounded-md text-sm font-semibold flex items-center gap-2"
+                className="px-6 py-3 rounded-md text-sm font-semibold flex items-center gap-2 transition-transform hover:scale-[1.03]"
                 style={{ background: "#3B6EF5", color: "#fff" }}
               >
                 Solicitar orçamento <ArrowUpRight size={16} />
@@ -644,7 +660,7 @@ export default function FreelanceDevSite() {
           {services.map((s) => {
             const Icon = s.icon;
             return (
-              <div key={s.name} className="p-6 rounded-lg border bg-white" style={{ borderColor: "#E4E4E0" }}>
+              <div key={s.name} className="p-6 rounded-lg border bg-white transition-all duration-200 hover:shadow-lg hover:-translate-y-1 hover:border-[#3B6EF5]" style={{ borderColor: "#E4E4E0" }}>
                 <Icon size={22} style={{ color: "#3B6EF5" }} className="mb-4" />
                 <h3 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="font-semibold text-lg mb-2">
                   {s.name}
@@ -707,7 +723,7 @@ export default function FreelanceDevSite() {
           </h2>
           <div className="grid sm:grid-cols-2 gap-5">
             {projects.map((p) => (
-              <div key={p.name} className="p-6 rounded-lg border" style={{ borderColor: "#232D42", background: "#0F172A" }}>
+              <div key={p.name} className="p-6 rounded-lg border transition-all duration-200 hover:shadow-lg hover:-translate-y-1 hover:border-[#3B6EF5]" style={{ borderColor: "#232D42", background: "#0F172A" }}>
                 <div className="flex flex-wrap gap-2 mb-4">
                   <span
                     className="text-[11px] px-2 py-1 rounded"
@@ -775,25 +791,46 @@ export default function FreelanceDevSite() {
 
       {/* SOBRE */}
       <section id="sobre" className="py-20" style={{ background: "#EAEAE6" }}>
-        <div className="max-w-4xl mx-auto px-6">
-          <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#3B6EF5" }} className="text-xs mb-3">// sobre</p>
-          <h2 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="text-3xl font-semibold mb-6">
-            Quem é o Design Sites
-          </h2>
-          <div className="grid md:grid-cols-[1fr_auto] gap-8 items-start">
-            <p className="text-sm leading-relaxed" style={{ color: "#333844" }}>
-              O Design Sites nasceu para resolver um problema comum: sites bonitos que não convertem, ou sites baratos que não têm cara de profissional. Aqui, cada projeto é acompanhado de perto, do briefing à entrega — sem processos engessados, sem terceirização, sem intermediários. Mais de 3 anos de experiência em desenvolvimento web sustentam um trabalho com foco em dois pilares: atendimento próximo, com resposta rápida e conversa direta em cada etapa, e qualidade técnica, com sites rápidos, responsivos e pensados para gerar resultado real para o seu negócio.
-            </p>
-            <div
-              className="px-6 py-5 rounded-lg text-center flex-shrink-0"
-              style={{ background: "#0B1220" }}
-            >
-              <p style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#3B6EF5" }} className="text-3xl font-semibold">
-                +3
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-10 items-center">
+            <div>
+              <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#3B6EF5" }} className="text-xs mb-3">// sobre</p>
+              <h2 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="text-3xl font-semibold mb-6">
+                Quem é o Design Sites
+              </h2>
+              <p className="text-sm leading-relaxed mb-6" style={{ color: "#333844" }}>
+                O Design Sites nasceu para resolver um problema comum: sites bonitos que não convertem, ou sites baratos que não têm cara de profissional. Aqui, cada projeto é acompanhado de perto, do briefing à entrega — sem processos engessados, sem terceirização, sem intermediários. Mais de 3 anos de experiência em desenvolvimento web sustentam um trabalho com foco em dois pilares: atendimento próximo, com resposta rápida e conversa direta em cada etapa, e qualidade técnica, com sites rápidos, responsivos e pensados para gerar resultado real para o seu negócio.
               </p>
-              <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#8B96AB" }} className="text-xs mt-1">
-                anos de experiência
-              </p>
+              <div
+                className="inline-block px-6 py-4 rounded-lg text-center"
+                style={{ background: "#0B1220" }}
+              >
+                <p style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#3B6EF5" }} className="text-3xl font-semibold">
+                  +3
+                </p>
+                <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#8B96AB" }} className="text-xs mt-1">
+                  anos de experiência
+                </p>
+              </div>
+            </div>
+            <div className="flex justify-center">
+              <div
+                ref={phoneRef}
+                className="rounded-[2.5rem] p-3 shadow-2xl"
+                style={{ background: "#0B1220", width: "260px", transition: "transform 0.1s ease-out" }}
+              >
+                <div className="flex justify-center mb-2">
+                  <div className="rounded-full" style={{ width: "70px", height: "18px", background: "#000" }} />
+                </div>
+                <div className="rounded-[1.5rem] overflow-hidden" style={{ aspectRatio: "9/17.5" }}>
+                  <img
+                    src="/images/moveis-1.png"
+                    alt="Exemplo de site desenvolvido pelo Design Sites"
+                    className="w-full h-full block"
+                    style={{ objectFit: "cover", objectPosition: "top" }}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -893,7 +930,7 @@ export default function FreelanceDevSite() {
               <button
                 type="submit"
                 disabled={formStatus === "sending"}
-                className="px-6 py-3 rounded-md text-sm font-semibold flex items-center justify-center gap-2"
+                className="px-6 py-3 rounded-md text-sm font-semibold flex items-center justify-center gap-2 transition-transform hover:scale-[1.02]"
                 style={{ background: "#3B6EF5", color: "#fff", opacity: formStatus === "sending" ? 0.7 : 1 }}
               >
                 {formStatus === "sending" ? "Enviando..." : "Enviar mensagem"} <Mail size={16} />
