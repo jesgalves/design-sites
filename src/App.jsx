@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import * as THREE from "three";
 import {
   Terminal,
   Rocket,
@@ -250,100 +249,6 @@ function LegalPage() {
       </footer>
     </div>
   );
-}
-
-function Laptop3D() {
-  const mountRef = useRef(null);
-
-  useEffect(() => {
-    const container = mountRef.current;
-    if (!container) return;
-
-    let width = container.clientWidth;
-    let height = container.clientHeight;
-
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(32, width / height, 0.1, 100);
-    camera.position.set(0, 1.6, 5.2);
-    camera.lookAt(0, 0.9, 0);
-
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setSize(width, height);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    container.appendChild(renderer.domElement);
-
-    scene.add(new THREE.AmbientLight(0xffffff, 0.8));
-    const dirLight = new THREE.DirectionalLight(0xffffff, 0.7);
-    dirLight.position.set(3, 5, 4);
-    scene.add(dirLight);
-    const blueLight = new THREE.PointLight(0x3b6ef5, 6, 12);
-    blueLight.position.set(-2.5, 1.5, 2.5);
-    scene.add(blueLight);
-    const amberLight = new THREE.PointLight(0xf5a623, 3, 10);
-    amberLight.position.set(2.5, 0.5, 2);
-    scene.add(amberLight);
-
-    const group = new THREE.Group();
-
-    const textureLoader = new THREE.TextureLoader();
-    const screenTexture = textureLoader.load("/images/moveis-1.png");
-    screenTexture.colorSpace = THREE.SRGBColorSpace;
-
-    const darkMat = new THREE.MeshStandardMaterial({ color: 0x12151c, metalness: 0.5, roughness: 0.5 });
-    const screenMat = new THREE.MeshStandardMaterial({ map: screenTexture, roughness: 0.35, metalness: 0.1 });
-    const screenGeo = new THREE.BoxGeometry(2.4, 1.35, 0.05);
-    const screenMesh = new THREE.Mesh(screenGeo, [darkMat, darkMat, darkMat, darkMat, screenMat, darkMat]);
-    screenMesh.position.set(0, 0.68, 0);
-    screenMesh.rotation.x = -0.32;
-    group.add(screenMesh);
-
-    const baseMat = new THREE.MeshStandardMaterial({ color: 0xd6d7db, metalness: 0.6, roughness: 0.35 });
-    const baseGeo = new THREE.BoxGeometry(2.5, 0.08, 1.55);
-    const baseMesh = new THREE.Mesh(baseGeo, baseMat);
-    baseMesh.position.set(0, -0.05, 0.6);
-    group.add(baseMesh);
-
-    scene.add(group);
-
-    let frameId;
-    const clock = new THREE.Clock();
-
-    const animate = () => {
-      const t = clock.getElapsedTime();
-      group.rotation.y = Math.sin(t * 0.35) * 0.22;
-      group.position.y = Math.sin(t * 0.6) * 0.05;
-      renderer.render(scene, camera);
-      frameId = requestAnimationFrame(animate);
-    };
-    animate();
-
-    const handleResize = () => {
-      if (!container) return;
-      width = container.clientWidth;
-      height = container.clientHeight;
-      camera.aspect = width / height;
-      camera.updateProjectionMatrix();
-      renderer.setSize(width, height);
-    };
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      cancelAnimationFrame(frameId);
-      window.removeEventListener("resize", handleResize);
-      screenGeo.dispose();
-      baseGeo.dispose();
-      darkMat.dispose();
-      screenMat.dispose();
-      baseMat.dispose();
-      screenTexture.dispose();
-      renderer.dispose();
-      if (container.contains(renderer.domElement)) {
-        container.removeChild(renderer.domElement);
-      }
-    };
-  }, []);
-
-  return <div ref={mountRef} style={{ width: "100%", height: "380px" }} />;
 }
 
 function WhatsAppButton() {
@@ -870,30 +775,25 @@ export default function FreelanceDevSite() {
 
       {/* SOBRE */}
       <section id="sobre" className="py-20" style={{ background: "#EAEAE6" }}>
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-10 items-center">
-            <div>
-              <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#3B6EF5" }} className="text-xs mb-3">// sobre</p>
-              <h2 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="text-3xl font-semibold mb-6">
-                Quem é o Design Sites
-              </h2>
-              <p className="text-sm leading-relaxed mb-6" style={{ color: "#333844" }}>
-                O Design Sites nasceu para resolver um problema comum: sites bonitos que não convertem, ou sites baratos que não têm cara de profissional. Aqui, cada projeto é acompanhado de perto, do briefing à entrega — sem processos engessados, sem terceirização, sem intermediários. Mais de 3 anos de experiência em desenvolvimento web sustentam um trabalho com foco em dois pilares: atendimento próximo, com resposta rápida e conversa direta em cada etapa, e qualidade técnica, com sites rápidos, responsivos e pensados para gerar resultado real para o seu negócio.
+        <div className="max-w-4xl mx-auto px-6">
+          <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#3B6EF5" }} className="text-xs mb-3">// sobre</p>
+          <h2 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="text-3xl font-semibold mb-6">
+            Quem é o Design Sites
+          </h2>
+          <div className="grid md:grid-cols-[1fr_auto] gap-8 items-start">
+            <p className="text-sm leading-relaxed" style={{ color: "#333844" }}>
+              O Design Sites nasceu para resolver um problema comum: sites bonitos que não convertem, ou sites baratos que não têm cara de profissional. Aqui, cada projeto é acompanhado de perto, do briefing à entrega — sem processos engessados, sem terceirização, sem intermediários. Mais de 3 anos de experiência em desenvolvimento web sustentam um trabalho com foco em dois pilares: atendimento próximo, com resposta rápida e conversa direta em cada etapa, e qualidade técnica, com sites rápidos, responsivos e pensados para gerar resultado real para o seu negócio.
+            </p>
+            <div
+              className="px-6 py-5 rounded-lg text-center flex-shrink-0"
+              style={{ background: "#0B1220" }}
+            >
+              <p style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#3B6EF5" }} className="text-3xl font-semibold">
+                +3
               </p>
-              <div
-                className="inline-block px-6 py-4 rounded-lg text-center"
-                style={{ background: "#0B1220" }}
-              >
-                <p style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#3B6EF5" }} className="text-3xl font-semibold">
-                  +3
-                </p>
-                <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#8B96AB" }} className="text-xs mt-1">
-                  anos de experiência
-                </p>
-              </div>
-            </div>
-            <div style={{ width: "100%", maxWidth: "440px", margin: "0 auto" }}>
-              <Laptop3D />
+              <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#8B96AB" }} className="text-xs mt-1">
+                anos de experiência
+              </p>
             </div>
           </div>
         </div>
