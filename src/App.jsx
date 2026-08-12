@@ -572,7 +572,7 @@ export default function FreelanceDevSite() {
             <a
               href="#contato"
               className="text-sm font-semibold px-4 py-2 rounded-md text-white"
-              style={{ background: "#0B1220" }}
+              style={{ background: "#3B6EF5" }}
             >
               Solicitar orçamento
             </a>
