@@ -524,6 +524,7 @@ export default function FreelanceDevSite() {
     { label: "Serviços", href: "#servicos" },
     { label: "Portfólio", href: "#portfolio" },
     { label: "Processo", href: "#processo" },
+    { label: "Sobre", href: "#sobre" },
     { label: "Contato", href: "#contato" },
   ];
 
@@ -754,6 +755,32 @@ export default function FreelanceDevSite() {
               </p>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* SOBRE */}
+      <section id="sobre" className="py-20" style={{ background: "#EAEAE6" }}>
+        <div className="max-w-4xl mx-auto px-6">
+          <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#3B6EF5" }} className="text-xs mb-3">// sobre</p>
+          <h2 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="text-3xl font-semibold mb-6">
+            Quem é o Design Sites
+          </h2>
+          <div className="grid md:grid-cols-[1fr_auto] gap-8 items-start">
+            <p className="text-sm leading-relaxed" style={{ color: "#333844" }}>
+              O Design Sites nasceu para resolver um problema comum: sites bonitos que não convertem, ou sites baratos que não têm cara de profissional. Aqui, cada projeto é acompanhado de perto, do briefing à entrega — sem processos engessados, sem terceirização, sem intermediários. Mais de 3 anos de experiência em desenvolvimento web sustentam um trabalho com foco em dois pilares: atendimento próximo, com resposta rápida e conversa direta em cada etapa, e qualidade técnica, com sites rápidos, responsivos e pensados para gerar resultado real para o seu negócio.
+            </p>
+            <div
+              className="px-6 py-5 rounded-lg text-center flex-shrink-0"
+              style={{ background: "#0B1220" }}
+            >
+              <p style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#3B6EF5" }} className="text-3xl font-semibold">
+                +3
+              </p>
+              <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#8B96AB" }} className="text-xs mt-1">
+                anos de experiência
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
