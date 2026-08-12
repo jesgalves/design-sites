@@ -153,8 +153,8 @@ const services = [
     name: "Manutenção mensal",
     desc: "Atualizações, correções e pequenas melhorias contínuas.",
     originalPrice: "R$ 450/mês",
-    promoPrice: "R$ 383/mês",
-    discount: "-15%",
+    promoPrice: "R$ 250/mês",
+    discount: null,
   },
 ];
 
@@ -378,15 +378,23 @@ export default function FreelanceDevSite() {
                   >
                     {s.originalPrice}
                   </span>
-                  <span
-                    className="text-[10px] px-1.5 py-0.5 rounded"
-                    style={{ fontFamily: "'JetBrains Mono', monospace", color: "#22C55E", background: "rgba(34,197,94,0.12)" }}
-                  >
-                    {s.discount}
-                  </span>
+                  {s.discount && (
+                    <span
+                      className="text-[10px] px-1.5 py-0.5 rounded"
+                      style={{ fontFamily: "'JetBrains Mono', monospace", color: "#22C55E", background: "rgba(34,197,94,0.12)" }}
+                    >
+                      {s.discount}
+                    </span>
+                  )}
                 </div>
                 <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#0F1420" }} className="text-sm font-semibold">
                   {s.promoPrice}
+                </p>
+                <p
+                  className="text-[10px] mt-1"
+                  style={{ fontFamily: "'JetBrains Mono', monospace", color: "#F5A623" }}
+                >
+                  Por tempo limitado
                 </p>
               </div>
             );
