@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import * as THREE from "three";
 import {
   Terminal,
   Rocket,
@@ -249,6 +250,100 @@ function LegalPage() {
       </footer>
     </div>
   );
+}
+
+function Laptop3D() {
+  const mountRef = useRef(null);
+
+  useEffect(() => {
+    const container = mountRef.current;
+    if (!container) return;
+
+    let width = container.clientWidth;
+    let height = container.clientHeight;
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(32, width / height, 0.1, 100);
+    camera.position.set(0, 1.6, 5.2);
+    camera.lookAt(0, 0.9, 0);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(width, height);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    container.appendChild(renderer.domElement);
+
+    scene.add(new THREE.AmbientLight(0xffffff, 0.8));
+    const dirLight = new THREE.DirectionalLight(0xffffff, 0.7);
+    dirLight.position.set(3, 5, 4);
+    scene.add(dirLight);
+    const blueLight = new THREE.PointLight(0x3b6ef5, 6, 12);
+    blueLight.position.set(-2.5, 1.5, 2.5);
+    scene.add(blueLight);
+    const amberLight = new THREE.PointLight(0xf5a623, 3, 10);
+    amberLight.position.set(2.5, 0.5, 2);
+    scene.add(amberLight);
+
+    const group = new THREE.Group();
+
+    const textureLoader = new THREE.TextureLoader();
+    const screenTexture = textureLoader.load("/images/moveis-1.png");
+    screenTexture.colorSpace = THREE.SRGBColorSpace;
+
+    const darkMat = new THREE.MeshStandardMaterial({ color: 0x12151c, metalness: 0.5, roughness: 0.5 });
+    const screenMat = new THREE.MeshStandardMaterial({ map: screenTexture, roughness: 0.35, metalness: 0.1 });
+    const screenGeo = new THREE.BoxGeometry(2.4, 1.35, 0.05);
+    const screenMesh = new THREE.Mesh(screenGeo, [darkMat, darkMat, darkMat, darkMat, screenMat, darkMat]);
+    screenMesh.position.set(0, 0.68, 0);
+    screenMesh.rotation.x = -0.32;
+    group.add(screenMesh);
+
+    const baseMat = new THREE.MeshStandardMaterial({ color: 0xd6d7db, metalness: 0.6, roughness: 0.35 });
+    const baseGeo = new THREE.BoxGeometry(2.5, 0.08, 1.55);
+    const baseMesh = new THREE.Mesh(baseGeo, baseMat);
+    baseMesh.position.set(0, -0.05, 0.6);
+    group.add(baseMesh);
+
+    scene.add(group);
+
+    let frameId;
+    const clock = new THREE.Clock();
+
+    const animate = () => {
+      const t = clock.getElapsedTime();
+      group.rotation.y = Math.sin(t * 0.35) * 0.22;
+      group.position.y = Math.sin(t * 0.6) * 0.05;
+      renderer.render(scene, camera);
+      frameId = requestAnimationFrame(animate);
+    };
+    animate();
+
+    const handleResize = () => {
+      if (!container) return;
+      width = container.clientWidth;
+      height = container.clientHeight;
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+      renderer.setSize(width, height);
+    };
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      cancelAnimationFrame(frameId);
+      window.removeEventListener("resize", handleResize);
+      screenGeo.dispose();
+      baseGeo.dispose();
+      darkMat.dispose();
+      screenMat.dispose();
+      baseMat.dispose();
+      screenTexture.dispose();
+      renderer.dispose();
+      if (container.contains(renderer.domElement)) {
+        container.removeChild(renderer.domElement);
+      }
+    };
+  }, []);
+
+  return <div ref={mountRef} style={{ width: "100%", height: "380px" }} />;
 }
 
 function WhatsAppButton() {
@@ -504,22 +599,6 @@ export default function FreelanceDevSite() {
   const [openFaq, setOpenFaq] = useState(0);
   const [formStatus, setFormStatus] = useState("idle");
   const [route, setRoute] = useState(() => window.location.hash);
-  const phoneRef = useRef(null);
-
-  useEffect(() => {
-    const onScroll = () => {
-      if (!phoneRef.current) return;
-      const rect = phoneRef.current.getBoundingClientRect();
-      const viewportCenter = window.innerHeight / 2;
-      const elementCenter = rect.top + rect.height / 2;
-      const distance = elementCenter - viewportCenter;
-      const offset = Math.max(-40, Math.min(40, distance * -0.08));
-      phoneRef.current.style.transform = `translateY(${offset}px)`;
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     const onHashChange = () => setRoute(window.location.hash);
@@ -813,59 +892,8 @@ export default function FreelanceDevSite() {
                 </p>
               </div>
             </div>
-            <div className="flex justify-center">
-              <div
-                ref={phoneRef}
-                style={{ transition: "transform 0.1s ease-out", width: "100%", maxWidth: "440px" }}
-              >
-                <div
-                  className="rounded-t-xl overflow-hidden"
-                  style={{ background: "#1a1f2b", padding: "10px 10px 0" }}
-                >
-                  <div className="flex justify-center mb-1.5">
-                    <div className="rounded-full" style={{ width: "5px", height: "5px", background: "#3a4152" }} />
-                  </div>
-                  <div className="rounded-md overflow-hidden" style={{ aspectRatio: "16/10" }}>
-                    <img
-                      src="/images/moveis-1.png"
-                      alt="Exemplo de site desenvolvido pelo Design Sites"
-                      className="w-full h-full block"
-                      style={{ objectFit: "cover", objectPosition: "top" }}
-                    />
-                  </div>
-                </div>
-                <div
-                  style={{
-                    height: "12px",
-                    background: "linear-gradient(#2a3040, #12151c)",
-                    borderRadius: "0 0 4px 4px",
-                    position: "relative",
-                  }}
-                >
-                  <div
-                    style={{
-                      position: "absolute",
-                      left: "50%",
-                      top: 0,
-                      transform: "translateX(-50%)",
-                      width: "60px",
-                      height: "4px",
-                      background: "#0d0f14",
-                      borderRadius: "0 0 6px 6px",
-                    }}
-                  />
-                </div>
-                <div
-                  style={{
-                    height: "8px",
-                    width: "108%",
-                    marginLeft: "-4%",
-                    background: "#e8e8e6",
-                    borderRadius: "0 0 10px 10px",
-                    boxShadow: "0 4px 8px rgba(0,0,0,0.15)",
-                  }}
-                />
-              </div>
+            <div style={{ width: "100%", maxWidth: "440px", margin: "0 auto" }}>
+              <Laptop3D />
             </div>
           </div>
         </div>
