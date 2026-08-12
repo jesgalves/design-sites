@@ -816,20 +816,55 @@ export default function FreelanceDevSite() {
             <div className="flex justify-center">
               <div
                 ref={phoneRef}
-                className="rounded-[2.5rem] p-3 shadow-2xl"
-                style={{ background: "#0B1220", width: "260px", transition: "transform 0.1s ease-out" }}
+                style={{ transition: "transform 0.1s ease-out", width: "100%", maxWidth: "440px" }}
               >
-                <div className="flex justify-center mb-2">
-                  <div className="rounded-full" style={{ width: "70px", height: "18px", background: "#000" }} />
+                <div
+                  className="rounded-t-xl overflow-hidden"
+                  style={{ background: "#1a1f2b", padding: "10px 10px 0" }}
+                >
+                  <div className="flex justify-center mb-1.5">
+                    <div className="rounded-full" style={{ width: "5px", height: "5px", background: "#3a4152" }} />
+                  </div>
+                  <div className="rounded-md overflow-hidden" style={{ aspectRatio: "16/10" }}>
+                    <img
+                      src="/images/moveis-1.png"
+                      alt="Exemplo de site desenvolvido pelo Design Sites"
+                      className="w-full h-full block"
+                      style={{ objectFit: "cover", objectPosition: "top" }}
+                    />
+                  </div>
                 </div>
-                <div className="rounded-[1.5rem] overflow-hidden" style={{ aspectRatio: "9/17.5" }}>
-                  <img
-                    src="/images/moveis-1.png"
-                    alt="Exemplo de site desenvolvido pelo Design Sites"
-                    className="w-full h-full block"
-                    style={{ objectFit: "cover", objectPosition: "top" }}
+                <div
+                  style={{
+                    height: "12px",
+                    background: "linear-gradient(#2a3040, #12151c)",
+                    borderRadius: "0 0 4px 4px",
+                    position: "relative",
+                  }}
+                >
+                  <div
+                    style={{
+                      position: "absolute",
+                      left: "50%",
+                      top: 0,
+                      transform: "translateX(-50%)",
+                      width: "60px",
+                      height: "4px",
+                      background: "#0d0f14",
+                      borderRadius: "0 0 6px 6px",
+                    }}
                   />
                 </div>
+                <div
+                  style={{
+                    height: "8px",
+                    width: "108%",
+                    marginLeft: "-4%",
+                    background: "#e8e8e6",
+                    borderRadius: "0 0 10px 10px",
+                    boxShadow: "0 4px 8px rgba(0,0,0,0.15)",
+                  }}
+                />
               </div>
             </div>
           </div>
