@@ -34,12 +34,11 @@ const FONTS = `
 `;
 
 const buildLines = [
-  { text: "$ npm run build", color: "#8B96AB" },
-  { text: "✓ compiled em 3.2s", color: "#22C55E" },
-  { text: "✓ performance ......... 98/100", color: "#22C55E" },
-  { text: "✓ acessibilidade ....... 100/100", color: "#22C55E" },
-  { text: "✓ responsivo (mobile) .. pass", color: "#22C55E" },
-  { text: "✓ deploy concluído em 15 dias", color: "#F5A623" },
+  { text: "> npm run build", color: "#8B96AB" },
+  { text: "✓ Carregamento em menos de 1s", color: "#22C55E" },
+  { text: "✓ 100% otimizado para vendas no Google", color: "#22C55E" },
+  { text: "✓ Design responsivo (mobile-first)", color: "#22C55E" },
+  { text: "✓ Compiled in 3.2s — pronto para converter", color: "#F5A623" },
 ];
 
 function WhatsAppButton() {
@@ -164,35 +163,42 @@ const services = [
   },
   {
     icon: Wrench,
-    name: "Manutenção mensal",
-    desc: "Atualizações, correções e pequenas melhorias contínuas.",
+    name: "Plano Gestão & Crescimento",
+    desc: "Seu site nasce pronto para vender. Este plano garante que ele continue no ar, seguro, atualizado e evoluindo.",
     originalPrice: "R$ 450/mês",
     promoPrice: "R$ 250/mês",
     discount: null,
+    bullets: [
+      "Atualizações e correções contínuas",
+      "Backup periódico e segurança",
+      "Suporte prioritário (SLA definido)",
+      "1 ajuste/alteração por mês incluso",
+    ],
+    note: "Disponível apenas junto com um pacote de criação",
   },
 ];
 
 const projects = [
   {
-    name: "Vitrine Imobiliária",
+    name: "Interface de Altíssima Conversão para Imobiliárias",
     stack: ["React", "Filtros de busca", "WhatsApp"],
     problem: "Protótipo de vitrine virtual para corretores, com imóveis disponíveis, filtros por cidade/bairro/tipo e redirecionamento direto para agendamento via WhatsApp.",
     result: "Catálogo com filtros · contato direto via WhatsApp",
   },
   {
-    name: "Catálogo — Loja de Móveis",
+    name: "Vitrine Virtual de Alta Conversão para Lojas de Móveis",
     stack: ["React", "Filtros de categoria"],
     problem: "Protótipo de vitrine de produtos com fotos, especificações técnicas e filtros por categoria e faixa de preço.",
     result: "Catálogo por categoria · design responsivo",
   },
   {
-    name: "E-commerce",
+    name: "Loja Virtual Completa para E-commerce",
     stack: ["React", "Carrinho de compras", "Checkout"],
     problem: "Protótipo de loja virtual completa, com carrinho de compras e fluxo de pagamento simulado.",
     result: "Carrinho funcional · checkout simulado",
   },
   {
-    name: "Landing Page de Alta Conversão",
+    name: "Landing Page Otimizada para Geração de Leads",
     stack: ["React", "Formulário de captura"],
     problem: "Página única (one-page) voltada para campanhas de tráfego pago, focada em geração de leads.",
     result: "Formulário de captura · estrutura otimizada para conversão",
@@ -410,6 +416,21 @@ export default function FreelanceDevSite() {
                 >
                   Por tempo limitado
                 </p>
+                {s.bullets && (
+                  <ul className="mt-3 space-y-1.5">
+                    {s.bullets.map((b) => (
+                      <li key={b} className="flex items-start gap-1.5 text-xs" style={{ color: "#555C6B" }}>
+                        <CheckCircle2 size={12} style={{ color: "#22C55E", marginTop: "2px", flexShrink: 0 }} />
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {s.note && (
+                  <p className="text-[10px] mt-3" style={{ color: "#8B96AB" }}>
+                    {s.note}
+                  </p>
+                )}
               </div>
             );
           })}
@@ -420,12 +441,9 @@ export default function FreelanceDevSite() {
       <section id="portfolio" className="py-20" style={{ background: "#0B1220" }}>
         <div className="max-w-6xl mx-auto px-6">
           <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#F5A623" }} className="text-xs mb-3">// portfólio</p>
-          <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#F5F5F3" }} className="text-3xl font-semibold mb-2">
-            Protótipos e projetos conceituais
+          <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#F5F5F3" }} className="text-3xl font-semibold mb-10">
+            Estudos de Caso
           </h2>
-          <p className="text-sm mb-10" style={{ color: "#8B96AB" }}>
-            Modelos desenvolvidos para demonstrar capacidade técnica — não representam empresas ou clientes reais.
-          </p>
           <div className="grid sm:grid-cols-2 gap-5">
             {projects.map((p) => (
               <div key={p.name} className="p-6 rounded-lg border" style={{ borderColor: "#232D42", background: "#0F172A" }}>
