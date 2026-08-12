@@ -587,6 +587,7 @@ export default function FreelanceDevSite() {
                   <option>Site institucional</option>
                   <option>E-commerce</option>
                   <option>Manutenção</option>
+                  <option>Ainda não sei / preciso de orientação</option>
                 </select>
                 <select
                   required
@@ -602,6 +603,9 @@ export default function FreelanceDevSite() {
                   <option>Acima de R$ 6.000</option>
                 </select>
               </div>
+              <p className="text-xs -mt-1" style={{ color: "#8B96AB" }}>
+                Não sabe qual serviço combina com o seu negócio? Sem problema — conte o que você precisa e eu te ajudo a decidir.
+              </p>
               <textarea
                 required
                 name="mensagem"
