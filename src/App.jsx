@@ -128,25 +128,33 @@ const services = [
     icon: LayoutTemplate,
     name: "Landing Page",
     desc: "Página única de alta conversão para campanhas e lançamentos.",
-    price: "a partir de R$ 1.200",
+    originalPrice: "R$ 1.200",
+    promoPrice: "R$ 1.020",
+    discount: "-15%",
   },
   {
     icon: Zap,
     name: "Site institucional",
     desc: "Presença digital completa: sobre, serviços, blog e contato.",
-    price: "a partir de R$ 2.800",
+    originalPrice: "R$ 2.800",
+    promoPrice: "R$ 2.380",
+    discount: "-15%",
   },
   {
     icon: ShoppingCart,
     name: "E-commerce",
     desc: "Loja completa com catálogo, checkout e integração de pagamento.",
-    price: "a partir de R$ 5.500",
+    originalPrice: "R$ 5.500",
+    promoPrice: "R$ 3.000",
+    discount: "-45%",
   },
   {
     icon: Wrench,
     name: "Manutenção mensal",
     desc: "Atualizações, correções e pequenas melhorias contínuas.",
-    price: "a partir de R$ 450/mês",
+    originalPrice: "R$ 450/mês",
+    promoPrice: "R$ 383/mês",
+    discount: "-15%",
   },
 ];
 
@@ -363,8 +371,22 @@ export default function FreelanceDevSite() {
                 <p className="text-sm mb-4" style={{ color: "#555C6B" }}>
                   {s.desc}
                 </p>
-                <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#0F1420" }} className="text-xs font-medium">
-                  {s.price}
+                <div className="flex items-center gap-2 mb-1">
+                  <span
+                    style={{ fontFamily: "'JetBrains Mono', monospace", color: "#8B96AB", textDecoration: "line-through" }}
+                    className="text-xs"
+                  >
+                    {s.originalPrice}
+                  </span>
+                  <span
+                    className="text-[10px] px-1.5 py-0.5 rounded"
+                    style={{ fontFamily: "'JetBrains Mono', monospace", color: "#22C55E", background: "rgba(34,197,94,0.12)" }}
+                  >
+                    {s.discount}
+                  </span>
+                </div>
+                <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#0F1420" }} className="text-sm font-semibold">
+                  {s.promoPrice}
                 </p>
               </div>
             );
