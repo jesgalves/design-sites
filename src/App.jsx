@@ -57,7 +57,7 @@ function Logo({ variant = "dark" }) {
         <rect x="0.5" y="0.5" width="29" height="29" rx="7" fill="#0B1220" stroke="#232D42" />
         <rect x="9" y="9" width="2.6" height="12" rx="1" fill="#3B6EF5" />
         <path
-          d="M11.6 9L13 9C15.5 9 15.5 15 13 15L11.6 15"
+          d="M11.6 9L13.5 9C16.8 9 16.8 21 13.5 21L11.6 21"
           stroke="#3B6EF5"
           strokeWidth="2.6"
           strokeLinecap="round"
