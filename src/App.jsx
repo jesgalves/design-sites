@@ -41,6 +41,95 @@ const buildLines = [
   { text: "✓ Compiled in 3.2s — pronto para converter", color: "#F5A623" },
 ];
 
+function ProjectDetailPage({ project }) {
+  return (
+    <div style={{ fontFamily: "'Inter', sans-serif", color: "#0F1420", background: "#F5F5F3", minHeight: "100vh" }}>
+      <style>{FONTS}</style>
+      <header className="border-b" style={{ borderColor: "#E4E4E0" }}>
+        <div className="max-w-4xl mx-auto px-6 py-6 flex items-center justify-between">
+          <Logo variant="dark" />
+          <a href="#/" className="text-sm font-medium underline" style={{ color: "#3B6EF5" }}>
+            Voltar para o site
+          </a>
+        </div>
+      </header>
+
+      <section className="py-16">
+        <div className="max-w-4xl mx-auto px-6">
+          <span
+            className="text-[11px] px-2 py-1 rounded inline-block mb-4"
+            style={{ fontFamily: "'JetBrains Mono', monospace", color: "#F5A623", background: "rgba(245,166,35,0.12)" }}
+          >
+            Protótipo
+          </span>
+          <h1 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="text-3xl md:text-4xl font-semibold mb-6">
+            {project.name}
+          </h1>
+
+          {project.images ? (
+            <div className="grid grid-cols-2 gap-3 mb-10">
+              {project.images.map((src, i) => (
+                <div key={i} className="rounded-lg border overflow-hidden" style={{ borderColor: "#E4E4E0" }}>
+                  <img src={src} alt={`${project.name} — tela ${i + 1}`} className="w-full h-auto block" />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div
+              className="w-full rounded-lg border flex items-center justify-center mb-10"
+              style={{ borderColor: "#E4E4E0", background: "#EAEAE6", aspectRatio: "16/10" }}
+            >
+              <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#8B96AB" }} className="text-sm">
+                Imagem de exemplo em breve
+              </p>
+            </div>
+          )}
+
+          <div className="flex flex-wrap gap-2 mb-8">
+            {project.stack.map((t) => (
+              <span
+                key={t}
+                className="text-xs px-2 py-1 rounded"
+                style={{ fontFamily: "'JetBrains Mono', monospace", color: "#3B6EF5", background: "rgba(59,110,245,0.1)" }}
+              >
+                {t}
+              </span>
+            ))}
+          </div>
+
+          <h2 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="text-xl font-semibold mb-3">
+            Como esse tipo de site é feito
+          </h2>
+          <p className="text-sm leading-relaxed mb-8" style={{ color: "#333844" }}>
+            {project.howItsMade}
+          </p>
+
+          <a
+            href="#contato-redirect"
+            onClick={(e) => {
+              e.preventDefault();
+              window.location.hash = "";
+              setTimeout(() => {
+                document.getElementById("contato")?.scrollIntoView({ behavior: "smooth" });
+              }, 50);
+            }}
+            className="inline-block px-6 py-3 rounded-md text-sm font-semibold"
+            style={{ background: "#3B6EF5", color: "#fff" }}
+          >
+            Quero um site assim
+          </a>
+        </div>
+      </section>
+
+      <footer className="py-8 border-t text-center" style={{ borderColor: "#E4E4E0" }}>
+        <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#8B96AB" }} className="text-xs">
+          © 2026 Design Sites
+        </p>
+      </footer>
+    </div>
+  );
+}
+
 function LegalPage() {
   return (
     <div style={{ fontFamily: "'Inter', sans-serif", color: "#0F1420", background: "#F5F5F3", minHeight: "100vh" }}>
@@ -304,28 +393,40 @@ const services = [
 
 const projects = [
   {
+    slug: "imobiliaria",
     name: "Interface de Altíssima Conversão para Imobiliárias",
     stack: ["React", "Filtros de busca", "WhatsApp"],
     problem: "Protótipo de vitrine virtual para corretores, com imóveis disponíveis, filtros por cidade/bairro/tipo e redirecionamento direto para agendamento via WhatsApp.",
     result: "Catálogo com filtros · contato direto via WhatsApp",
+    images: ["/images/corretor-1.png", "/images/corretor-2.png", "/images/corretor-3.png", "/images/corretor-4.png"],
+    howItsMade: "Esse site ajuda o corretor a transformar visitantes em contatos qualificados: logo na entrada, um buscador filtra imóveis por finalidade, tipo e bairro. Os imóveis em destaque aparecem em cards com preço, metragem e um botão direto para agendar visita via WhatsApp. Uma seção conta a experiência do corretor e gera confiança, e depoimentos de clientes reais reforçam a credibilidade — tudo terminando com um convite claro para anunciar um novo imóvel.",
   },
   {
+    slug: "loja-de-moveis",
     name: "Vitrine Virtual de Alta Conversão para Lojas de Móveis",
     stack: ["React", "Filtros de categoria"],
     problem: "Protótipo de vitrine de produtos com fotos, especificações técnicas e filtros por categoria e faixa de preço.",
     result: "Catálogo por categoria · design responsivo",
+    images: ["/images/moveis-1.png", "/images/moveis-2.png", "/images/moveis-3.png", "/images/moveis-4.png"],
+    howItsMade: "Esse site ajuda marcenarias e estúdios de móveis planejados a passar sofisticação já na primeira tela, com uma proposta de valor clara logo no topo. Uma seção “Sobre” reforça anos de experiência e mostra depoimentos de clientes. Os projetos recentes aparecem em cards com foto, categoria e descrição, funcionando como portfólio visual. E o passo a passo do processo (da planta ao 3D até a montagem) deixa o cliente confiante sobre como o projeto dele vai acontecer.",
   },
   {
+    slug: "e-commerce",
     name: "Loja Virtual Completa para E-commerce",
     stack: ["React", "Carrinho de compras", "Checkout"],
     problem: "Protótipo de loja virtual completa, com carrinho de compras e fluxo de pagamento simulado.",
     result: "Carrinho funcional · checkout simulado",
+    images: ["/images/ecommerce-1.png", "/images/ecommerce-2.png", "/images/ecommerce-3.png"],
+    howItsMade: "Esse site ajuda marcas de moda e produtos físicos a vender direto pelo WhatsApp, sem burocracia de checkout complexo. Uma faixa de frete grátis e a coleção em destaque já aparecem na primeira tela. Os produtos são organizados por categoria e exibidos com preço promocional riscado, e cada item tem um botão “Comprar no WhatsApp”, levando a conversa direto pro fechamento da venda. Selos de parcelamento, envio rápido e troca sem complicação reforçam a confiança antes da compra.",
   },
   {
+    slug: "landing-page",
     name: "Landing Page Otimizada para Geração de Leads",
     stack: ["React", "Formulário de captura"],
     problem: "Página única (one-page) voltada para campanhas de tráfego pago, focada em geração de leads.",
     result: "Formulário de captura · estrutura otimizada para conversão",
+    images: ["/images/landing-1.png", "/images/landing-2.png", "/images/landing-3.png"],
+    howItsMade: "Esse site ajuda profissionais liberais, como advogados, a transformar visitantes de anúncios em consultas agendadas. Logo na entrada, a proposta de valor já vem acompanhada de uma lista de motivos para agendar e um botão de WhatsApp em destaque, com aviso de resposta rápida para reduzir a hesitação. Números como casos resolvidos e anos de mercado reforçam a autoridade, e as áreas de atuação deixam claro em que o profissional pode ajudar. No fim, um formulário simples capta nome, WhatsApp e a dúvida do visitante, dando duas formas de contato: preencher ou chamar direto.",
   },
 ];
 
@@ -428,6 +529,14 @@ export default function FreelanceDevSite() {
 
   if (route === "#/legal") {
     return <LegalPage />;
+  }
+
+  if (route.startsWith("#/projeto/")) {
+    const slug = route.replace("#/projeto/", "");
+    const project = projects.find((p) => p.slug === slug);
+    if (project) {
+      return <ProjectDetailPage project={project} />;
+    }
   }
 
   return (
@@ -612,6 +721,13 @@ export default function FreelanceDevSite() {
                     {p.result}
                   </p>
                 </div>
+                <a
+                  href={`#/projeto/${p.slug}`}
+                  className="inline-flex items-center gap-1 text-xs font-medium mt-4"
+                  style={{ color: "#3B6EF5" }}
+                >
+                  Veja como é <ArrowUpRight size={13} />
+                </a>
               </div>
             ))}
           </div>
