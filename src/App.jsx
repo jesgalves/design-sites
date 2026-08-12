@@ -347,6 +347,16 @@ export default function FreelanceDevSite() {
                   >
                     Protótipo
                   </span>
+                  {p.stack.map((t) => (
+                    <span
+                      key={t}
+                      className="text-[11px] px-2 py-1 rounded"
+                      style={{ fontFamily: "'JetBrains Mono', monospace", color: "#3B6EF5", background: "rgba(59,110,245,0.12)" }}
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
                 <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#F5F5F3" }} className="font-semibold text-lg mb-2">
                   {p.name}
                 </h3>
