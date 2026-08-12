@@ -233,7 +233,7 @@ const process = [
 
 const faqs = [
   { q: "Qual o prazo médio de entrega?", a: "Entre 10 e 20 dias úteis, dependendo do escopo do projeto. Prazos exatos são definidos no briefing." },
-  { q: "Hospedagem e domínio estão inclusos?", a: "Ajudo na configuração de ambos, mas os custos de hospedagem e domínio são pagos diretamente ao provedor, sem intermediação." },
+  { q: "Hospedagem e domínio estão inclusos?", a: "Ajudamos na configuração de ambos, mas os custos de hospedagem e domínio são pagos diretamente ao provedor, sem intermediação." },
   { q: "Quantas revisões estão inclusas?", a: "Duas rodadas de revisão em cada etapa (protótipo e desenvolvimento) estão inclusas em todos os pacotes." },
   { q: "Como funciona o pagamento?", a: "50% no início do projeto e 50% na entrega. Para pacotes maiores, posso dividir em até 3 etapas." },
   { q: "Você oferece suporte depois da entrega?", a: "Sim, 15 dias de suporte gratuito para correções pós-entrega, e planos de manutenção mensal para o que vier depois." },
@@ -622,18 +622,115 @@ export default function FreelanceDevSite() {
               >
                 {formStatus === "sending" ? "Enviando..." : "Enviar mensagem"} <Mail size={16} />
               </button>
+              <p className="text-[11px] text-center" style={{ color: "#8B96AB" }}>
+                Ao enviar, você concorda com os nossos{" "}
+                <a href="#termos-de-uso" className="underline">Termos de Uso</a> e{" "}
+                <a href="#politica-de-privacidade" className="underline">Política de Privacidade</a>.
+              </p>
             </form>
           )}
         </div>
       </section>
 
+      {/* TERMOS DE USO */}
+      <section id="termos-de-uso" className="py-20 border-t" style={{ borderColor: "#E4E4E0" }}>
+        <div className="max-w-3xl mx-auto px-6">
+          <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#3B6EF5" }} className="text-xs mb-3">// termos de uso</p>
+          <h2 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="text-3xl font-semibold mb-8">
+            Termos de Uso
+          </h2>
+          <div className="space-y-6 text-sm leading-relaxed" style={{ color: "#333844" }}>
+            <p>
+              O Design Sites é um serviço independente de desenvolvimento web, atuando a partir de Garopaba/SC. Ao contratar nossos serviços, você concorda com os termos abaixo.
+            </p>
+            <div>
+              <h3 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="font-semibold mb-1">Serviços oferecidos</h3>
+              <p>Desenvolvimento de landing pages, sites institucionais, e-commerces e o Plano Gestão & Crescimento (manutenção mensal), conforme descrito na seção de Serviços.</p>
+            </div>
+            <div>
+              <h3 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="font-semibold mb-1">Orçamento e pagamento</h3>
+              <p>Os projetos são pagos em duas parcelas: 50% no início do projeto e 50% na entrega. Formas de pagamento aceitas: Pix, transferência bancária ou cartão.</p>
+            </div>
+            <div>
+              <h3 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="font-semibold mb-1">Prazos</h3>
+              <p>O prazo padrão de entrega é de até 15 dias úteis, podendo variar conforme a complexidade e o escopo definidos no briefing.</p>
+            </div>
+            <div>
+              <h3 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="font-semibold mb-1">Revisões</h3>
+              <p>Duas rodadas de revisão estão inclusas em cada etapa do projeto (protótipo e desenvolvimento), conforme descrito na seção de Perguntas Frequentes.</p>
+            </div>
+            <div>
+              <h3 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="font-semibold mb-1">Propriedade do site entregue</h3>
+              <p>Após a quitação integral do pagamento, todos os direitos sobre o site desenvolvido são transferidos ao cliente.</p>
+            </div>
+            <div>
+              <h3 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="font-semibold mb-1">Cancelamento</h3>
+              <p>Cancelamentos e eventuais reembolsos são tratados caso a caso, por acordo entre as partes, considerando o estágio em que o projeto se encontra.</p>
+            </div>
+            <div>
+              <h3 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="font-semibold mb-1">Foro</h3>
+              <p>Fica eleito o foro da comarca de Garopaba/SC para dirimir eventuais controvérsias.</p>
+            </div>
+            <div>
+              <h3 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="font-semibold mb-1">Contato</h3>
+              <p>Dúvidas sobre estes termos podem ser enviadas para jessica.oliverah@gmail.com.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* POLÍTICA DE PRIVACIDADE */}
+      <section id="politica-de-privacidade" className="py-20 border-t" style={{ borderColor: "#E4E4E0", background: "#F5F5F3" }}>
+        <div className="max-w-3xl mx-auto px-6">
+          <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#3B6EF5" }} className="text-xs mb-3">// privacidade</p>
+          <h2 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="text-3xl font-semibold mb-8">
+            Política de Privacidade
+          </h2>
+          <div className="space-y-6 text-sm leading-relaxed" style={{ color: "#333844" }}>
+            <p>
+              Esta política explica como o Design Sites coleta, usa e protege os dados fornecidos por você, em conformidade com a Lei Geral de Proteção de Dados (LGPD).
+            </p>
+            <div>
+              <h3 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="font-semibold mb-1">Dados coletados</h3>
+              <p>Ao preencher o formulário de contato, coletamos nome, e-mail, tipo de projeto, orçamento estimado e a mensagem enviada. Ao usar o WhatsApp, coletamos as informações que você compartilhar na conversa.</p>
+            </div>
+            <div>
+              <h3 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="font-semibold mb-1">Finalidade</h3>
+              <p>Os dados são usados exclusivamente para responder solicitações, elaborar orçamentos e dar andamento a projetos contratados.</p>
+            </div>
+            <div>
+              <h3 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="font-semibold mb-1">Onde os dados ficam armazenados</h3>
+              <p>Os dados do formulário são processados pelo Formspree, um serviço terceirizado de gerenciamento de formulários. As conversas iniciadas pelo botão de WhatsApp ficam armazenadas no WhatsApp Business. Não utilizamos planilhas, CRMs ou outros sistemas de armazenamento.</p>
+            </div>
+            <div>
+              <h3 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="font-semibold mb-1">Compartilhamento</h3>
+              <p>Não compartilhamos, vendemos ou alugamos seus dados a terceiros, além dos serviços mencionados acima, necessários para o funcionamento do formulário de contato.</p>
+            </div>
+            <div>
+              <h3 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="font-semibold mb-1">Cookies</h3>
+              <p>Este site não utiliza cookies de rastreamento próprios no momento.</p>
+            </div>
+            <div>
+              <h3 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="font-semibold mb-1">Seus direitos</h3>
+              <p>Você pode solicitar a qualquer momento o acesso, a correção ou a exclusão dos seus dados, entrando em contato pelo e-mail jessica.oliverah@gmail.com.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* FOOTER */}
       <footer className="py-8 border-t" style={{ borderColor: "#E4E4E0" }}>
-        <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <Logo variant="dark" />
-          <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#8B96AB" }} className="text-xs">
-            © 2026 Design Sites · desenvolvido com <Rocket size={12} className="inline mb-0.5" style={{ color: "#F5A623" }} /> e café
-          </p>
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+            <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#8B96AB" }} className="text-xs">
+              © 2026 Design Sites · desenvolvido com <Rocket size={12} className="inline mb-0.5" style={{ color: "#F5A623" }} /> e café
+            </p>
+            <div className="flex items-center gap-3">
+              <a href="#termos-de-uso" className="text-xs underline" style={{ color: "#8B96AB" }}>Termos de Uso</a>
+              <a href="#politica-de-privacidade" className="text-xs underline" style={{ color: "#8B96AB" }}>Privacidade</a>
+            </div>
+          </div>
         </div>
       </footer>
       <WhatsAppButton />
