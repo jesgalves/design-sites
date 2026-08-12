@@ -130,28 +130,28 @@ const services = [
 
 const projects = [
   {
-    name: "TendaSul E-commerce",
-    stack: ["Next.js", "Stripe", "Sanity"],
-    problem: "Loja antiga demorava 6s para carregar e perdia vendas no mobile.",
-    result: "Carregamento em 1.1s · +34% conversão mobile",
+    name: "Vitrine Imobiliária",
+    stack: ["React", "Filtros de busca", "WhatsApp"],
+    problem: "Protótipo de vitrine virtual para corretores, com imóveis disponíveis, filtros por cidade/bairro/tipo e redirecionamento direto para agendamento via WhatsApp.",
+    result: "Catálogo com filtros · contato direto via WhatsApp",
   },
   {
-    name: "Clínica Vitalis",
-    stack: ["React", "Tailwind", "CMS"],
-    problem: "Site institucional desatualizado, sem agendamento online.",
-    result: "Agendamentos online · +52% contatos via site",
+    name: "Catálogo — Loja de Móveis",
+    stack: ["React", "Filtros de categoria"],
+    problem: "Protótipo de vitrine de produtos com fotos, especificações técnicas e filtros por categoria e faixa de preço.",
+    result: "Catálogo por categoria · design responsivo",
   },
   {
-    name: "Estúdio Alma",
-    stack: ["Webflow", "GSAP"],
-    problem: "Portfólio de arquitetura sem identidade visual própria.",
-    result: "Novo portfólio · 3 propostas fechadas em 30 dias",
+    name: "E-commerce",
+    stack: ["React", "Carrinho de compras", "Checkout"],
+    problem: "Protótipo de loja virtual completa, com carrinho de compras e fluxo de pagamento simulado.",
+    result: "Carrinho funcional · checkout simulado",
   },
   {
-    name: "Norte Logística",
-    stack: ["Node.js", "PostgreSQL"],
-    problem: "Processos internos rodando em planilhas soltas.",
-    result: "Painel interno · 12h/semana economizadas",
+    name: "Landing Page de Alta Conversão",
+    stack: ["React", "Formulário de captura"],
+    problem: "Página única (one-page) voltada para campanhas de tráfego pago, focada em geração de leads.",
+    result: "Formulário de captura · estrutura otimizada para conversão",
   },
 ];
 
@@ -331,23 +331,22 @@ export default function FreelanceDevSite() {
       <section id="portfolio" className="py-20" style={{ background: "#0B1220" }}>
         <div className="max-w-6xl mx-auto px-6">
           <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#F5A623" }} className="text-xs mb-3">// portfólio</p>
-          <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#F5F5F3" }} className="text-3xl font-semibold mb-12">
-            Projetos entregues
+          <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#F5F5F3" }} className="text-3xl font-semibold mb-2">
+            Protótipos e projetos conceituais
           </h2>
+          <p className="text-sm mb-10" style={{ color: "#8B96AB" }}>
+            Modelos desenvolvidos para demonstrar capacidade técnica — não representam empresas ou clientes reais.
+          </p>
           <div className="grid sm:grid-cols-2 gap-5">
             {projects.map((p) => (
               <div key={p.name} className="p-6 rounded-lg border" style={{ borderColor: "#232D42", background: "#0F172A" }}>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {p.stack.map((t) => (
-                    <span
-                      key={t}
-                      className="text-[11px] px-2 py-1 rounded"
-                      style={{ fontFamily: "'JetBrains Mono', monospace", color: "#3B6EF5", background: "rgba(59,110,245,0.12)" }}
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
+                  <span
+                    className="text-[11px] px-2 py-1 rounded"
+                    style={{ fontFamily: "'JetBrains Mono', monospace", color: "#F5A623", background: "rgba(245,166,35,0.12)" }}
+                  >
+                    Protótipo
+                  </span>
                 <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#F5F5F3" }} className="font-semibold text-lg mb-2">
                   {p.name}
                 </h3>
