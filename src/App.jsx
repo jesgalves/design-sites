@@ -235,6 +235,29 @@ export default function FreelanceDevSite() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState(0);
   const [formStatus, setFormStatus] = useState("idle");
+  const FORMSPREE_ENDPOINT = "https://formspree.io/f/mpparweo";
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    setFormStatus("sending");
+    const form = e.target;
+    const data = new FormData(form);
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" },
+      });
+      if (response.ok) {
+        setFormStatus("sent");
+        form.reset();
+      } else {
+        setFormStatus("error");
+      }
+    } catch {
+      setFormStatus("error");
+    }
+  };
 
   const navLinks = [
     { label: "Serviços", href: "#servicos" },
@@ -450,15 +473,15 @@ export default function FreelanceDevSite() {
               <p style={{ color: "#F5F5F3" }} className="font-medium">Mensagem enviada. Vou te responder em breve.</p>
             </div>
           ) : (
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                setFormStatus("sent");
-              }}
-              className="grid gap-4"
-            >
+            <form onSubmit={handleFormSubmit} className="grid gap-4">
+              {formStatus === "error" && (
+                <p className="text-sm text-center" style={{ color: "#F87171" }}>
+                  Não foi possível enviar agora. Tente novamente em instantes.
+                </p>
+              )}
               <input
                 required
+                name="nome"
                 placeholder="Seu nome"
                 className="px-4 py-3 rounded-md text-sm outline-none"
                 style={{ background: "#0F172A", border: "1px solid #232D42", color: "#F5F5F3" }}
@@ -466,6 +489,7 @@ export default function FreelanceDevSite() {
               <input
                 required
                 type="email"
+                name="email"
                 placeholder="Seu e-mail"
                 className="px-4 py-3 rounded-md text-sm outline-none"
                 style={{ background: "#0F172A", border: "1px solid #232D42", color: "#F5F5F3" }}
@@ -473,6 +497,7 @@ export default function FreelanceDevSite() {
               <div className="grid sm:grid-cols-2 gap-4">
                 <select
                   required
+                  name="tipo_de_projeto"
                   defaultValue=""
                   className="px-4 py-3 rounded-md text-sm outline-none"
                   style={{ background: "#0F172A", border: "1px solid #232D42", color: "#8B96AB" }}
@@ -485,6 +510,7 @@ export default function FreelanceDevSite() {
                 </select>
                 <select
                   required
+                  name="orcamento_estimado"
                   defaultValue=""
                   className="px-4 py-3 rounded-md text-sm outline-none"
                   style={{ background: "#0F172A", border: "1px solid #232D42", color: "#8B96AB" }}
@@ -498,6 +524,7 @@ export default function FreelanceDevSite() {
               </div>
               <textarea
                 required
+                name="mensagem"
                 placeholder="Conte um pouco sobre o projeto e o prazo desejado"
                 rows={4}
                 className="px-4 py-3 rounded-md text-sm outline-none resize-none"
@@ -505,10 +532,11 @@ export default function FreelanceDevSite() {
               />
               <button
                 type="submit"
+                disabled={formStatus === "sending"}
                 className="px-6 py-3 rounded-md text-sm font-semibold flex items-center justify-center gap-2"
-                style={{ background: "#3B6EF5", color: "#fff" }}
+                style={{ background: "#3B6EF5", color: "#fff", opacity: formStatus === "sending" ? 0.7 : 1 }}
               >
-                Enviar mensagem <Mail size={16} />
+                {formStatus === "sending" ? "Enviando..." : "Enviar mensagem"} <Mail size={16} />
               </button>
             </form>
           )}
