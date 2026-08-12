@@ -144,6 +144,12 @@ const services = [
     originalPrice: "R$ 1.200",
     promoPrice: "R$ 1.020",
     discount: "-15%",
+    bullets: [
+      "Design otimizado para conversão",
+      "Formulário de captura de leads",
+      "Hospedagem e domínio configurados",
+      "Entrega em até 15 dias úteis",
+    ],
   },
   {
     icon: Zap,
@@ -152,6 +158,12 @@ const services = [
     originalPrice: "R$ 2.800",
     promoPrice: "R$ 2.380",
     discount: "-15%",
+    bullets: [
+      "Páginas: Home, Sobre, Serviços, Contato",
+      "Design responsivo (mobile-first)",
+      "Otimização básica para Google (SEO)",
+      "Formulário de contato integrado",
+    ],
   },
   {
     icon: ShoppingCart,
@@ -160,6 +172,12 @@ const services = [
     originalPrice: "R$ 5.500",
     promoPrice: "R$ 3.000",
     discount: "-45%",
+    bullets: [
+      "Catálogo de produtos ilimitado",
+      "Carrinho de compras e checkout",
+      "Integração com meios de pagamento",
+      "Painel para gerenciar pedidos",
+    ],
   },
   {
     icon: Wrench,
