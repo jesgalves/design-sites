@@ -70,7 +70,22 @@ function ProjectDetailPage({ project }) {
             <div className="grid grid-cols-2 gap-3 mb-10">
               {project.images.map((src, i) => (
                 <div key={i} className="rounded-lg border overflow-hidden" style={{ borderColor: "#E4E4E0" }}>
-                  <img src={src} alt={`${project.name} — tela ${i + 1}`} className="w-full h-auto block" />
+                  <div
+                    className="flex items-center gap-1.5 px-2.5"
+                    style={{ height: "22px", background: "#EAEAE6", borderBottom: "1px solid #E4E4E0" }}
+                  >
+                    <span className="w-2 h-2 rounded-full" style={{ background: "#F5A623" }} />
+                    <span className="w-2 h-2 rounded-full" style={{ background: "#3B6EF5" }} />
+                    <span className="w-2 h-2 rounded-full" style={{ background: "#22C55E" }} />
+                  </div>
+                  <div className="overflow-hidden" style={{ aspectRatio: "16/10", background: "#fff" }}>
+                    <img
+                      src={src}
+                      alt={`${project.name} — tela ${i + 1}`}
+                      className="w-full h-full block"
+                      style={{ objectFit: "cover", objectPosition: "top" }}
+                    />
+                  </div>
                 </div>
               ))}
             </div>
