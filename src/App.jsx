@@ -224,7 +224,7 @@ const projects = [
 ];
 
 const process = [
-  { n: "01", title: "Briefing", desc: "Entendo o problema real do seu negócio antes de qualquer linha de código." },
+  { n: "01", title: "Briefing", desc: "Entendemos o problema real do seu negócio antes de qualquer linha de código." },
   { n: "02", title: "Protótipo", desc: "Layout navegável para validar estrutura e conteúdo antes de construir." },
   { n: "03", title: "Desenvolvimento", desc: "Código limpo, performático e responsivo, com atualizações semanais." },
   { n: "04", title: "Revisão", desc: "Ajustes finos com base no seu feedback, sem custo extra." },
@@ -395,7 +395,7 @@ export default function FreelanceDevSite() {
       <section id="servicos" className="max-w-6xl mx-auto px-6 py-20">
         <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#3B6EF5" }} className="text-xs mb-3">// serviços</p>
         <h2 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="text-3xl font-semibold mb-12">
-          O que eu construo
+          O que nós construímos
         </h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {services.map((s) => {
@@ -544,13 +544,13 @@ export default function FreelanceDevSite() {
             Conte sobre o seu projeto
           </h2>
           <p className="text-center mb-10 text-sm" style={{ color: "#8B96AB" }}>
-            Respondo em até 24h úteis com uma proposta inicial.
+            Respondemos em até 24h úteis com uma proposta inicial.
           </p>
 
           {formStatus === "sent" ? (
             <div className="text-center p-8 rounded-lg border" style={{ borderColor: "#232D42", background: "#0F172A" }}>
               <CheckCircle2 size={28} style={{ color: "#22C55E" }} className="mx-auto mb-3" />
-              <p style={{ color: "#F5F5F3" }} className="font-medium">Mensagem enviada. Vou te responder em breve.</p>
+              <p style={{ color: "#F5F5F3" }} className="font-medium">Mensagem enviada. Vamos te responder em breve.</p>
             </div>
           ) : (
             <form onSubmit={handleFormSubmit} className="grid gap-4">
@@ -604,7 +604,7 @@ export default function FreelanceDevSite() {
                 </select>
               </div>
               <p className="text-xs -mt-1" style={{ color: "#8B96AB" }}>
-                Não sabe qual serviço combina com o seu negócio? Sem problema — conte o que você precisa e eu te ajudo a decidir.
+                Não sabe qual serviço combina com o seu negócio? Sem problema — conte o que você precisa e nós te ajudamos a decidir.
               </p>
               <textarea
                 required
