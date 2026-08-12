@@ -55,21 +55,21 @@ function Logo({ variant = "dark" }) {
     <div className="flex items-center gap-2.5">
       <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
         <rect x="0.5" y="0.5" width="29" height="29" rx="7" fill="#0B1220" stroke="#232D42" />
+        <rect x="9" y="9" width="2.6" height="12" rx="1" fill="#3B6EF5" />
         <path
-          d="M11 10L7 15L11 20"
+          d="M11.6 9L13 9C15.5 9 15.5 15 13 15L11.6 15"
           stroke="#3B6EF5"
-          strokeWidth="2"
+          strokeWidth="2.6"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
         <path
-          d="M19 10L23 15L19 20"
-          stroke="#3B6EF5"
-          strokeWidth="2"
+          d="M18.5 11.5L20.5 15L18.5 18.5"
+          stroke="#F5A623"
+          strokeWidth="1.8"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
-        <path d="M16.5 8.5L13.5 21.5" stroke="#F5A623" strokeWidth="1.6" strokeLinecap="round" />
       </svg>
       <span style={{ fontFamily: "'Space Grotesk', sans-serif", color: textColor }} className="font-semibold text-lg leading-none">
         Design<span style={{ color: "#3B6EF5" }}> Sites</span>
