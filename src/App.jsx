@@ -16,6 +16,21 @@ import {
 
 const FONTS = `
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@keyframes dsExpand {
+  0%, 12% { max-width: 0; opacity: 0; }
+  30%, 70% { max-width: 180px; opacity: 1; }
+  88%, 100% { max-width: 0; opacity: 0; }
+}
+.ds-collapsible {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: bottom;
+  max-width: 0;
+  opacity: 0;
+  animation: dsExpand 6s ease-in-out infinite;
+}
 `;
 
 const buildLines = [
@@ -52,27 +67,26 @@ function WhatsAppButton() {
 function Logo({ variant = "dark" }) {
   const textColor = variant === "dark" ? "#0F1420" : "#F5F5F3";
   return (
-    <div className="flex items-center gap-2.5">
-      <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
-        <rect x="0.5" y="0.5" width="29" height="29" rx="7" fill="#0B1220" stroke="#232D42" />
-        <rect x="9" y="9" width="2.6" height="12" rx="1" fill="#3B6EF5" />
-        <path
-          d="M11.6 9L13.5 9C16.8 9 16.8 21 13.5 21L11.6 21"
-          stroke="#3B6EF5"
-          strokeWidth="2.6"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M18.5 11.5L20.5 15L18.5 18.5"
-          stroke="#F5A623"
-          strokeWidth="1.8"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-      <span style={{ fontFamily: "'Space Grotesk', sans-serif", color: textColor }} className="font-semibold text-lg leading-none">
-        Design<span style={{ color: "#3B6EF5" }}> Sites</span>
+    <div className="flex items-baseline">
+      <span
+        style={{ fontFamily: "'JetBrains Mono', monospace", color: "#3B6EF5" }}
+        className="font-bold text-xl leading-none"
+      >
+        &lt;
+      </span>
+      <span className="ds-collapsible">
+        <span style={{ fontFamily: "'Space Grotesk', sans-serif", color: textColor }}>
+          &nbsp;Design
+        </span>
+        <span style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#3B6EF5" }}>
+          {" "}Sites&nbsp;
+        </span>
+      </span>
+      <span
+        style={{ fontFamily: "'JetBrains Mono', monospace", color: "#F5A623" }}
+        className="font-bold text-xl leading-none"
+      >
+        /&gt;
       </span>
     </div>
   );
