@@ -399,7 +399,7 @@ const projects = [
     problem: "Protótipo de vitrine virtual para corretores, com imóveis disponíveis, filtros por cidade/bairro/tipo e redirecionamento direto para agendamento via WhatsApp.",
     result: "Catálogo com filtros · contato direto via WhatsApp",
     images: ["/images/corretor-1.png", "/images/corretor-2.png", "/images/corretor-3.png", "/images/corretor-4.png"],
-    howItsMade: "Esse site ajuda o corretor a transformar visitantes em contatos qualificados: logo na entrada, um buscador filtra imóveis por finalidade, tipo e bairro. Os imóveis em destaque aparecem em cards com preço, metragem e um botão direto para agendar visita via WhatsApp. Uma seção conta a experiência do corretor e gera confiança, e depoimentos de clientes reais reforçam a credibilidade — tudo terminando com um convite claro para anunciar um novo imóvel.",
+    howItsMade: "Esse modelo é ideal para qualquer negócio que precise apresentar um catálogo de itens com busca por filtros e fechar contato direto pelo WhatsApp — não só imobiliárias, mas também locadoras, revendas de veículos ou qualquer serviço vendido \"sob consulta\". No exemplo, um buscador filtra imóveis por finalidade, tipo e bairro logo na entrada. Os itens em destaque aparecem em cards com preço, especificações e um botão direto para agendar contato via WhatsApp. Uma seção conta a experiência de quem vende e gera confiança, e depoimentos reforçam a credibilidade — tudo terminando com um convite claro para cadastrar um novo item.",
   },
   {
     slug: "loja-de-moveis",
@@ -408,7 +408,7 @@ const projects = [
     problem: "Protótipo de vitrine de produtos com fotos, especificações técnicas e filtros por categoria e faixa de preço.",
     result: "Catálogo por categoria · design responsivo",
     images: ["/images/moveis-1.png", "/images/moveis-2.png", "/images/moveis-3.png", "/images/moveis-4.png"],
-    howItsMade: "Esse site ajuda marcenarias e estúdios de móveis planejados a passar sofisticação já na primeira tela, com uma proposta de valor clara logo no topo. Uma seção “Sobre” reforça anos de experiência e mostra depoimentos de clientes. Os projetos recentes aparecem em cards com foto, categoria e descrição, funcionando como portfólio visual. E o passo a passo do processo (da planta ao 3D até a montagem) deixa o cliente confiante sobre como o projeto dele vai acontecer.",
+    howItsMade: "Esse modelo serve para qualquer negócio que venda produtos ou serviços personalizados de alto padrão — marcenarias, estúdios de design de interiores, ateliês, ou qualquer marca que queira passar sofisticação já na primeira tela, com uma proposta de valor clara logo no topo. Uma seção “Sobre” reforça anos de experiência e mostra depoimentos de clientes. Os projetos recentes aparecem em cards com foto, categoria e descrição, funcionando como portfólio visual. E o passo a passo do processo (do orçamento à entrega) deixa o cliente confiante sobre como o trabalho dele vai acontecer.",
   },
   {
     slug: "e-commerce",
@@ -417,7 +417,7 @@ const projects = [
     problem: "Protótipo de loja virtual completa, com carrinho de compras e fluxo de pagamento simulado.",
     result: "Carrinho funcional · checkout simulado",
     images: ["/images/ecommerce-1.png", "/images/ecommerce-2.png", "/images/ecommerce-3.png"],
-    howItsMade: "Esse site ajuda marcas de moda e produtos físicos a vender direto pelo WhatsApp, sem burocracia de checkout complexo. Uma faixa de frete grátis e a coleção em destaque já aparecem na primeira tela. Os produtos são organizados por categoria e exibidos com preço promocional riscado, e cada item tem um botão “Comprar no WhatsApp”, levando a conversa direto pro fechamento da venda. Selos de parcelamento, envio rápido e troca sem complicação reforçam a confiança antes da compra.",
+    howItsMade: "Esse modelo serve para qualquer negócio que venda produtos físicos e queira fechar a venda direto pelo WhatsApp, sem burocracia de checkout complexo — moda, cosméticos, eletrônicos ou qualquer loja com catálogo de produtos. No exemplo, uma faixa de frete grátis e a coleção em destaque já aparecem na primeira tela. Os produtos são organizados por categoria e exibidos com preço promocional riscado, e cada item tem um botão “Comprar no WhatsApp”, levando a conversa direto pro fechamento da venda. Selos de parcelamento, envio rápido e troca sem complicação reforçam a confiança antes da compra.",
   },
   {
     slug: "landing-page",
@@ -426,7 +426,7 @@ const projects = [
     problem: "Página única (one-page) voltada para campanhas de tráfego pago, focada em geração de leads.",
     result: "Formulário de captura · estrutura otimizada para conversão",
     images: ["/images/landing-1.png", "/images/landing-2.png", "/images/landing-3.png"],
-    howItsMade: "Esse site ajuda profissionais liberais, como advogados, a transformar visitantes de anúncios em consultas agendadas. Logo na entrada, a proposta de valor já vem acompanhada de uma lista de motivos para agendar e um botão de WhatsApp em destaque, com aviso de resposta rápida para reduzir a hesitação. Números como casos resolvidos e anos de mercado reforçam a autoridade, e as áreas de atuação deixam claro em que o profissional pode ajudar. No fim, um formulário simples capta nome, WhatsApp e a dúvida do visitante, dando duas formas de contato: preencher ou chamar direto.",
+    howItsMade: "Esse modelo serve para qualquer profissional ou negócio de serviços que queira transformar visitantes de anúncios em consultas agendadas — advogados, dentistas, consultores, clínicas, entre outros. No exemplo, a proposta de valor já vem acompanhada de uma lista de motivos para agendar e um botão de WhatsApp em destaque, com aviso de resposta rápida para reduzir a hesitação. Números como casos resolvidos e anos de mercado reforçam a autoridade, e as áreas de atuação deixam claro em que o profissional pode ajudar. No fim, um formulário simples capta nome, WhatsApp e a dúvida do visitante, dando duas formas de contato: preencher ou chamar direto.",
   },
 ];
 
