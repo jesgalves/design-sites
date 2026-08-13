@@ -972,12 +972,9 @@ export default function FreelanceDevSite() {
       {/* SERVICES */}
       <section id="servicos" className="max-w-6xl mx-auto px-6 py-20">
         <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#3B6EF5" }} className="text-xs mb-3">// serviços</p>
-        <h2 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="text-3xl font-semibold mb-6">
+        <h2 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="text-3xl font-semibold mb-12">
           O que nós construímos
         </h2>
-        <div className="mb-10">
-          <CountdownTimer />
-        </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {services.map((s) => {
             const Icon = s.icon;
@@ -1033,6 +1030,9 @@ export default function FreelanceDevSite() {
               </div>
             );
           })}
+        </div>
+        <div className="mt-10">
+          <CountdownTimer />
         </div>
       </section>
 
