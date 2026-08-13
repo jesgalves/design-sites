@@ -12,6 +12,8 @@ import {
   ShoppingCart,
   LayoutTemplate,
   Wrench,
+  ShieldCheck,
+  MessageCircle,
 } from "lucide-react";
 
 const FONTS = `
@@ -475,21 +477,98 @@ function WhatsAppButton() {
   const phone = "5551981273330";
   const message = "Olá! Gostaria de saber mais sobre os serviços";
   const link = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+  const [showBubble, setShowBubble] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setShowBubble(true), 6000);
+    return () => clearTimeout(t);
+  }, []);
 
   return (
-    <a
-      href={link}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-50 flex items-center justify-center rounded-full shadow-lg transition-transform hover:scale-105"
-      style={{ width: "58px", height: "58px", background: "#25D366" }}
-      aria-label="Falar no WhatsApp"
-    >
-      <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.67.15-.198.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
-        <path d="M12.004 2.003c-5.514 0-9.997 4.483-9.997 9.997 0 1.762.462 3.486 1.34 5.003L2 22l5.117-1.334a9.96 9.96 0 0 0 4.887 1.28h.004c5.514 0 9.997-4.483 9.997-9.997 0-2.671-1.04-5.182-2.929-7.071a9.933 9.933 0 0 0-7.072-2.875zm0 18.166h-.003a8.2 8.2 0 0 1-4.176-1.144l-.3-.178-3.036.791.81-2.96-.195-.304a8.196 8.196 0 0 1-1.257-4.374c0-4.535 3.69-8.225 8.226-8.225 2.196 0 4.26.857 5.815 2.412a8.166 8.166 0 0 1 2.408 5.816c0 4.535-3.69 8.225-8.225 8.225z" />
-      </svg>
-    </a>
+    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+      {showBubble && (
+        <div
+          className="relative max-w-[220px] rounded-lg shadow-lg p-4"
+          style={{ background: "#fff", border: "1px solid #E4E4E0" }}
+        >
+          <button
+            onClick={() => setShowBubble(false)}
+            className="absolute -top-2 -right-2 rounded-full flex items-center justify-center"
+            style={{ width: "20px", height: "20px", background: "#0B1220" }}
+            aria-label="Fechar"
+          >
+            <X size={12} color="#fff" />
+          </button>
+          <p className="text-sm" style={{ color: "#333844" }}>
+            Precisa de ajuda? Fale com a gente! 👋
+          </p>
+        </div>
+      )}
+      <a
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center justify-center rounded-full shadow-lg transition-transform hover:scale-105"
+        style={{ width: "58px", height: "58px", background: "#25D366" }}
+        aria-label="Falar no WhatsApp"
+      >
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.67.15-.198.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+          <path d="M12.004 2.003c-5.514 0-9.997 4.483-9.997 9.997 0 1.762.462 3.486 1.34 5.003L2 22l5.117-1.334a9.96 9.96 0 0 0 4.887 1.28h.004c5.514 0 9.997-4.483 9.997-9.997 0-2.671-1.04-5.182-2.929-7.071a9.933 9.933 0 0 0-7.072-2.875zm0 18.166h-.003a8.2 8.2 0 0 1-4.176-1.144l-.3-.178-3.036.791.81-2.96-.195-.304a8.196 8.196 0 0 1-1.257-4.374c0-4.535 3.69-8.225 8.226-8.225 2.196 0 4.26.857 5.815 2.412a8.166 8.166 0 0 1 2.408 5.816c0 4.535-3.69 8.225-8.225 8.225z" />
+        </svg>
+      </a>
+    </div>
+  );
+}
+
+function CountdownTimer() {
+  const targetDate = new Date("2026-10-30T23:59:59");
+
+  const computeTimeLeft = () => {
+    const diff = targetDate.getTime() - new Date().getTime();
+    if (diff <= 0) return null;
+    return {
+      d: Math.floor(diff / (1000 * 60 * 60 * 24)),
+      h: Math.floor((diff / (1000 * 60 * 60)) % 24),
+      m: Math.floor((diff / (1000 * 60)) % 60),
+      s: Math.floor((diff / 1000) % 60),
+    };
+  };
+
+  const [timeLeft, setTimeLeft] = useState(computeTimeLeft);
+
+  useEffect(() => {
+    const interval = setInterval(() => setTimeLeft(computeTimeLeft()), 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  if (!timeLeft) return null;
+
+  const units = [
+    { value: timeLeft.d, label: "dias" },
+    { value: timeLeft.h, label: "horas" },
+    { value: timeLeft.m, label: "min" },
+    { value: timeLeft.s, label: "seg" },
+  ];
+
+  return (
+    <div className="flex items-center justify-center gap-4 flex-wrap">
+      <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#F5A623" }} className="text-xs">
+        Promoção termina em:
+      </p>
+      <div className="flex items-center gap-2">
+        {units.map((u) => (
+          <div key={u.label} className="text-center px-2.5 py-1.5 rounded" style={{ background: "#0B1220" }}>
+            <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#F5F5F3" }} className="text-sm font-semibold leading-none">
+              {String(u.value).padStart(2, "0")}
+            </p>
+            <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#8B96AB" }} className="text-[9px] mt-0.5">
+              {u.label}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -874,12 +953,31 @@ export default function FreelanceDevSite() {
         </div>
       </section>
 
+      {/* TRUST BADGES */}
+      <section className="py-8" style={{ borderBottom: "1px solid #E4E4E0" }}>
+        <div className="max-w-4xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-3 gap-6">
+          {[
+            { Icon: ShieldCheck, label: "Pagamento seguro" },
+            { Icon: Rocket, label: "Site no ar em 15 dias" },
+            { Icon: MessageCircle, label: "Suporte via WhatsApp" },
+          ].map(({ Icon, label }) => (
+            <div key={label} className="flex items-center justify-center gap-2.5">
+              <Icon size={20} style={{ color: "#3B6EF5" }} />
+              <p className="text-sm font-medium" style={{ color: "#333844" }}>{label}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* SERVICES */}
       <section id="servicos" className="max-w-6xl mx-auto px-6 py-20">
         <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#3B6EF5" }} className="text-xs mb-3">// serviços</p>
-        <h2 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="text-3xl font-semibold mb-12">
+        <h2 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="text-3xl font-semibold mb-6">
           O que nós construímos
         </h2>
+        <div className="mb-10">
+          <CountdownTimer />
+        </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {services.map((s) => {
             const Icon = s.icon;
