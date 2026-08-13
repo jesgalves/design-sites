@@ -63,19 +63,6 @@ body.custom-cursor-active, body.custom-cursor-active * {
   animation: scrollBounce 1.8s ease-in-out infinite;
 }
 
-@keyframes floatIcon1 {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  50% { transform: translate(15px, -20px) rotate(8deg); }
-}
-@keyframes floatIcon2 {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  50% { transform: translate(-18px, 16px) rotate(-6deg); }
-}
-@keyframes floatIcon3 {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  50% { transform: translate(12px, 18px) rotate(5deg); }
-}
-
 .portfolio-frame-img {
   transition: transform 0.6s ease;
 }
@@ -1016,24 +1003,6 @@ export default function FreelanceDevSite() {
         <div className="glass-card hidden md:flex" style={{ bottom: "16%", left: "40%", animationDuration: "3.8s", animationDelay: "-1.8s" }}>
           <Hourglass size={26} style={{ color: "#FFFFFF" }} />
         </div>
-        <img
-          src="/images/particle-code.png"
-          alt=""
-          className="absolute hidden md:block"
-          style={{ width: "36px", opacity: 0.12, top: "15%", left: "42%", animation: "floatIcon1 9s ease-in-out infinite", pointerEvents: "none", filter: "drop-shadow(0 0 8px rgba(255,255,255,0.5)) drop-shadow(0 0 16px rgba(147,180,255,0.35))" }}
-        />
-        <img
-          src="/images/particle-react.png"
-          alt=""
-          className="absolute hidden md:block"
-          style={{ width: "40px", opacity: 0.1, top: "60%", left: "48%", animation: "floatIcon2 11s ease-in-out infinite", pointerEvents: "none", filter: "drop-shadow(0 0 8px rgba(255,255,255,0.5)) drop-shadow(0 0 16px rgba(147,180,255,0.35))" }}
-        />
-        <img
-          src="/images/particle-node.png"
-          alt=""
-          className="absolute hidden md:block"
-          style={{ width: "34px", opacity: 0.1, top: "30%", right: "8%", animation: "floatIcon3 10s ease-in-out infinite", pointerEvents: "none", filter: "drop-shadow(0 0 8px rgba(255,255,255,0.5)) drop-shadow(0 0 16px rgba(147,180,255,0.35))" }}
-        />
         <div className="max-w-6xl mx-auto px-6 py-20 md:py-28 grid md:grid-cols-2 gap-12 items-center relative" style={{ zIndex: 1 }}>
           <div>
             <span
