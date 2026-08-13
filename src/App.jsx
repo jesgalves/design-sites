@@ -16,6 +16,7 @@ import {
   ShieldCheck,
   MessageCircle,
   User,
+  MapPin,
 } from "lucide-react";
 
 const FONTS = `
@@ -1025,8 +1026,29 @@ export default function FreelanceDevSite() {
               </a>
             </div>
           </div>
-          <div className="flex justify-center md:justify-end">
+          <div className="flex justify-center md:justify-end relative">
             <TerminalPanel />
+            <div
+              className="hidden lg:flex absolute items-center gap-2 px-3 py-2 rounded-lg shadow-lg"
+              style={{ background: "#0F172A", border: "1px solid #232D42", left: "-40px", top: "38%" }}
+            >
+              <Zap size={14} style={{ color: "#F5A623" }} />
+              <span style={{ fontFamily: "'JetBrains Mono', monospace", color: "#F5F5F3" }} className="text-xs font-semibold">&lt;1s</span>
+            </div>
+            <div
+              className="hidden lg:flex absolute items-center gap-2 px-3 py-2 rounded-lg shadow-lg"
+              style={{ background: "#0F172A", border: "1px solid #232D42", right: "-24px", top: "58%" }}
+            >
+              <ShieldCheck size={14} style={{ color: "#22C55E" }} />
+              <span style={{ fontFamily: "'JetBrains Mono', monospace", color: "#F5F5F3" }} className="text-xs font-semibold">Segurança Total</span>
+            </div>
+            <div
+              className="hidden lg:flex absolute items-center gap-2 px-3 py-2 rounded-lg shadow-lg"
+              style={{ background: "#0F172A", border: "1px solid #232D42", left: "10%", bottom: "-20px" }}
+            >
+              <CheckCircle2 size={14} style={{ color: "#22C55E" }} />
+              <span style={{ fontFamily: "'JetBrains Mono', monospace", color: "#F5F5F3" }} className="text-xs font-semibold">100% Mobile Otimizado</span>
+            </div>
           </div>
         </div>
         {showScrollHint && (
@@ -1411,10 +1433,30 @@ export default function FreelanceDevSite() {
       </section>
 
       {/* FOOTER */}
-      <footer className="py-8 border-t" style={{ borderColor: "#E4E4E0" }}>
-        <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <Logo variant="dark" />
-          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+      <footer className="py-10 border-t" style={{ borderColor: "#E4E4E0" }}>
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-6">
+            <Logo variant="dark" />
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs" style={{ color: "#555C6B" }}>
+              <a href="mailto:jessica.oliverah@gmail.com" className="flex items-center gap-1.5 hover:underline">
+                <Mail size={13} style={{ color: "#3B6EF5" }} />
+                jessica.oliverah@gmail.com
+              </a>
+              <a href="https://wa.me/5551981273330" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:underline">
+                <MessageCircle size={13} style={{ color: "#3B6EF5" }} />
+                (51) 98127-3330
+              </a>
+              <a href="https://instagram.com/designsites.digital" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:underline">
+                <User size={13} style={{ color: "#3B6EF5" }} />
+                @designsites.digital
+              </a>
+              <span className="flex items-center gap-1.5">
+                <MapPin size={13} style={{ color: "#3B6EF5" }} />
+                Garopaba/SC
+              </span>
+            </div>
+          </div>
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-6 border-t" style={{ borderColor: "#E4E4E0" }}>
             <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#8B96AB" }} className="text-xs">
               © 2026 Design Sites · desenvolvido com <Rocket size={12} className="inline mb-0.5" style={{ color: "#F5A623" }} /> e café
             </p>
