@@ -735,7 +735,7 @@ const services = [
     desc: "Página única de alta conversão para campanhas e lançamentos.",
     originalPrice: "R$ 1.200",
     promoPrice: "R$ 1.020",
-    discount: "-15%",
+    discount: null,
     bullets: [
       "Design otimizado para conversão",
       "Formulário de captura de leads",
