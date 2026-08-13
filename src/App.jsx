@@ -782,7 +782,7 @@ const services = [
       "Atualizações e correções contínuas",
       "Backup periódico e segurança",
       "Suporte prioritário (SLA definido)",
-      "1 ajuste/alteração por mês incluso",
+      "2 ajustes/alteraçãos por mês incluso",
     ],
     note: "Disponível apenas junto com um pacote de criação",
   },
