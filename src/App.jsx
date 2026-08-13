@@ -55,14 +55,21 @@ body.custom-cursor-active, body.custom-cursor-active * {
   pointer-events: none;
 }
 
+.hero-glow-bg {
+  background-color: #0B1220;
+  background-image:
+    radial-gradient(circle at 70% 20%, rgba(59,110,245,0.28) 0%, transparent 45%),
+    radial-gradient(circle at 10% 90%, rgba(0,0,0,0.6) 0%, transparent 55%);
+}
+
 @keyframes starDrift {
   0% { background-position: 0% 0%; }
   50% { background-position: 3% 2%; }
   100% { background-position: 0% 0%; }
 }
 .hero-stars-bg {
-  background-image: linear-gradient(180deg, rgba(11,18,32,0.55), rgba(11,18,32,0.65)), url('/images/hero-stars.jpg');
-  background-size: cover;
+  background-image: linear-gradient(180deg, rgba(11,18,32,0.82), rgba(11,18,32,0.9)), url('/images/hero-stars.jpg');
+  background-size: 130% auto;
   background-position: 0% 0%;
   background-repeat: no-repeat;
   animation: starDrift 40s ease-in-out infinite;
@@ -441,7 +448,7 @@ function LegalPage() {
             </div>
             <div>
               <h3 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="font-semibold mb-1">Contato</h3>
-              <p>Dúvidas sobre estes termos podem ser enviadas para designsites.digital@gmail.com.</p>
+              <p>Dúvidas sobre estes termos podem ser enviadas para jessica.oliverah@gmail.com.</p>
             </div>
           </div>
         </div>
@@ -479,7 +486,7 @@ function LegalPage() {
             </div>
             <div>
               <h3 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="font-semibold mb-1">Seus direitos</h3>
-              <p>Você pode solicitar a qualquer momento o acesso, a correção ou a exclusão dos seus dados, entrando em contato pelo e-mail designsites.digital@gmail.com.</p>
+              <p>Você pode solicitar a qualquer momento o acesso, a correção ou a exclusão dos seus dados, entrando em contato pelo e-mail jessica.oliverah@gmail.com.</p>
             </div>
           </div>
         </div>
@@ -734,8 +741,8 @@ const services = [
     name: "Landing Page",
     desc: "Página única de alta conversão para campanhas e lançamentos.",
     originalPrice: "R$ 1.200",
-    promoPrice: "R$ 1.200",
-    showPromo: false,
+    promoPrice: "R$ 1.020",
+    discount: "-15%",
     bullets: [
       "Design otimizado para conversão",
       "Formulário de captura de leads",
@@ -749,7 +756,7 @@ const services = [
     desc: "Presença digital completa: sobre, serviços, blog e contato.",
     originalPrice: "R$ 2.800",
     promoPrice: "R$ 2.380",
-     showPromo: true,
+    discount: "-15%",
     bullets: [
       "Páginas: Home, Sobre, Serviços, Contato",
       "Design responsivo (mobile-first)",
@@ -763,7 +770,7 @@ const services = [
     desc: "Loja completa com catálogo, checkout e integração de pagamento.",
     originalPrice: "R$ 5.500",
     promoPrice: "R$ 3.000",
-     showPromo: true,
+    discount: "-45%",
     bullets: [
       "Catálogo de produtos ilimitado",
       "Carrinho de compras e checkout",
@@ -777,12 +784,12 @@ const services = [
     desc: "Seu site nasce pronto para vender. Este plano garante que ele continue no ar, seguro, atualizado e evoluindo.",
     originalPrice: "R$ 450/mês",
     promoPrice: "R$ 250/mês",
-     showPromo: true,
+    discount: null,
     bullets: [
       "Atualizações e correções contínuas",
       "Backup periódico e segurança",
       "Suporte prioritário (SLA definido)",
-      "2 ajustes/alteraçãos por mês incluso",
+      "1 ajuste/alteração por mês incluso",
     ],
     note: "Disponível apenas junto com um pacote de criação",
   },
@@ -840,7 +847,7 @@ const faqs = [
   { q: "Hospedagem e domínio estão inclusos?", a: "Ajudamos na configuração de ambos, mas os custos de hospedagem e domínio são pagos diretamente ao provedor, sem intermediação." },
   { q: "Quantas revisões estão inclusas?", a: "Duas rodadas de revisão em cada etapa (protótipo e desenvolvimento) estão inclusas em todos os pacotes." },
   { q: "Como funciona o pagamento?", a: "50% no início do projeto e 50% na entrega. Para pacotes maiores, posso dividir em até 3 etapas." },
-  { q: "Você oferece suporte depois da entrega?", a: "Sim, 15 dias de suporte gratuito para correções pós-entrega, para suporte prolongado contrate o pacote com Plano Gestão & Crescimento" },
+  { q: "Você oferece suporte depois da entrega?", a: "Sim, 15 dias de suporte gratuito para correções pós-entrega, e planos de manutenção mensal para o que vier depois." },
 ];
 
 function FAQItem({ item, isOpen, onClick }) {
@@ -1000,7 +1007,7 @@ export default function FreelanceDevSite() {
       </header>
 
       {/* HERO */}
-      <section className="relative overflow-hidden hero-stars-bg">
+      <section className="relative overflow-hidden hero-glow-bg">
         <div className="glass-card hidden md:flex" style={{ top: "18%", left: "38%", animationDuration: "3s", animationDelay: "0s" }}>
           <Braces size={26} style={{ color: "#FFFFFF" }} />
         </div>
@@ -1116,35 +1123,31 @@ export default function FreelanceDevSite() {
                 <p className="text-sm mb-4" style={{ color: "#555C6B" }}>
                   {s.desc}
                 </p>
-                {s.showPromo && (
-                  <div className="flex items-center gap-2 mb-1">
+                <div className="flex items-center gap-2 mb-1">
+                  <span
+                    style={{ fontFamily: "'JetBrains Mono', monospace", color: "#8B96AB", textDecoration: "line-through" }}
+                    className="text-xs"
+                  >
+                    {s.originalPrice}
+                  </span>
+                  {s.discount && (
                     <span
-                      style={{ fontFamily: "'JetBrains Mono', monospace", color: "#8B96AB", textDecoration: "line-through" }}
-                      className="text-xs"
+                      className="text-[10px] px-1.5 py-0.5 rounded"
+                      style={{ fontFamily: "'JetBrains Mono', monospace", color: "#22C55E", background: "rgba(34,197,94,0.12)" }}
                     >
-                      {s.originalPrice}
+                      {s.discount}
                     </span>
-                    {s.discount && (
-                      <span
-                        className="text-[10px] px-1.5 py-0.5 rounded"
-                        style={{ fontFamily: "'JetBrains Mono', monospace", color: "#22C55E", background: "rgba(34,197,94,0.12)" }}
-                      >
-                        {s.discount}
-                      </span>
-                    )}
-                  </div>
-                )}
+                  )}
+                </div>
                 <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#0F1420" }} className="text-sm font-semibold">
                   {s.promoPrice}
                 </p>
-                {s.showPromo && (
-                  <p
-                    className="text-[10px] mt-1"
-                    style={{ fontFamily: "'JetBrains Mono', monospace", color: "#F5A623" }}
-                  >
-                    Por tempo limitado
-                  </p>
-                )}
+                <p
+                  className="text-[10px] mt-1"
+                  style={{ fontFamily: "'JetBrains Mono', monospace", color: "#F5A623" }}
+                >
+                  Por tempo limitado
+                </p>
                 {s.bullets && (
                   <ul className="mt-3 space-y-1.5">
                     {s.bullets.map((b) => (
@@ -1164,16 +1167,13 @@ export default function FreelanceDevSite() {
             );
           })}
         </div>
-        <p className="text-xs text-center mt-6" style={{ color: "#8B96AB" }}>
-          * Descontos válidos para clientes que fecham o pacote de 12 meses com manutenção inclusa (Plano Gestão & Crescimento).
-        </p>
         <div className="mt-10">
           <CountdownTimer />
         </div>
       </section>
 
       {/* PORTFOLIO */}
-      <section id="portfolio" className="py-20" style={{ background: "#0B1220" }}>
+      <section id="portfolio" className="py-20 relative overflow-hidden hero-stars-bg">
         <div className="max-w-6xl mx-auto px-6">
           <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#F5A623" }} className="text-xs mb-3">// portfólio</p>
           <motion.h2
@@ -1452,7 +1452,7 @@ export default function FreelanceDevSite() {
             <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs" style={{ color: "#555C6B" }}>
               <span className="flex items-center gap-1.5">
                 <Mail size={13} style={{ color: "#3B6EF5" }} />
-                designsites.digital@gmail.com
+                jessica.oliverah@gmail.com
               </span>
               <a href="https://wa.me/5551981273330" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:underline">
                 <MessageCircle size={13} style={{ color: "#3B6EF5" }} />
