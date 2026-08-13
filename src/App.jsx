@@ -62,7 +62,7 @@ body.custom-cursor-active, body.custom-cursor-active * {
 }
 .hero-stars-bg {
   background-image: linear-gradient(180deg, rgba(11,18,32,0.55), rgba(11,18,32,0.65)), url('/images/hero-stars.jpg');
-  background-size: 100% auto;
+  background-size: cover;
   background-position: 0% 0%;
   background-repeat: no-repeat;
   animation: starDrift 40s ease-in-out infinite;
