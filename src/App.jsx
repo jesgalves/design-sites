@@ -441,7 +441,7 @@ function LegalPage() {
             </div>
             <div>
               <h3 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="font-semibold mb-1">Contato</h3>
-              <p>Dúvidas sobre estes termos podem ser enviadas para jessica.oliverah@gmail.com.</p>
+              <p>Dúvidas sobre estes termos podem ser enviadas para designsites.digital@gmail.com.</p>
             </div>
           </div>
         </div>
@@ -479,7 +479,7 @@ function LegalPage() {
             </div>
             <div>
               <h3 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="font-semibold mb-1">Seus direitos</h3>
-              <p>Você pode solicitar a qualquer momento o acesso, a correção ou a exclusão dos seus dados, entrando em contato pelo e-mail jessica.oliverah@gmail.com.</p>
+              <p>Você pode solicitar a qualquer momento o acesso, a correção ou a exclusão dos seus dados, entrando em contato pelo e-mail designsites.digital@gmail.com.</p>
             </div>
           </div>
         </div>
@@ -1443,9 +1443,9 @@ export default function FreelanceDevSite() {
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-6">
             <Logo variant="dark" />
             <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs" style={{ color: "#555C6B" }}>
-              <a href="mailto:jessica.oliverah@gmail.com" className="flex items-center gap-1.5 hover:underline">
+              <a href="mailto:designsites.digital@gmail.com" className="flex items-center gap-1.5 hover:underline">
                 <Mail size={13} style={{ color: "#3B6EF5" }} />
-                jessica.oliverah@gmail.com
+                designsites.digital@gmail.com
               </a>
               <a href="https://wa.me/5551981273330" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:underline">
                 <MessageCircle size={13} style={{ color: "#3B6EF5" }} />
