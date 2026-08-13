@@ -988,16 +988,16 @@ export default function FreelanceDevSite() {
 
       {/* HERO */}
       <section className="relative overflow-hidden" style={{ background: "#0B1220" }}>
-        <div className="glass-card hidden md:flex" style={{ top: "10%", left: "38%", animationDuration: "3s", animationDelay: "0s" }}>
+        <div className="glass-card hidden md:flex" style={{ top: "28%", left: "45%", animationDuration: "3s", animationDelay: "0s" }}>
           <Braces size={26} style={{ color: "#FFFFFF" }} />
         </div>
-        <div className="glass-card hidden md:flex" style={{ top: "28%", left: "8%", animationDuration: "4.2s", animationDelay: "-1s" }}>
+        <div className="glass-card hidden md:flex" style={{ top: "7%", left: "8%", animationDuration: "4.2s", animationDelay: "-1s" }}>
           <Code2 size={26} style={{ color: "#94A3B8" }} />
         </div>
-        <div className="glass-card hidden md:flex" style={{ top: "38%", right: "6%", animationDuration: "3.5s", animationDelay: "-2.2s" }}>
+        <div className="glass-card hidden md:flex" style={{ top: "38%", right: "2%", animationDuration: "3.5s", animationDelay: "-2.2s" }}>
           <Layers size={26} style={{ color: "#FFFFFF" }} />
         </div>
-        <div className="glass-card hidden md:flex" style={{ bottom: "12%", left: "10%", animationDuration: "4.6s", animationDelay: "-0.6s" }}>
+        <div className="glass-card hidden md:flex" style={{ bottom: "12%", left: "3%", animationDuration: "4.6s", animationDelay: "-0.6s" }}>
           <FileCode2 size={26} style={{ color: "#94A3B8" }} />
         </div>
         <div className="glass-card hidden md:flex" style={{ bottom: "16%", left: "40%", animationDuration: "3.8s", animationDelay: "-1.8s" }}>
