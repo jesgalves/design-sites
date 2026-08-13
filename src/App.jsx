@@ -975,19 +975,19 @@ export default function FreelanceDevSite() {
           src="/images/particle-code.png"
           alt=""
           className="absolute hidden md:block"
-          style={{ width: "36px", opacity: 0.12, top: "15%", left: "42%", animation: "floatIcon1 9s ease-in-out infinite", pointerEvents: "none" }}
+          style={{ width: "36px", opacity: 0.12, top: "15%", left: "42%", animation: "floatIcon1 9s ease-in-out infinite", pointerEvents: "none", filter: "drop-shadow(0 4px 10px rgba(59,110,245,0.35))" }}
         />
         <img
           src="/images/particle-react.png"
           alt=""
           className="absolute hidden md:block"
-          style={{ width: "40px", opacity: 0.1, top: "60%", left: "48%", animation: "floatIcon2 11s ease-in-out infinite", pointerEvents: "none" }}
+          style={{ width: "40px", opacity: 0.1, top: "60%", left: "48%", animation: "floatIcon2 11s ease-in-out infinite", pointerEvents: "none", filter: "drop-shadow(0 4px 10px rgba(59,110,245,0.35))" }}
         />
         <img
           src="/images/particle-node.png"
           alt=""
           className="absolute hidden md:block"
-          style={{ width: "34px", opacity: 0.1, top: "30%", right: "8%", animation: "floatIcon3 10s ease-in-out infinite", pointerEvents: "none" }}
+          style={{ width: "34px", opacity: 0.1, top: "30%", right: "8%", animation: "floatIcon3 10s ease-in-out infinite", pointerEvents: "none", filter: "drop-shadow(0 4px 10px rgba(59,110,245,0.35))" }}
         />
         <div className="max-w-6xl mx-auto px-6 py-20 md:py-28 grid md:grid-cols-2 gap-12 items-center relative" style={{ zIndex: 1 }}>
           <div>
