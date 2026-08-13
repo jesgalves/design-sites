@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { motion } from "motion/react";
 import {
   Terminal,
   Rocket,
@@ -14,6 +15,7 @@ import {
   Wrench,
   ShieldCheck,
   MessageCircle,
+  User,
 } from "lucide-react";
 
 const FONTS = `
@@ -21,6 +23,41 @@ const FONTS = `
 
 body.custom-cursor-active, body.custom-cursor-active * {
   cursor: none !important;
+}
+
+#particles-js {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(6px); opacity: 1; }
+}
+.scroll-indicator {
+  animation: scrollBounce 1.8s ease-in-out infinite;
+}
+
+.portfolio-frame-img {
+  transition: transform 0.6s ease;
+}
+.portfolio-frame-wrap:hover .portfolio-frame-img {
+  transform: translateY(-12%);
+}
+
+.form-input-wrap {
+  position: relative;
+  border-radius: 0.375rem;
+  padding: 1px;
+  background: transparent;
+  transition: background 0.25s ease;
+}
+.form-input-wrap:focus-within {
+  background: linear-gradient(90deg, #3B6EF5, #F5A623);
 }
 
 @keyframes greenPulse {
@@ -83,7 +120,11 @@ function ProjectDetailPage({ project }) {
           {project.images ? (
             <div className="grid grid-cols-2 gap-3 mb-10">
               {project.images.map((src, i) => (
-                <div key={i} className="rounded-lg border overflow-hidden" style={{ borderColor: "#E4E4E0" }}>
+                <div
+                  key={i}
+                  className="portfolio-frame-wrap rounded-lg border overflow-hidden"
+                  style={{ borderColor: "#E4E4E0", filter: "drop-shadow(0 12px 24px rgba(11,18,32,0.18))" }}
+                >
                   <div
                     className="flex items-center gap-1.5 px-2.5"
                     style={{ height: "22px", background: "#EAEAE6", borderBottom: "1px solid #E4E4E0" }}
@@ -96,7 +137,7 @@ function ProjectDetailPage({ project }) {
                     <img
                       src={src}
                       alt={`${project.name} — tela ${i + 1}`}
-                      className="w-full h-full block"
+                      className="portfolio-frame-img w-full h-full block"
                       style={{ objectFit: "cover", objectPosition: "top" }}
                     />
                   </div>
@@ -811,6 +852,62 @@ export default function FreelanceDevSite() {
   const [openFaq, setOpenFaq] = useState(0);
   const [formStatus, setFormStatus] = useState("idle");
   const [route, setRoute] = useState(() => window.location.hash);
+  const [showScrollHint, setShowScrollHint] = useState(true);
+
+  useEffect(() => {
+    const onScroll = () => setShowScrollHint(window.scrollY < 80);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    if (!window.particlesJS) return;
+    window.particlesJS("particles-js", {
+      particles: {
+        number: { value: 25, density: { enable: true, value_area: 800 } },
+        shape: {
+          type: "image",
+          image: [
+            { src: "/images/particle-code.png", height: 32, width: 32 },
+            { src: "/images/particle-react.png", height: 32, width: 32 },
+            { src: "/images/particle-node.png", height: 32, width: 32 },
+          ],
+        },
+        opacity: {
+          value: 0.18,
+          random: true,
+          anim: { enable: true, speed: 0.4, opacity_min: 0.08, sync: false },
+        },
+        size: {
+          value: 22,
+          random: true,
+          anim: { enable: false },
+        },
+        move: {
+          enable: true,
+          speed: 1,
+          direction: "none",
+          random: true,
+          straight: false,
+          out_mode: "out",
+          bounce: false,
+        },
+        line_linked: { enable: false },
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: { enable: true, mode: "repulse" },
+          onclick: { enable: false },
+          resize: true,
+        },
+        modes: {
+          repulse: { distance: 80, duration: 0.4 },
+        },
+      },
+      retina_detect: true,
+    });
+  }, []);
 
   useEffect(() => {
     const onHashChange = () => setRoute(window.location.hash);
@@ -919,7 +1016,8 @@ export default function FreelanceDevSite() {
 
       {/* HERO */}
       <section className="relative overflow-hidden" style={{ background: "#0B1220" }}>
-        <div className="max-w-6xl mx-auto px-6 py-20 md:py-28 grid md:grid-cols-2 gap-12 items-center">
+        <div id="particles-js" />
+        <div className="max-w-6xl mx-auto px-6 py-20 md:py-28 grid md:grid-cols-2 gap-12 items-center relative" style={{ zIndex: 1 }}>
           <div>
             <span
               className="inline-block text-xs px-3 py-1 rounded-full mb-6 pulse-badge"
@@ -959,6 +1057,14 @@ export default function FreelanceDevSite() {
             <TerminalPanel />
           </div>
         </div>
+        {showScrollHint && (
+          <div
+            className="hidden md:flex absolute left-1/2 bottom-6 flex-col items-center scroll-indicator"
+            style={{ transform: "translateX(-50%)", pointerEvents: "none" }}
+          >
+            <ChevronDown size={22} style={{ color: "#3B6EF5" }} />
+          </div>
+        )}
       </section>
 
       {/* TRUST BADGES */}
@@ -980,14 +1086,30 @@ export default function FreelanceDevSite() {
       {/* SERVICES */}
       <section id="servicos" className="max-w-6xl mx-auto px-6 py-20">
         <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#3B6EF5" }} className="text-xs mb-3">// serviços</p>
-        <h2 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="text-3xl font-semibold mb-12">
+        <motion.h2
+          style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+          className="text-3xl font-semibold mb-12"
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+        >
           O que nós construímos
-        </h2>
+        </motion.h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {services.map((s) => {
             const Icon = s.icon;
             return (
-              <div key={s.name} className="p-6 rounded-lg border bg-white transition-all duration-200 hover:shadow-lg hover:-translate-y-1 hover:border-[#3B6EF5]" style={{ borderColor: "#E4E4E0" }}>
+              <motion.div
+                key={s.name}
+                className="p-6 rounded-lg border bg-white"
+                style={{ borderColor: "#E4E4E0" }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.4 }}
+                whileHover={{ y: -5, boxShadow: "0 12px 30px rgba(11,18,32,0.12)", borderColor: "#3B6EF5" }}
+              >
                 <Icon size={22} style={{ color: "#3B6EF5" }} className="mb-4" />
                 <h3 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="font-semibold text-lg mb-2">
                   {s.name}
@@ -1035,7 +1157,7 @@ export default function FreelanceDevSite() {
                     {s.note}
                   </p>
                 )}
-              </div>
+              </motion.div>
             );
           })}
         </div>
@@ -1048,12 +1170,28 @@ export default function FreelanceDevSite() {
       <section id="portfolio" className="py-20" style={{ background: "#0B1220" }}>
         <div className="max-w-6xl mx-auto px-6">
           <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#F5A623" }} className="text-xs mb-3">// portfólio</p>
-          <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#F5F5F3" }} className="text-3xl font-semibold mb-10">
+          <motion.h2
+            style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#F5F5F3" }}
+            className="text-3xl font-semibold mb-10"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+          >
             Estudos de Caso
-          </h2>
+          </motion.h2>
           <div className="grid sm:grid-cols-2 gap-5">
             {projects.map((p) => (
-              <div key={p.name} className="p-6 rounded-lg border transition-all duration-200 hover:shadow-lg hover:-translate-y-1 hover:border-[#3B6EF5]" style={{ borderColor: "#232D42", background: "#0F172A" }}>
+              <motion.div
+                key={p.name}
+                className="p-6 rounded-lg border"
+                style={{ borderColor: "#232D42", background: "#0F172A" }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.4 }}
+                whileHover={{ y: -5, boxShadow: "0 12px 30px rgba(0,0,0,0.3)", borderColor: "#3B6EF5" }}
+              >
                 <div className="flex flex-wrap gap-2 mb-4">
                   <span
                     className="text-[11px] px-2 py-1 rounded"
@@ -1090,7 +1228,7 @@ export default function FreelanceDevSite() {
                 >
                   Veja como é <ArrowUpRight size={13} />
                 </a>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -1099,9 +1237,16 @@ export default function FreelanceDevSite() {
       {/* PROCESS */}
       <section id="processo" className="max-w-6xl mx-auto px-6 py-20">
         <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#3B6EF5" }} className="text-xs mb-3">// processo</p>
-        <h2 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="text-3xl font-semibold mb-12">
+        <motion.h2
+          style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+          className="text-3xl font-semibold mb-12"
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+        >
           Como funciona
-        </h2>
+        </motion.h2>
         <div className="grid md:grid-cols-5 gap-6">
           {process.map((step) => (
             <div key={step.n}>
@@ -1123,9 +1268,16 @@ export default function FreelanceDevSite() {
       <section id="sobre" className="py-20" style={{ background: "#EAEAE6" }}>
         <div className="max-w-4xl mx-auto px-6">
           <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#3B6EF5" }} className="text-xs mb-3">// sobre</p>
-          <h2 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="text-3xl font-semibold mb-6">
+          <motion.h2
+            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+            className="text-3xl font-semibold mb-6"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+          >
             Quem é o Design Sites
-          </h2>
+          </motion.h2>
           <div className="grid md:grid-cols-[1fr_auto] gap-8 items-start">
             <p className="text-sm leading-relaxed" style={{ color: "#333844" }}>
               O Design Sites nasceu para resolver um problema comum: sites bonitos que não convertem, ou sites baratos que não têm cara de profissional. Aqui, cada projeto é acompanhado de perto, do briefing à entrega — sem processos engessados, sem terceirização, sem intermediários. Mais de 3 anos de experiência em desenvolvimento web sustentam um trabalho com foco em dois pilares: atendimento próximo, com resposta rápida e conversa direta em cada etapa, e qualidade técnica, com sites rápidos, responsivos e pensados para gerar resultado real para o seu negócio.
@@ -1163,9 +1315,16 @@ export default function FreelanceDevSite() {
       {/* FAQ */}
       <section className="max-w-3xl mx-auto px-6 py-20">
         <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#3B6EF5" }} className="text-xs mb-3">// perguntas frequentes</p>
-        <h2 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="text-3xl font-semibold mb-8">
+        <motion.h2
+          style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+          className="text-3xl font-semibold mb-8"
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+        >
           Dúvidas comuns
-        </h2>
+        </motion.h2>
         <div>
           {faqs.map((item, i) => (
             <FAQItem key={item.q} item={item} isOpen={openFaq === i} onClick={() => setOpenFaq(openFaq === i ? -1 : i)} />
@@ -1196,21 +1355,31 @@ export default function FreelanceDevSite() {
                   Não foi possível enviar agora. Tente novamente em instantes.
                 </p>
               )}
-              <input
-                required
-                name="nome"
-                placeholder="Seu nome"
-                className="px-4 py-3 rounded-md text-sm outline-none"
-                style={{ background: "#0F172A", border: "1px solid #232D42", color: "#F5F5F3" }}
-              />
-              <input
-                required
-                type="email"
-                name="email"
-                placeholder="Seu e-mail"
-                className="px-4 py-3 rounded-md text-sm outline-none"
-                style={{ background: "#0F172A", border: "1px solid #232D42", color: "#F5F5F3" }}
-              />
+              <div className="form-input-wrap">
+                <div className="relative">
+                  <User size={16} style={{ position: "absolute", left: "14px", top: "50%", transform: "translateY(-50%)", color: "#4a5169", pointerEvents: "none" }} />
+                  <input
+                    required
+                    name="nome"
+                    placeholder="Seu nome"
+                    className="w-full pl-10 pr-4 py-3 rounded-md text-sm outline-none"
+                    style={{ background: "#0F172A", border: "1px solid #232D42", color: "#F5F5F3" }}
+                  />
+                </div>
+              </div>
+              <div className="form-input-wrap">
+                <div className="relative">
+                  <Mail size={16} style={{ position: "absolute", left: "14px", top: "50%", transform: "translateY(-50%)", color: "#4a5169", pointerEvents: "none" }} />
+                  <input
+                    required
+                    type="email"
+                    name="email"
+                    placeholder="Seu e-mail"
+                    className="w-full pl-10 pr-4 py-3 rounded-md text-sm outline-none"
+                    style={{ background: "#0F172A", border: "1px solid #232D42", color: "#F5F5F3" }}
+                  />
+                </div>
+              </div>
               <div className="grid sm:grid-cols-2 gap-4">
                 <select
                   required
