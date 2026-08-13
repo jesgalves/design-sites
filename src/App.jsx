@@ -23,6 +23,14 @@ body.custom-cursor-active, body.custom-cursor-active * {
   cursor: none !important;
 }
 
+@keyframes greenPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.5); }
+  50% { box-shadow: 0 0 0 8px rgba(34,197,94,0); }
+}
+.pulse-badge {
+  animation: greenPulse 2.5s ease-in-out infinite;
+}
+
 @keyframes dsExpand {
   0%, 12% { max-width: 0; opacity: 0; }
   30%, 70% { max-width: 180px; opacity: 1; }
@@ -914,7 +922,7 @@ export default function FreelanceDevSite() {
         <div className="max-w-6xl mx-auto px-6 py-20 md:py-28 grid md:grid-cols-2 gap-12 items-center">
           <div>
             <span
-              className="inline-block text-xs px-3 py-1 rounded-full mb-6"
+              className="inline-block text-xs px-3 py-1 rounded-full mb-6 pulse-badge"
               style={{ fontFamily: "'JetBrains Mono', monospace", color: "#22C55E", background: "rgba(34,197,94,0.1)", border: "1px solid rgba(34,197,94,0.3)" }}
             >
               ● disponível para novos projetos
