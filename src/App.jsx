@@ -1122,16 +1122,31 @@ export default function FreelanceDevSite() {
             <p className="text-sm leading-relaxed" style={{ color: "#333844" }}>
               O Design Sites nasceu para resolver um problema comum: sites bonitos que não convertem, ou sites baratos que não têm cara de profissional. Aqui, cada projeto é acompanhado de perto, do briefing à entrega — sem processos engessados, sem terceirização, sem intermediários. Mais de 3 anos de experiência em desenvolvimento web sustentam um trabalho com foco em dois pilares: atendimento próximo, com resposta rápida e conversa direta em cada etapa, e qualidade técnica, com sites rápidos, responsivos e pensados para gerar resultado real para o seu negócio.
             </p>
-            <div
-              className="px-6 py-5 rounded-lg text-center flex-shrink-0"
-              style={{ background: "#0B1220" }}
-            >
-              <p style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#3B6EF5" }} className="text-3xl font-semibold">
-                +3
-              </p>
-              <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#8B96AB" }} className="text-xs mt-1">
-                anos de experiência
-              </p>
+            <div className="grid grid-cols-3 md:grid-cols-1 gap-3 flex-shrink-0" style={{ minWidth: "180px" }}>
+              <div className="px-4 py-3 rounded-lg text-center" style={{ background: "#0B1220" }}>
+                <p style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#3B6EF5" }} className="text-xl font-semibold">
+                  +3
+                </p>
+                <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#8B96AB" }} className="text-[10px] mt-1">
+                  anos de experiência
+                </p>
+              </div>
+              <div className="px-4 py-3 rounded-lg text-center" style={{ background: "#0B1220" }}>
+                <p style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#22C55E" }} className="text-xl font-semibold">
+                  100%
+                </p>
+                <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#8B96AB" }} className="text-[10px] mt-1">
+                  nota de velocidade no Google
+                </p>
+              </div>
+              <div className="px-4 py-3 rounded-lg text-center" style={{ background: "#0B1220" }}>
+                <p style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#F5A623" }} className="text-xl font-semibold">
+                  &lt;24h
+                </p>
+                <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#8B96AB" }} className="text-[10px] mt-1">
+                  tempo médio de resposta
+                </p>
+              </div>
             </div>
           </div>
         </div>
