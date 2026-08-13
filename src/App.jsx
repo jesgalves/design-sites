@@ -17,6 +17,10 @@ import {
 const FONTS = `
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 
+body.custom-cursor-active, body.custom-cursor-active * {
+  cursor: none !important;
+}
+
 @keyframes dsExpand {
   0%, 12% { max-width: 0; opacity: 0; }
   30%, 70% { max-width: 180px; opacity: 1; }
@@ -145,6 +149,160 @@ function ProjectDetailPage({ project }) {
   );
 }
 
+function ExperimentePage() {
+  const [demoName, setDemoName] = useState("");
+
+  return (
+    <div style={{ fontFamily: "'Inter', sans-serif", color: "#0F1420", background: "#F5F5F3", minHeight: "100vh" }}>
+      <style>{FONTS}</style>
+      <header className="border-b" style={{ borderColor: "#E4E4E0" }}>
+        <div className="max-w-4xl mx-auto px-6 py-6 flex items-center justify-between">
+          <Logo variant="dark" />
+          <a href="#/" className="text-sm font-medium underline" style={{ color: "#3B6EF5" }}>
+            Voltar para o site
+          </a>
+        </div>
+      </header>
+
+      <section className="max-w-4xl mx-auto px-6 py-16">
+        <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#3B6EF5" }} className="text-xs mb-3 text-center">// experimente</p>
+        <h2 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="text-3xl font-semibold mb-3 text-center">
+          Veja seu site nascendo
+        </h2>
+        <p className="text-sm text-center mb-8" style={{ color: "#555C6B" }}>
+          Digite o nome do seu negócio e veja uma prévia se montar em tempo real.
+        </p>
+
+        <div className="max-w-md mx-auto mb-8">
+          <input
+            value={demoName}
+            onChange={(e) => setDemoName(e.target.value)}
+            placeholder="Digite o nome do seu negócio..."
+            className="w-full px-4 py-3 rounded-md text-sm text-center outline-none border"
+            style={{ borderColor: demoName ? "#3B6EF5" : "#E4E4E0" }}
+          />
+        </div>
+
+        <div className="rounded-lg border overflow-hidden shadow-lg" style={{ borderColor: "#E4E4E0" }}>
+          <div
+            className="flex items-center gap-1.5 px-3"
+            style={{ height: "26px", background: "#EAEAE6", borderBottom: "1px solid #E4E4E0" }}
+          >
+            <span className="w-2.5 h-2.5 rounded-full" style={{ background: "#F5A623" }} />
+            <span className="w-2.5 h-2.5 rounded-full" style={{ background: "#3B6EF5" }} />
+            <span className="w-2.5 h-2.5 rounded-full" style={{ background: "#22C55E" }} />
+          </div>
+          <div style={{ background: "#0B1220", minHeight: "420px" }}>
+            <div
+              className="flex items-center justify-between px-6 py-3"
+              style={{
+                borderBottom: "1px solid #232D42",
+                opacity: demoName ? 1 : 0.15,
+                transform: demoName ? "translateY(0)" : "translateY(-6px)",
+                transition: "opacity 0.35s ease, transform 0.35s ease",
+              }}
+            >
+              <p style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#F5F5F3" }} className="text-sm font-semibold">
+                {demoName || "Sua Empresa"}
+              </p>
+              <div className="hidden sm:flex gap-4">
+                <span className="text-xs" style={{ color: "#8B96AB" }}>Início</span>
+                <span className="text-xs" style={{ color: "#8B96AB" }}>Serviços</span>
+                <span className="text-xs" style={{ color: "#8B96AB" }}>Contato</span>
+              </div>
+            </div>
+
+            <div className="p-8 md:p-12 pb-6">
+              <h3
+                style={{
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  color: "#F5F5F3",
+                  opacity: demoName ? 1 : 0.25,
+                  transform: demoName ? "translateY(0)" : "translateY(10px)",
+                  transition: "opacity 0.4s ease 0.15s, transform 0.4s ease 0.15s",
+                }}
+                className="text-2xl md:text-3xl font-semibold mb-3"
+              >
+                Bem-vindo{demoName ? ` à ${demoName}` : ""}
+              </h3>
+              <p
+                style={{
+                  color: "#8B96AB",
+                  opacity: demoName ? 1 : 0.2,
+                  transform: demoName ? "translateY(0)" : "translateY(10px)",
+                  transition: "opacity 0.4s ease 0.3s, transform 0.4s ease 0.3s",
+                }}
+                className="text-sm mb-6 max-w-md"
+              >
+                Presença digital profissional, rápida e feita sob medida — pronta para converter visitantes em clientes.
+              </p>
+              <span
+                style={{
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  background: "#3B6EF5",
+                  color: "#fff",
+                  opacity: demoName ? 1 : 0,
+                  transform: demoName ? "translateY(0)" : "translateY(10px)",
+                  transition: "opacity 0.4s ease 0.45s, transform 0.4s ease 0.45s",
+                }}
+                className="inline-block px-5 py-2.5 rounded-md text-sm font-semibold"
+              >
+                Fale Conosco
+              </span>
+            </div>
+
+            <div
+              className="grid grid-cols-3 gap-3 px-8 md:px-12 py-6"
+              style={{
+                borderTop: "1px solid #232D42",
+                opacity: demoName ? 1 : 0,
+                transform: demoName ? "translateY(0)" : "translateY(10px)",
+                transition: "opacity 0.4s ease 0.6s, transform 0.4s ease 0.6s",
+              }}
+            >
+              {[
+                { Icon: LayoutTemplate, label: "Design sob medida" },
+                { Icon: Zap, label: "Carregamento rápido" },
+                { Icon: ShoppingCart, label: "Pronto para vender" },
+              ].map(({ Icon, label }) => (
+                <div key={label} className="text-center">
+                  <Icon size={18} style={{ color: "#3B6EF5" }} className="mx-auto mb-2" />
+                  <p className="text-[11px]" style={{ color: "#8B96AB" }}>{label}</p>
+                </div>
+              ))}
+            </div>
+
+            <div
+              className="px-8 md:px-12 py-4 text-center"
+              style={{
+                borderTop: "1px solid #232D42",
+                opacity: demoName ? 1 : 0,
+                transition: "opacity 0.4s ease 0.75s",
+              }}
+            >
+              <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#555C6B" }} className="text-[10px]">
+                © 2026 {demoName || "Sua Empresa"}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {demoName && (
+          <p className="text-center text-xs mt-4" style={{ color: "#8B96AB" }}>
+            Gostou do que viu? <a href="#/" className="underline" style={{ color: "#3B6EF5" }}>Vamos criar o de verdade</a>.
+          </p>
+        )}
+      </section>
+
+      <footer className="py-8 border-t text-center" style={{ borderColor: "#E4E4E0" }}>
+        <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#8B96AB" }} className="text-xs">
+          © 2026 Design Sites
+        </p>
+      </footer>
+    </div>
+  );
+}
+
 function LegalPage() {
   return (
     <div style={{ fontFamily: "'Inter', sans-serif", color: "#0F1420", background: "#F5F5F3", minHeight: "100vh" }}>
@@ -248,6 +406,68 @@ function LegalPage() {
         </p>
       </footer>
     </div>
+  );
+}
+
+function CustomCursor() {
+  const dotRef = useRef(null);
+  const posRef = useRef({ x: 0, y: 0 });
+  const targetRef = useRef({ x: 0, y: 0 });
+  const [active, setActive] = useState(false);
+  const [hovering, setHovering] = useState(false);
+
+  useEffect(() => {
+    const isFinePointer = window.matchMedia("(pointer: fine)").matches;
+    if (!isFinePointer) return;
+    setActive(true);
+    document.body.classList.add("custom-cursor-active");
+
+    const onMove = (e) => {
+      targetRef.current = { x: e.clientX, y: e.clientY };
+      const target = e.target.closest && e.target.closest("a, button, input, select, textarea");
+      setHovering(!!target);
+    };
+    window.addEventListener("mousemove", onMove);
+
+    let frameId;
+    const loop = () => {
+      posRef.current.x += (targetRef.current.x - posRef.current.x) * 0.2;
+      posRef.current.y += (targetRef.current.y - posRef.current.y) * 0.2;
+      if (dotRef.current) {
+        dotRef.current.style.transform = `translate(${posRef.current.x}px, ${posRef.current.y}px)`;
+      }
+      frameId = requestAnimationFrame(loop);
+    };
+    loop();
+
+    return () => {
+      window.removeEventListener("mousemove", onMove);
+      cancelAnimationFrame(frameId);
+      document.body.classList.remove("custom-cursor-active");
+    };
+  }, []);
+
+  if (!active) return null;
+
+  return (
+    <div
+      ref={dotRef}
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: hovering ? "36px" : "18px",
+        height: hovering ? "36px" : "18px",
+        marginLeft: hovering ? "-18px" : "-9px",
+        marginTop: hovering ? "-18px" : "-9px",
+        borderRadius: "50%",
+        background: hovering ? "rgba(59,110,245,0.15)" : "#3B6EF5",
+        border: hovering ? "1.5px solid #3B6EF5" : "none",
+        pointerEvents: "none",
+        zIndex: 9999,
+        transition: "width 0.15s ease, height 0.15s ease, margin 0.15s ease, background 0.15s ease",
+      }}
+    />
   );
 }
 
@@ -513,6 +733,17 @@ export default function FreelanceDevSite() {
 
   const FORMSPREE_ENDPOINT = "https://formspree.io/f/mpparweo";
 
+  const handleMagnet = (e) => {
+    const btn = e.currentTarget;
+    const rect = btn.getBoundingClientRect();
+    const x = e.clientX - (rect.left + rect.width / 2);
+    const y = e.clientY - (rect.top + rect.height / 2);
+    btn.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px)`;
+  };
+  const resetMagnet = (e) => {
+    e.currentTarget.style.transform = "translate(0px, 0px)";
+  };
+
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     setFormStatus("sending");
@@ -536,6 +767,7 @@ export default function FreelanceDevSite() {
   };
 
   const navLinks = [
+    { label: "Experimente", href: "#/experimente" },
     { label: "Serviços", href: "#servicos" },
     { label: "Portfólio", href: "#portfolio" },
     { label: "Processo", href: "#processo" },
@@ -545,6 +777,10 @@ export default function FreelanceDevSite() {
 
   if (route === "#/legal") {
     return <LegalPage />;
+  }
+
+  if (route === "#/experimente") {
+    return <ExperimentePage />;
   }
 
   if (route.startsWith("#/projeto/")) {
@@ -571,7 +807,9 @@ export default function FreelanceDevSite() {
             ))}
             <a
               href="#contato"
-              className="text-sm font-semibold px-4 py-2 rounded-md text-white transition-transform hover:scale-[1.03]"
+              onMouseMove={handleMagnet}
+              onMouseLeave={resetMagnet}
+              className="text-sm font-semibold px-4 py-2 rounded-md text-white transition-transform"
               style={{ background: "#3B6EF5" }}
             >
               Solicitar orçamento
@@ -614,7 +852,9 @@ export default function FreelanceDevSite() {
             <div className="flex flex-wrap gap-4">
               <a
                 href="#contato"
-                className="px-6 py-3 rounded-md text-sm font-semibold flex items-center gap-2 transition-transform hover:scale-[1.03]"
+                onMouseMove={handleMagnet}
+                onMouseLeave={resetMagnet}
+                className="px-6 py-3 rounded-md text-sm font-semibold flex items-center gap-2 transition-transform"
                 style={{ background: "#3B6EF5", color: "#fff" }}
               >
                 Solicitar orçamento <ArrowUpRight size={16} />
@@ -924,6 +1164,7 @@ export default function FreelanceDevSite() {
         </div>
       </footer>
       <WhatsAppButton />
+      <CustomCursor />
     </div>
   );
 }
