@@ -17,6 +17,11 @@ import {
   MessageCircle,
   User,
   MapPin,
+  Code2,
+  Braces,
+  Layers,
+  FileCode2,
+  Hourglass,
 } from "lucide-react";
 
 const FONTS = `
@@ -24,6 +29,30 @@ const FONTS = `
 
 body.custom-cursor-active, body.custom-cursor-active * {
   cursor: none !important;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-14px) rotate(2.5deg); }
+}
+.glass-card {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0px 8px 24px rgba(59, 130, 246, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation-name: float;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  z-index: 0;
+  pointer-events: none;
 }
 
 @keyframes scrollBounce {
@@ -972,6 +1001,21 @@ export default function FreelanceDevSite() {
 
       {/* HERO */}
       <section className="relative overflow-hidden" style={{ background: "#0B1220" }}>
+        <div className="glass-card hidden md:flex" style={{ top: "10%", left: "38%", animationDuration: "3s", animationDelay: "0s" }}>
+          <Braces size={26} style={{ color: "#FFFFFF" }} />
+        </div>
+        <div className="glass-card hidden md:flex" style={{ top: "28%", left: "8%", animationDuration: "4.2s", animationDelay: "-1s" }}>
+          <Code2 size={26} style={{ color: "#94A3B8" }} />
+        </div>
+        <div className="glass-card hidden md:flex" style={{ top: "38%", right: "6%", animationDuration: "3.5s", animationDelay: "-2.2s" }}>
+          <Layers size={26} style={{ color: "#FFFFFF" }} />
+        </div>
+        <div className="glass-card hidden md:flex" style={{ bottom: "12%", left: "10%", animationDuration: "4.6s", animationDelay: "-0.6s" }}>
+          <FileCode2 size={26} style={{ color: "#94A3B8" }} />
+        </div>
+        <div className="glass-card hidden md:flex" style={{ bottom: "16%", left: "40%", animationDuration: "3.8s", animationDelay: "-1.8s" }}>
+          <Hourglass size={26} style={{ color: "#FFFFFF" }} />
+        </div>
         <img
           src="/images/particle-code.png"
           alt=""
