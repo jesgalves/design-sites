@@ -1443,10 +1443,10 @@ export default function FreelanceDevSite() {
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-6">
             <Logo variant="dark" />
             <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs" style={{ color: "#555C6B" }}>
-              <a href="mailto:designsites.digital@gmail.com" className="flex items-center gap-1.5 hover:underline">
+              <span className="flex items-center gap-1.5">
                 <Mail size={13} style={{ color: "#3B6EF5" }} />
-                designsites.digital@gmail.com
-              </a>
+                jessica.oliverah@gmail.com
+              </span>
               <a href="https://wa.me/5551981273330" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:underline">
                 <MessageCircle size={13} style={{ color: "#3B6EF5" }} />
                 (51) 98127-3330
