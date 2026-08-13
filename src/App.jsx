@@ -68,7 +68,7 @@ body.custom-cursor-active, body.custom-cursor-active * {
   100% { background-position: 0% 0%; }
 }
 .hero-stars-bg {
-  background-image: linear-gradient(180deg, rgba(11,18,32,0.82), rgba(11,18,32,0.9)), url('/images/hero-stars.jpg');
+  background-image: linear-gradient(180deg, rgba(11,18,32,0.55), rgba(11,18,32,0.62)), url('/images/hero-stars.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
