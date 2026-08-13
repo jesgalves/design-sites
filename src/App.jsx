@@ -1164,6 +1164,9 @@ export default function FreelanceDevSite() {
             );
           })}
         </div>
+        <p className="text-xs text-center mt-6" style={{ color: "#8B96AB" }}>
+          * Descontos válidos para clientes que fecham o pacote de 12 meses com manutenção inclusa (Plano Gestão & Crescimento).
+        </p>
         <div className="mt-10">
           <CountdownTimer />
         </div>
