@@ -55,6 +55,19 @@ body.custom-cursor-active, body.custom-cursor-active * {
   pointer-events: none;
 }
 
+@keyframes starDrift {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 3% 2%; }
+  100% { background-position: 0% 0%; }
+}
+.hero-stars-bg {
+  background-image: linear-gradient(180deg, rgba(11,18,32,0.55), rgba(11,18,32,0.65)), url('/images/hero-stars.jpg');
+  background-size: 100% auto;
+  background-position: 0% 0%;
+  background-repeat: no-repeat;
+  animation: starDrift 40s ease-in-out infinite;
+}
+
 @keyframes scrollBounce {
   0%, 100% { transform: translateY(0); opacity: 0.6; }
   50% { transform: translateY(6px); opacity: 1; }
@@ -987,17 +1000,17 @@ export default function FreelanceDevSite() {
       </header>
 
       {/* HERO */}
-      <section className="relative overflow-hidden" style={{ background: "#0B1220" }}>
-        <div className="glass-card hidden md:flex" style={{ top: "25%", left: "48%", animationDuration: "3s", animationDelay: "0s" }}>
+      <section className="relative overflow-hidden hero-stars-bg">
+        <div className="glass-card hidden md:flex" style={{ top: "18%", left: "38%", animationDuration: "3s", animationDelay: "0s" }}>
           <Braces size={26} style={{ color: "#FFFFFF" }} />
         </div>
-        <div className="glass-card hidden md:flex" style={{ top: "5%", left: "15%", animationDuration: "4.2s", animationDelay: "-1s" }}>
+        <div className="glass-card hidden md:flex" style={{ top: "28%", left: "3%", animationDuration: "4.2s", animationDelay: "-1s" }}>
           <Code2 size={26} style={{ color: "#94A3B8" }} />
         </div>
-        <div className="glass-card hidden md:flex" style={{ top: "18%", right: "2%", animationDuration: "3.5s", animationDelay: "-2.2s" }}>
+        <div className="glass-card hidden md:flex" style={{ top: "38%", right: "2%", animationDuration: "3.5s", animationDelay: "-2.2s" }}>
           <Layers size={26} style={{ color: "#FFFFFF" }} />
         </div>
-        <div className="glass-card hidden md:flex" style={{ bottom: "5%", left: "5%", animationDuration: "4.6s", animationDelay: "-0.6s" }}>
+        <div className="glass-card hidden md:flex" style={{ bottom: "3%", left: "7%", animationDuration: "4.6s", animationDelay: "-0.6s" }}>
           <FileCode2 size={26} style={{ color: "#94A3B8" }} />
         </div>
         <div className="glass-card hidden md:flex" style={{ bottom: "16%", left: "40%", animationDuration: "3.8s", animationDelay: "-1.8s" }}>
