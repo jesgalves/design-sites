@@ -866,7 +866,7 @@ export default function FreelanceDevSite() {
       particles: {
         number: { value: 25, density: { enable: true, value_area: 800 } },
         shape: {
-          type: "image",
+          type: "images",
           image: [
             { src: "/images/particle-code.png", height: 32, width: 32 },
             { src: "/images/particle-react.png", height: 32, width: 32 },
