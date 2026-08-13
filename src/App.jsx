@@ -734,7 +734,7 @@ const services = [
     name: "Landing Page",
     desc: "Página única de alta conversão para campanhas e lançamentos.",
     originalPrice: "R$ 1.200",
-    discount: null,
+    showPromo: false,
     bullets: [
       "Design otimizado para conversão",
       "Formulário de captura de leads",
@@ -748,7 +748,7 @@ const services = [
     desc: "Presença digital completa: sobre, serviços, blog e contato.",
     originalPrice: "R$ 2.800",
     promoPrice: "R$ 2.380",
-    discount: "-15%",
+     showPromo: true,
     bullets: [
       "Páginas: Home, Sobre, Serviços, Contato",
       "Design responsivo (mobile-first)",
@@ -762,7 +762,7 @@ const services = [
     desc: "Loja completa com catálogo, checkout e integração de pagamento.",
     originalPrice: "R$ 5.500",
     promoPrice: "R$ 3.000",
-    discount: "-45%",
+     showPromo: true,
     bullets: [
       "Catálogo de produtos ilimitado",
       "Carrinho de compras e checkout",
@@ -776,7 +776,7 @@ const services = [
     desc: "Seu site nasce pronto para vender. Este plano garante que ele continue no ar, seguro, atualizado e evoluindo.",
     originalPrice: "R$ 450/mês",
     promoPrice: "R$ 250/mês",
-    discount: null,
+     showPromo: true,
     bullets: [
       "Atualizações e correções contínuas",
       "Backup periódico e segurança",
@@ -1115,31 +1115,35 @@ export default function FreelanceDevSite() {
                 <p className="text-sm mb-4" style={{ color: "#555C6B" }}>
                   {s.desc}
                 </p>
-                <div className="flex items-center gap-2 mb-1">
-                  <span
-                    style={{ fontFamily: "'JetBrains Mono', monospace", color: "#8B96AB", textDecoration: "line-through" }}
-                    className="text-xs"
-                  >
-                    {s.originalPrice}
-                  </span>
-                  {s.discount && (
+                {s.showPromo && (
+                  <div className="flex items-center gap-2 mb-1">
                     <span
-                      className="text-[10px] px-1.5 py-0.5 rounded"
-                      style={{ fontFamily: "'JetBrains Mono', monospace", color: "#22C55E", background: "rgba(34,197,94,0.12)" }}
+                      style={{ fontFamily: "'JetBrains Mono', monospace", color: "#8B96AB", textDecoration: "line-through" }}
+                      className="text-xs"
                     >
-                      {s.discount}
+                      {s.originalPrice}
                     </span>
-                  )}
-                </div>
+                    {s.discount && (
+                      <span
+                        className="text-[10px] px-1.5 py-0.5 rounded"
+                        style={{ fontFamily: "'JetBrains Mono', monospace", color: "#22C55E", background: "rgba(34,197,94,0.12)" }}
+                      >
+                        {s.discount}
+                      </span>
+                    )}
+                  </div>
+                )}
                 <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#0F1420" }} className="text-sm font-semibold">
                   {s.promoPrice}
                 </p>
-                <p
-                  className="text-[10px] mt-1"
-                  style={{ fontFamily: "'JetBrains Mono', monospace", color: "#F5A623" }}
-                >
-                  Por tempo limitado
-                </p>
+                {s.showPromo && (
+                  <p
+                    className="text-[10px] mt-1"
+                    style={{ fontFamily: "'JetBrains Mono', monospace", color: "#F5A623" }}
+                  >
+                    Por tempo limitado
+                  </p>
+                )}
                 {s.bullets && (
                   <ul className="mt-3 space-y-1.5">
                     {s.bullets.map((b) => (
