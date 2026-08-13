@@ -671,6 +671,14 @@ function Logo({ variant = "dark" }) {
 }
 
 function TerminalPanel() {
+  const [visibleLines, setVisibleLines] = useState(0);
+
+  useEffect(() => {
+    if (visibleLines >= buildLines.length) return;
+    const t = setTimeout(() => setVisibleLines((v) => v + 1), 550);
+    return () => clearTimeout(t);
+  }, [visibleLines]);
+
   return (
     <div
       className="rounded-lg border overflow-hidden shadow-2xl w-full max-w-md"
@@ -690,43 +698,18 @@ function TerminalPanel() {
           build.log
         </span>
       </div>
-      <div className="p-6 min-h-[300px] flex items-center justify-center" style={{ position: "relative" }}>
-        <div style={{ width: "78%" }}>
-          <div
-            className="rounded-t-lg overflow-hidden"
-            style={{ background: "linear-gradient(180deg, #232a3a, #12151c)", padding: "8px 8px 0" }}
-          >
-            <div className="rounded-md overflow-hidden" style={{ aspectRatio: "16/10" }}>
-              <img
-                src="/images/hero-desktop.png"
-                alt="Prévia do site Design Sites em desktop"
-                className="w-full h-full block"
-                style={{ objectFit: "cover", objectPosition: "top" }}
-              />
-            </div>
+      <div className="p-5 min-h-[220px]" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+        {buildLines.slice(0, visibleLines).map((line, i) => (
+          <div key={i} className="text-[13px] leading-7" style={{ color: line.color }}>
+            {line.text}
           </div>
-          <div style={{ height: "10px", background: "linear-gradient(180deg, #dcdde0, #b8bac0)", borderRadius: "0 0 6px 6px" }} />
-        </div>
-        <div
-          className="rounded-2xl overflow-hidden shadow-2xl"
-          style={{
-            position: "absolute",
-            right: "6%",
-            bottom: "-6%",
-            width: "88px",
-            border: "4px solid #12151c",
-            background: "#12151c",
-          }}
-        >
-          <div style={{ aspectRatio: "9/18" }}>
-            <img
-              src="/images/hero-mobile.png"
-              alt="Prévia do site Design Sites em celular"
-              className="w-full h-full block"
-              style={{ objectFit: "cover", objectPosition: "top" }}
-            />
-          </div>
-        </div>
+        ))}
+        {visibleLines < buildLines.length && (
+          <span
+            className="inline-block w-2 h-4 align-middle animate-pulse"
+            style={{ background: "#3B6EF5" }}
+          />
+        )}
       </div>
     </div>
   );
@@ -1056,29 +1039,8 @@ export default function FreelanceDevSite() {
               </a>
             </div>
           </div>
-          <div className="flex justify-center md:justify-end relative">
+          <div className="flex justify-center md:justify-end">
             <TerminalPanel />
-            <div
-              className="hidden lg:flex absolute items-center gap-2 px-3 py-2 rounded-lg shadow-lg"
-              style={{ background: "#0F172A", border: "1px solid #232D42", left: "-40px", top: "38%" }}
-            >
-              <Zap size={14} style={{ color: "#F5A623" }} />
-              <span style={{ fontFamily: "'JetBrains Mono', monospace", color: "#F5F5F3" }} className="text-xs font-semibold">&lt;1s</span>
-            </div>
-            <div
-              className="hidden lg:flex absolute items-center gap-2 px-3 py-2 rounded-lg shadow-lg"
-              style={{ background: "#0F172A", border: "1px solid #232D42", right: "-24px", top: "58%" }}
-            >
-              <ShieldCheck size={14} style={{ color: "#22C55E" }} />
-              <span style={{ fontFamily: "'JetBrains Mono', monospace", color: "#F5F5F3" }} className="text-xs font-semibold">Segurança Total</span>
-            </div>
-            <div
-              className="hidden lg:flex absolute items-center gap-2 px-3 py-2 rounded-lg shadow-lg"
-              style={{ background: "#0F172A", border: "1px solid #232D42", left: "10%", bottom: "-20px" }}
-            >
-              <CheckCircle2 size={14} style={{ color: "#22C55E" }} />
-              <span style={{ fontFamily: "'JetBrains Mono', monospace", color: "#F5F5F3" }} className="text-xs font-semibold">100% Mobile Otimizado</span>
-            </div>
           </div>
         </div>
         {showScrollHint && (
