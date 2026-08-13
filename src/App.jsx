@@ -25,21 +25,25 @@ body.custom-cursor-active, body.custom-cursor-active * {
   cursor: none !important;
 }
 
-#particles-js {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-}
-
 @keyframes scrollBounce {
   0%, 100% { transform: translateY(0); opacity: 0.6; }
   50% { transform: translateY(6px); opacity: 1; }
 }
 .scroll-indicator {
   animation: scrollBounce 1.8s ease-in-out infinite;
+}
+
+@keyframes floatIcon1 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(15px, -20px) rotate(8deg); }
+}
+@keyframes floatIcon2 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(-18px, 16px) rotate(-6deg); }
+}
+@keyframes floatIcon3 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(12px, 18px) rotate(5deg); }
 }
 
 .portfolio-frame-img {
@@ -861,55 +865,6 @@ export default function FreelanceDevSite() {
   }, []);
 
   useEffect(() => {
-    if (!window.particlesJS) return;
-    window.particlesJS("particles-js", {
-      particles: {
-        number: { value: 25, density: { enable: true, value_area: 800 } },
-        shape: {
-          type: "images",
-          image: [
-            { src: "/images/particle-code.png", height: 32, width: 32 },
-            { src: "/images/particle-react.png", height: 32, width: 32 },
-            { src: "/images/particle-node.png", height: 32, width: 32 },
-          ],
-        },
-        opacity: {
-          value: 0.18,
-          random: true,
-          anim: { enable: true, speed: 0.4, opacity_min: 0.08, sync: false },
-        },
-        size: {
-          value: 22,
-          random: true,
-          anim: { enable: false },
-        },
-        move: {
-          enable: true,
-          speed: 1,
-          direction: "none",
-          random: true,
-          straight: false,
-          out_mode: "out",
-          bounce: false,
-        },
-        line_linked: { enable: false },
-      },
-      interactivity: {
-        detect_on: "canvas",
-        events: {
-          onhover: { enable: true, mode: "repulse" },
-          onclick: { enable: false },
-          resize: true,
-        },
-        modes: {
-          repulse: { distance: 80, duration: 0.4 },
-        },
-      },
-      retina_detect: true,
-    });
-  }, []);
-
-  useEffect(() => {
     const onHashChange = () => setRoute(window.location.hash);
     window.addEventListener("hashchange", onHashChange);
     return () => window.removeEventListener("hashchange", onHashChange);
@@ -1016,7 +971,24 @@ export default function FreelanceDevSite() {
 
       {/* HERO */}
       <section className="relative overflow-hidden" style={{ background: "#0B1220" }}>
-        <div id="particles-js" />
+        <img
+          src="/images/particle-code.png"
+          alt=""
+          className="absolute hidden md:block"
+          style={{ width: "36px", opacity: 0.12, top: "15%", left: "42%", animation: "floatIcon1 9s ease-in-out infinite", pointerEvents: "none" }}
+        />
+        <img
+          src="/images/particle-react.png"
+          alt=""
+          className="absolute hidden md:block"
+          style={{ width: "40px", opacity: 0.1, top: "60%", left: "48%", animation: "floatIcon2 11s ease-in-out infinite", pointerEvents: "none" }}
+        />
+        <img
+          src="/images/particle-node.png"
+          alt=""
+          className="absolute hidden md:block"
+          style={{ width: "34px", opacity: 0.1, top: "30%", right: "8%", animation: "floatIcon3 10s ease-in-out infinite", pointerEvents: "none" }}
+        />
         <div className="max-w-6xl mx-auto px-6 py-20 md:py-28 grid md:grid-cols-2 gap-12 items-center relative" style={{ zIndex: 1 }}>
           <div>
             <span
