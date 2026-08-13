@@ -1026,29 +1026,8 @@ export default function FreelanceDevSite() {
               </a>
             </div>
           </div>
-          <div className="flex justify-center md:justify-end relative">
+          <div className="flex justify-center md:justify-end">
             <TerminalPanel />
-            <div
-              className="hidden lg:flex absolute items-center gap-2 px-3 py-2 rounded-lg shadow-lg"
-              style={{ background: "#0F172A", border: "1px solid #232D42", left: "-40px", top: "38%" }}
-            >
-              <Zap size={14} style={{ color: "#F5A623" }} />
-              <span style={{ fontFamily: "'JetBrains Mono', monospace", color: "#F5F5F3" }} className="text-xs font-semibold">&lt;1s</span>
-            </div>
-            <div
-              className="hidden lg:flex absolute items-center gap-2 px-3 py-2 rounded-lg shadow-lg"
-              style={{ background: "#0F172A", border: "1px solid #232D42", right: "-24px", top: "58%" }}
-            >
-              <ShieldCheck size={14} style={{ color: "#22C55E" }} />
-              <span style={{ fontFamily: "'JetBrains Mono', monospace", color: "#F5F5F3" }} className="text-xs font-semibold">Segurança Total</span>
-            </div>
-            <div
-              className="hidden lg:flex absolute items-center gap-2 px-3 py-2 rounded-lg shadow-lg"
-              style={{ background: "#0F172A", border: "1px solid #232D42", left: "10%", bottom: "-20px" }}
-            >
-              <CheckCircle2 size={14} style={{ color: "#22C55E" }} />
-              <span style={{ fontFamily: "'JetBrains Mono', monospace", color: "#F5F5F3" }} className="text-xs font-semibold">100% Mobile Otimizado</span>
-            </div>
           </div>
         </div>
         {showScrollHint && (
