@@ -1445,7 +1445,7 @@ export default function FreelanceDevSite() {
             <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs" style={{ color: "#555C6B" }}>
               <span className="flex items-center gap-1.5">
                 <Mail size={13} style={{ color: "#3B6EF5" }} />
-                jessica.oliverah@gmail.com
+                designsites.digital@gmail.com
               </span>
               <a href="https://wa.me/5551981273330" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:underline">
                 <MessageCircle size={13} style={{ color: "#3B6EF5" }} />
