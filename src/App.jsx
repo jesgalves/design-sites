@@ -522,7 +522,7 @@ function WhatsAppButton() {
 }
 
 function CountdownTimer() {
-  const targetDate = new Date("2026-10-30T23:59:59");
+  const targetDate = new Date("2026-08-16T23:59:59");
 
   const computeTimeLeft = () => {
     const diff = targetDate.getTime() - new Date().getTime();
