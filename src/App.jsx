@@ -774,7 +774,7 @@ const services = [
     bullets: [
       "Catálogo de produtos ilimitado",
       "Carrinho de compras e checkout",
-      "Integração com meios de pagamento",
+      "Integração com meios de pagamento (você precisa ter conta em um gateway, como Mercado Pago ou PagSeguro)",
       "Painel para gerenciar pedidos",
     ],
   },
@@ -788,7 +788,7 @@ const services = [
     bullets: [
       "Atualizações e correções contínuas",
       "Backup periódico e segurança",
-      "Suporte prioritário (SLA definido)",
+      "Suporte para dúvidas e ajustes (resposta em até 24h)",
       "1 ajuste/alteração por mês incluso",
     ],
     note: "Disponível apenas junto com um pacote de criação",
@@ -835,7 +835,7 @@ const projects = [
 ];
 
 const process = [
-  { n: "01", title: "Briefing", desc: "Entendemos o problema real do seu negócio antes de qualquer linha de código." },
+  { n: "01", title: "Briefing", desc: "Você preenche o briefing contando sobre o seu negócio, e envia o material que já tiver (textos, logo, fotos) — o que faltar, a gente ajusta juntos ao longo do processo." },
   { n: "02", title: "Protótipo", desc: "Layout navegável para validar estrutura e conteúdo antes de construir." },
   { n: "03", title: "Desenvolvimento", desc: "Código limpo, performático e responsivo, com atualizações semanais." },
   { n: "04", title: "Revisão", desc: "Ajustes finos com base no seu feedback, sem custo extra." },
@@ -845,7 +845,7 @@ const process = [
 const faqs = [
   { q: "Qual o prazo médio de entrega?", a: "Entre 10 e 20 dias úteis, dependendo do escopo do projeto. Prazos exatos são definidos no briefing." },
   { q: "Hospedagem e domínio estão inclusos?", a: "Ajudamos na configuração de ambos, mas os custos de hospedagem e domínio são pagos diretamente ao provedor, sem intermediação." },
-  { q: "Quantas revisões estão inclusas?", a: "Duas rodadas de revisão em cada etapa (protótipo e desenvolvimento) estão inclusas em todos os pacotes." },
+  { q: "Quantas revisões estão inclusas?", a: "Duas rodadas de revisão em cada etapa (protótipo e desenvolvimento) estão inclusas em todos os pacotes. Revisões extras além dessas são orçadas à parte, sob consulta." },
   { q: "Como funciona o pagamento?", a: "50% no início do projeto e 50% na entrega. Para pacotes maiores, posso dividir em até 3 etapas." },
   { q: "Você oferece suporte depois da entrega?", a: "Sim, 15 dias de suporte gratuito para correções pós-entrega, para suporte prolongado contrate com nosso Plano Gestão & Crescimento." },
 ];
