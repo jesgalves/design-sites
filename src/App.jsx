@@ -789,7 +789,7 @@ const services = [
       "Atualizações e correções contínuas",
       "Backup periódico e segurança",
       "Suporte para dúvidas e ajustes (resposta em até 24h)",
-      "1 ajuste/alteração por mês incluso",
+      "2 ajuste/alteração por mês incluso",
     ],
     note: "Disponível apenas junto com um pacote de criação",
   },
