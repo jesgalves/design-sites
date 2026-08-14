@@ -847,7 +847,7 @@ const faqs = [
   { q: "Hospedagem e domínio estão inclusos?", a: "Ajudamos na configuração de ambos, mas os custos de hospedagem e domínio são pagos diretamente ao provedor, sem intermediação." },
   { q: "Quantas revisões estão inclusas?", a: "Duas rodadas de revisão em cada etapa (protótipo e desenvolvimento) estão inclusas em todos os pacotes." },
   { q: "Como funciona o pagamento?", a: "50% no início do projeto e 50% na entrega. Para pacotes maiores, posso dividir em até 3 etapas." },
-  { q: "Você oferece suporte depois da entrega?", a: "Sim, 15 dias de suporte gratuito para correções pós-entrega, para suporte prolongado contrato com nosso Plano Gestão & Crescimento." },
+  { q: "Você oferece suporte depois da entrega?", a: "Sim, 15 dias de suporte gratuito para correções pós-entrega, para suporte prolongado contrate com nosso Plano Gestão & Crescimento." },
 ];
 
 function FAQItem({ item, isOpen, onClick }) {
