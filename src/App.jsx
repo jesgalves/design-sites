@@ -836,10 +836,10 @@ const projects = [
 
 const process = [
   { n: "01", title: "Briefing", desc: "Você preenche o briefing contando sobre o seu negócio, e envia o material que já tiver (textos, logo, fotos) — o que faltar, a gente ajusta juntos ao longo do processo." },
-  { n: "02", title: "Protótipo", desc: "Layout navegável para validar estrutura e conteúdo antes de construir." },
-  { n: "03", title: "Desenvolvimento", desc: "Código limpo, performático e responsivo, com atualizações semanais." },
-  { n: "04", title: "Revisão", desc: "Ajustes finos com base no seu feedback, sem custo extra." },
-  { n: "05", title: "Entrega & Deploy", desc: "Site no ar, com domínio, SSL e treinamento básico incluídos." },
+  { n: "02", title: "Protótipo", desc: "Você recebe um layout navegável pra validar a estrutura e o conteúdo do site antes de qualquer linha de código — assim a gente ajusta o que for preciso sem retrabalho depois." },
+  { n: "03", title: "Desenvolvimento", desc: "O site é construído com código limpo, performático e responsivo, e você recebe atualizações semanais de como está o andamento, sem precisar ficar cobrando." },
+  { n: "04", title: "Revisão", desc: "Você passa o feedback e a gente faz os ajustes finos necessários, dentro das duas rodadas de revisão já inclusas no pacote." },
+  { n: "05", title: "Entrega & Deploy", desc: "O site vai ao ar de verdade, já configurado com domínio, certificado de segurança (SSL) e um treinamento básico pra você conseguir fazer pequenos ajustes sozinho, se quiser." },
 ];
 
 const faqs = [
