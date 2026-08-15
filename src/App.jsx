@@ -68,7 +68,7 @@ body.custom-cursor-active, body.custom-cursor-active * {
   100% { background-position: 0% 0%; }
 }
 .hero-stars-bg {
-  background-image: linear-gradient(180deg, rgba(11,18,32,0.55), rgba(11,18,32,0.62)), url('/images/hero-stars.jpg');
+  background-image: linear-gradient(180deg, rgba(11,18,32,0.82), rgba(11,18,32,0.9)), url('/images/hero-stars.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -742,6 +742,7 @@ const services = [
     desc: "Página única de alta conversão para campanhas e lançamentos.",
     originalPrice: "R$ 1.200",
     promoPrice: "R$ 1.200",
+    discount: null,
     showPromo: false,
     bullets: [
       "Design otimizado para conversão",
@@ -756,6 +757,7 @@ const services = [
     desc: "Presença digital completa: sobre, serviços, blog e contato.",
     originalPrice: "R$ 2.800",
     promoPrice: "R$ 2.380",
+    discount: "-15%",
     showPromo: true,
     bullets: [
       "Páginas: Home, Sobre, Serviços, Contato",
@@ -770,11 +772,12 @@ const services = [
     desc: "Loja completa com catálogo, checkout e integração de pagamento.",
     originalPrice: "R$ 5.500",
     promoPrice: "R$ 3.000",
+    discount: "-45%",
     showPromo: true,
     bullets: [
       "Catálogo de produtos ilimitado",
       "Carrinho de compras e checkout",
-      "Integração com meios de pagamento (você precisa ter conta em um gateway, como Mercado Pago ou PagSeguro)",
+      "Integração com meios de pagamento",
       "Painel para gerenciar pedidos",
     ],
   },
@@ -784,12 +787,13 @@ const services = [
     desc: "Seu site nasce pronto para vender. Este plano garante que ele continue no ar, seguro, atualizado e evoluindo.",
     originalPrice: "R$ 450/mês",
     promoPrice: "R$ 250/mês",
+    discount: null,
     showPromo: true,
     bullets: [
       "Atualizações e correções contínuas",
       "Backup periódico e segurança",
-      "Suporte para dúvidas e ajustes (resposta em até 24h)",
-      "2 ajuste/alteração por mês incluso",
+      "Suporte prioritário (SLA definido)",
+      "1 ajuste/alteração por mês incluso",
     ],
     note: "Disponível apenas junto com um pacote de criação",
   },
@@ -835,19 +839,19 @@ const projects = [
 ];
 
 const process = [
-  { n: "01", title: "Briefing", desc: "Você preenche o briefing contando sobre o seu negócio, e envia o material que já tiver (textos, logo, fotos) — o que faltar, a gente ajusta juntos ao longo do processo." },
-  { n: "02", title: "Protótipo", desc: "Você recebe um layout navegável pra validar a estrutura e o conteúdo do site antes de qualquer linha de código — assim a gente ajusta o que for preciso sem retrabalho depois." },
-  { n: "03", title: "Desenvolvimento", desc: "O site é construído com código limpo, performático e responsivo, e você recebe atualizações semanais de como está o andamento, sem precisar ficar cobrando." },
-  { n: "04", title: "Revisão", desc: "Você passa o feedback e a gente faz os ajustes finos necessários, dentro das duas rodadas de revisão já inclusas no pacote." },
-  { n: "05", title: "Entrega & Deploy", desc: "O site vai ao ar de verdade, já configurado com domínio, certificado de segurança (SSL) e um treinamento básico pra você conseguir fazer pequenos ajustes sozinho, se quiser." },
+  { n: "01", title: "Briefing", desc: "Entendemos o problema real do seu negócio antes de qualquer linha de código." },
+  { n: "02", title: "Protótipo", desc: "Layout navegável para validar estrutura e conteúdo antes de construir." },
+  { n: "03", title: "Desenvolvimento", desc: "Código limpo, performático e responsivo, com atualizações semanais." },
+  { n: "04", title: "Revisão", desc: "Ajustes finos com base no seu feedback, sem custo extra." },
+  { n: "05", title: "Entrega & Deploy", desc: "Site no ar, com domínio, SSL e treinamento básico incluídos." },
 ];
 
 const faqs = [
   { q: "Qual o prazo médio de entrega?", a: "Entre 10 e 20 dias úteis, dependendo do escopo do projeto. Prazos exatos são definidos no briefing." },
   { q: "Hospedagem e domínio estão inclusos?", a: "Ajudamos na configuração de ambos, mas os custos de hospedagem e domínio são pagos diretamente ao provedor, sem intermediação." },
-  { q: "Quantas revisões estão inclusas?", a: "Duas rodadas de revisão em cada etapa (protótipo e desenvolvimento) estão inclusas em todos os pacotes. Revisões extras além dessas são orçadas à parte, sob consulta." },
+  { q: "Quantas revisões estão inclusas?", a: "Duas rodadas de revisão em cada etapa (protótipo e desenvolvimento) estão inclusas em todos os pacotes." },
   { q: "Como funciona o pagamento?", a: "50% no início do projeto e 50% na entrega. Para pacotes maiores, posso dividir em até 3 etapas." },
-  { q: "Você oferece suporte depois da entrega?", a: "Sim, 15 dias de suporte gratuito para correções pós-entrega, para suporte prolongado contrate com nosso Plano Gestão & Crescimento." },
+  { q: "Você oferece suporte depois da entrega?", a: "Sim, 15 dias de suporte gratuito para correções pós-entrega, e planos de manutenção mensal para o que vier depois." },
 ];
 
 function FAQItem({ item, isOpen, onClick }) {
@@ -981,7 +985,7 @@ export default function FreelanceDevSite() {
                 {l.label}
               </a>
             ))}
-            
+            <a
               href="#contato"
               onMouseMove={handleMagnet}
               onMouseLeave={resetMagnet}
@@ -1171,9 +1175,6 @@ export default function FreelanceDevSite() {
             );
           })}
         </div>
-        <p className="text-xs text-center mt-6" style={{ color: "#8B96AB" }}>
-          * Descontos válidos para clientes que fecham o pacote de 12 meses com manutenção inclusa (Plano Gestão & Crescimento).
-        </p>
         <div className="mt-10">
           <CountdownTimer />
         </div>
