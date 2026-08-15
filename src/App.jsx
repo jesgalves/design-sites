@@ -972,16 +972,16 @@ export default function FreelanceDevSite() {
       <style>{FONTS}</style>
 
       {/* NAV */}
-      <header className="sticky top-0 z-50 backdrop-blur border-b" style={{ background: "rgba(245,245,243,0.85)", borderColor: "#E4E4E0" }}>
+      <header className="absolute top-0 left-0 right-0 z-50" style={{ background: "transparent" }}>
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Logo variant="dark" />
+          <Logo variant="light" />
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((l) => (
-              <a key={l.href} href={l.href} className="text-sm font-medium hover:opacity-70 transition-opacity" style={{ color: "#0F1420" }}>
+              <a key={l.href} href={l.href} className="text-sm font-medium hover:opacity-70 transition-opacity" style={{ color: "#F5F5F3" }}>
                 {l.label}
               </a>
             ))}
-            <a
+            
               href="#contato"
               onMouseMove={handleMagnet}
               onMouseLeave={resetMagnet}
@@ -991,17 +991,19 @@ export default function FreelanceDevSite() {
               Solicitar orçamento
             </a>
           </nav>
-          <button className="md:hidden" onClick={() => setMenuOpen(!menuOpen)}>
+          <button className="md:hidden" onClick={() => setMenuOpen(!menuOpen)} style={{ color: "#F5F5F3" }}>
             {menuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
         {menuOpen && (
-          <div className="md:hidden px-6 pb-4 flex flex-col gap-4 border-t" style={{ borderColor: "#E4E4E0" }}>
+          <div className="md:hidden px-6 pb-4 flex flex-col gap-4" style={{ background: "#0B1220" }}>
             {navLinks.map((l) => (
-              <a key={l.href} href={l.href} onClick={() => setMenuOpen(false)} className="text-sm font-medium pt-3">
+              <a key={l.href} href={l.href} onClick={() => setMenuOpen(false)} className="text-sm font-medium pt-3" style={{ color: "#F5F5F3" }}>
                 {l.label}
               </a>
             ))}
+          </div>
+        )}
           </div>
         )}
       </header>
