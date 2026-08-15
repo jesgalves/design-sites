@@ -980,7 +980,7 @@ export default function FreelanceDevSite() {
               <a key={l.href} href={l.href} className="text-sm font-medium hover:opacity-70 transition-opacity" style={{ color: "#F5F5F3" }}>
                 {l.label}
               </a>
-            ))}
+           ))}
             
               href="#contato"
               onMouseMove={handleMagnet}
