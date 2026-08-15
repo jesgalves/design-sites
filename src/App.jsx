@@ -1004,8 +1004,6 @@ export default function FreelanceDevSite() {
             ))}
           </div>
         )}
-          </div>
-        )}
       </header>
 
       {/* HERO */}
