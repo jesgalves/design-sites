@@ -854,9 +854,16 @@ const faqs = [
   { q: "Você oferece suporte depois da entrega?", a: "Sim, 15 dias de suporte gratuito para correções pós-entrega, e planos de manutenção mensal para o que vier depois." },
 ];
 
-function FAQItem({ item, isOpen, onClick }) {
+function FAQItem({ item, isOpen, onClick, index }) {
   return (
-    <div className="border-b" style={{ borderColor: "#E4E4E0" }}>
+    <motion.div
+      className="border-b"
+      style={{ borderColor: "#E4E4E0" }}
+      initial={{ opacity: 0, y: 15 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4, delay: index * 0.08 }}
+    >
       <button
         onClick={onClick}
         className="w-full flex items-center justify-between py-5 text-left"
@@ -888,7 +895,7 @@ function FAQItem({ item, isOpen, onClick }) {
           {item.a}
         </p>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -1084,11 +1091,18 @@ export default function FreelanceDevSite() {
             { Icon: ShieldCheck, label: "Pagamento seguro" },
             { Icon: Rocket, label: "Site no ar em 15 dias" },
             { Icon: MessageCircle, label: "Suporte via WhatsApp" },
-          ].map(({ Icon, label }) => (
-            <div key={label} className="flex items-center justify-center gap-2.5">
+          ].map(({ Icon, label }, i) => (
+            <motion.div
+              key={label}
+              className="flex items-center justify-center gap-2.5"
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.1 }}
+            >
               <Icon size={20} style={{ color: "#3B6EF5" }} />
               <p className="text-sm font-medium" style={{ color: "#333844" }}>{label}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>
@@ -1262,8 +1276,14 @@ export default function FreelanceDevSite() {
           Como funciona
         </motion.h2>
         <div className="grid md:grid-cols-5 gap-6">
-          {process.map((step) => (
-            <div key={step.n}>
+          {process.map((step, i) => (
+            <motion.div
+              key={step.n}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.1 }}
+            >
               <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#3B6EF5" }} className="text-2xl font-medium mb-3">
                 {step.n}
               </p>
@@ -1273,7 +1293,7 @@ export default function FreelanceDevSite() {
               <p className="text-sm" style={{ color: "#555C6B" }}>
                 {step.desc}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>
@@ -1293,10 +1313,24 @@ export default function FreelanceDevSite() {
             Quem é o Design Sites
           </motion.h2>
           <div className="grid md:grid-cols-[1fr_auto] gap-8 items-start">
-            <p className="text-sm leading-relaxed" style={{ color: "#333844" }}>
+            <motion.p
+              className="text-sm leading-relaxed"
+              style={{ color: "#333844" }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
               O Design Sites nasceu para resolver um problema comum: sites bonitos que não convertem, ou sites baratos que não têm cara de profissional. Aqui, cada projeto é acompanhado de perto, do briefing à entrega — sem processos engessados, sem terceirização, sem intermediários. Mais de 3 anos de experiência em desenvolvimento web sustentam um trabalho com foco em dois pilares: atendimento próximo, com resposta rápida e conversa direta em cada etapa, e qualidade técnica, com sites rápidos, responsivos e pensados para gerar resultado real para o seu negócio.
-            </p>
-            <div className="grid grid-cols-3 md:grid-cols-1 gap-3 flex-shrink-0" style={{ minWidth: "180px" }}>
+            </motion.p>
+            <motion.div
+              className="grid grid-cols-3 md:grid-cols-1 gap-3 flex-shrink-0"
+              style={{ minWidth: "180px" }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.15 }}
+            >
               <div className="px-4 py-3 rounded-lg text-center" style={{ background: "#0B1220" }}>
                 <p style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#3B6EF5" }} className="text-xl font-semibold">
                   +3
@@ -1321,7 +1355,7 @@ export default function FreelanceDevSite() {
                   tempo médio de resposta
                 </p>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -1341,7 +1375,7 @@ export default function FreelanceDevSite() {
         </motion.h2>
         <div>
           {faqs.map((item, i) => (
-            <FAQItem key={item.q} item={item} isOpen={openFaq === i} onClick={() => setOpenFaq(openFaq === i ? -1 : i)} />
+            <FAQItem key={item.q} item={item} isOpen={openFaq === i} onClick={() => setOpenFaq(openFaq === i ? -1 : i)} index={i} />
           ))}
         </div>
       </section>
@@ -1350,9 +1384,16 @@ export default function FreelanceDevSite() {
       <section id="contato" className="py-20" style={{ background: "#0B1220" }}>
         <div className="max-w-2xl mx-auto px-6">
           <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#F5A623" }} className="text-xs mb-3 text-center">// vamos construir</p>
-          <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#F5F5F3" }} className="text-3xl font-semibold mb-3 text-center">
+          <motion.h2
+            style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#F5F5F3" }}
+            className="text-3xl font-semibold mb-3 text-center"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+          >
             Conte sobre o seu projeto
-          </h2>
+          </motion.h2>
           <p className="text-center mb-10 text-sm" style={{ color: "#8B96AB" }}>
             Respondemos em até 24h úteis com uma proposta inicial.
           </p>
