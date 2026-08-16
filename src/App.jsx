@@ -25,8 +25,6 @@ import {
 } from "lucide-react";
 
 const FONTS = `
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
-
 body.custom-cursor-active, body.custom-cursor-active * {
   cursor: none !important;
 }
@@ -62,13 +60,60 @@ body.custom-cursor-active, body.custom-cursor-active * {
     radial-gradient(circle at 10% 90%, rgba(0,0,0,0.6) 0%, transparent 55%);
 }
 
+.site-bg-fixed {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-color: #0B1220;
+  background-image:
+    radial-gradient(circle at var(--glow-x, 70%) var(--glow-y, 20%), rgba(59,110,245,0.30) 0%, transparent 45%),
+    radial-gradient(circle at 15% 85%, rgba(0,0,0,0.55) 0%, transparent 55%),
+    linear-gradient(180deg, rgba(11,18,32,0.6), rgba(11,18,32,0.7)),
+    url('/images/hero-stars.webp');
+  background-size: auto, auto, auto, cover;
+  background-position: 0 0, 0 0, 0 0, center;
+  background-repeat: no-repeat;
+  animation: starDriftContinuous 24s linear infinite alternate;
+  pointer-events: none;
+}
+@keyframes starDriftContinuous {
+  0% { background-position: 0 0, 0 0, 0 0, 0% 0%; }
+  100% { background-position: 0 0, 0 0, 0 0, 6% 4%; }
+}
+
+.sobre-panel {
+  border-radius: 24px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.45);
+  will-change: transform, opacity;
+}
+
+.glow-stat-card {
+  background: #FFFFFF;
+  box-shadow: 0 0 0 1px rgba(59,110,245,0.15), 0 8px 24px rgba(59,110,245,0.25);
+}
+
+.glow-faq-card {
+  background: transparent;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.15), 0 0 24px rgba(255,255,255,0.06);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 18s linear infinite;
+}
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 @keyframes starDrift {
   0% { background-position: 0% 0%; }
   50% { background-position: 3% 2%; }
   100% { background-position: 0% 0%; }
 }
 .hero-stars-bg {
-  background-image: linear-gradient(180deg, rgba(11,18,32,0.82), rgba(11,18,32,0.9)), url('/images/hero-stars.jpg');
+  background-image: linear-gradient(180deg, rgba(11,18,32,0.82), rgba(11,18,32,0.9)), url('/images/hero-stars.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -180,6 +225,8 @@ function ProjectDetailPage({ project }) {
                       alt={`${project.name} — tela ${i + 1}`}
                       className="portfolio-frame-img w-full h-full block"
                       style={{ objectFit: "cover", objectPosition: "top" }}
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                 </div>
@@ -806,7 +853,7 @@ const projects = [
     stack: ["React", "Filtros de busca", "WhatsApp"],
     problem: "Protótipo de vitrine virtual para corretores, com imóveis disponíveis, filtros por cidade/bairro/tipo e redirecionamento direto para agendamento via WhatsApp.",
     result: "Catálogo com filtros · contato direto via WhatsApp",
-    images: ["/images/corretor-1.png", "/images/corretor-2.png", "/images/corretor-3.png", "/images/corretor-4.png"],
+    images: ["/images/corretor-1.webp", "/images/corretor-2.webp", "/images/corretor-3.webp", "/images/corretor-4.webp"],
     howItsMade: "Esse modelo é ideal para qualquer negócio que precise apresentar um catálogo de itens com busca por filtros e fechar contato direto pelo WhatsApp — não só imobiliárias, mas também locadoras, revendas de veículos ou qualquer serviço vendido \"sob consulta\". No exemplo, um buscador filtra imóveis por finalidade, tipo e bairro logo na entrada. Os itens em destaque aparecem em cards com preço, especificações e um botão direto para agendar contato via WhatsApp. Uma seção conta a experiência de quem vende e gera confiança, e depoimentos reforçam a credibilidade — tudo terminando com um convite claro para cadastrar um novo item.",
   },
   {
@@ -815,7 +862,7 @@ const projects = [
     stack: ["React", "Filtros de categoria"],
     problem: "Protótipo de vitrine de produtos com fotos, especificações técnicas e filtros por categoria e faixa de preço.",
     result: "Catálogo por categoria · design responsivo",
-    images: ["/images/moveis-1.png", "/images/moveis-2.png", "/images/moveis-3.png", "/images/moveis-4.png"],
+    images: ["/images/moveis-1.webp", "/images/moveis-2.webp", "/images/moveis-3.webp", "/images/moveis-4.webp"],
     howItsMade: "Esse modelo serve para qualquer negócio que venda produtos ou serviços personalizados de alto padrão — marcenarias, estúdios de design de interiores, ateliês, ou qualquer marca que queira passar sofisticação já na primeira tela, com uma proposta de valor clara logo no topo. Uma seção “Sobre” reforça anos de experiência e mostra depoimentos de clientes. Os projetos recentes aparecem em cards com foto, categoria e descrição, funcionando como portfólio visual. E o passo a passo do processo (do orçamento à entrega) deixa o cliente confiante sobre como o trabalho dele vai acontecer.",
   },
   {
@@ -824,7 +871,7 @@ const projects = [
     stack: ["React", "Carrinho de compras", "Checkout"],
     problem: "Protótipo de loja virtual completa, com carrinho de compras e fluxo de pagamento simulado.",
     result: "Carrinho funcional · checkout simulado",
-    images: ["/images/ecommerce-1.png", "/images/ecommerce-2.png", "/images/ecommerce-3.png"],
+    images: ["/images/ecommerce-1.webp", "/images/ecommerce-2.webp", "/images/ecommerce-3.webp"],
     howItsMade: "Esse modelo serve para qualquer negócio que venda produtos físicos e queira fechar a venda direto pelo WhatsApp, sem burocracia de checkout complexo — moda, cosméticos, eletrônicos ou qualquer loja com catálogo de produtos. No exemplo, uma faixa de frete grátis e a coleção em destaque já aparecem na primeira tela. Os produtos são organizados por categoria e exibidos com preço promocional riscado, e cada item tem um botão “Comprar no WhatsApp”, levando a conversa direto pro fechamento da venda. Selos de parcelamento, envio rápido e troca sem complicação reforçam a confiança antes da compra.",
   },
   {
@@ -833,7 +880,7 @@ const projects = [
     stack: ["React", "Formulário de captura"],
     problem: "Página única (one-page) voltada para campanhas de tráfego pago, focada em geração de leads.",
     result: "Formulário de captura · estrutura otimizada para conversão",
-    images: ["/images/landing-1.png", "/images/landing-2.png", "/images/landing-3.png"],
+    images: ["/images/landing-1.webp", "/images/landing-2.webp", "/images/landing-3.webp"],
     howItsMade: "Esse modelo serve para qualquer profissional ou negócio de serviços que queira transformar visitantes de anúncios em consultas agendadas — advogados, dentistas, consultores, clínicas, entre outros. No exemplo, a proposta de valor já vem acompanhada de uma lista de motivos para agendar e um botão de WhatsApp em destaque, com aviso de resposta rápida para reduzir a hesitação. Números como casos resolvidos e anos de mercado reforçam a autoridade, e as áreas de atuação deixam claro em que o profissional pode ajudar. No fim, um formulário simples capta nome, WhatsApp e a dúvida do visitante, dando duas formas de contato: preencher ou chamar direto.",
   },
 ];
@@ -851,14 +898,13 @@ const faqs = [
   { q: "Hospedagem e domínio estão inclusos?", a: "Ajudamos na configuração de ambos, mas os custos de hospedagem e domínio são pagos diretamente ao provedor, sem intermediação." },
   { q: "Quantas revisões estão inclusas?", a: "Duas rodadas de revisão em cada etapa (protótipo e desenvolvimento) estão inclusas em todos os pacotes." },
   { q: "Como funciona o pagamento?", a: "50% no início do projeto e 50% na entrega. Para pacotes maiores, posso dividir em até 3 etapas." },
-  { q: "Você oferece suporte depois da entrega?", a: "Sim, 15 dias de suporte gratuito para correções pós-entrega, e planos de manutenção mensal para o que vier depois." },
+  { q: "Você oferece suporte depois da entrega?", a: "Sim, 15 dias de suporte gratuito após a entrega do site, para suporte prolongado contrate nosso Plano de Gestão & Crescimento." },
 ];
 
 function FAQItem({ item, isOpen, onClick, index }) {
   return (
     <motion.div
-      className="border-b"
-      style={{ borderColor: "#E4E4E0" }}
+      className="glow-faq-card px-5 rounded-xl mb-3"
       initial={{ opacity: 0, y: 15 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -870,14 +916,14 @@ function FAQItem({ item, isOpen, onClick, index }) {
       >
         <span
           className="text-base md:text-lg font-medium pr-4"
-          style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#0F1420" }}
+          style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#F5F5F3" }}
         >
           {item.q}
         </span>
         <ChevronDown
           size={20}
           style={{
-            color: "#3B6EF5",
+            color: "#F5F5F3",
             transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
             transition: "transform 0.25s ease",
             flexShrink: 0,
@@ -891,7 +937,7 @@ function FAQItem({ item, isOpen, onClick, index }) {
           transition: "max-height 0.3s ease",
         }}
       >
-        <p className="pb-5 text-[15px] leading-relaxed" style={{ color: "#555C6B" }}>
+        <p className="pb-5 text-[15px] leading-relaxed" style={{ color: "#B7BFD1" }}>
           {item.a}
         </p>
       </div>
@@ -905,6 +951,35 @@ export default function FreelanceDevSite() {
   const [formStatus, setFormStatus] = useState("idle");
   const [route, setRoute] = useState(() => window.location.hash);
   const [showScrollHint, setShowScrollHint] = useState(true);
+  const heroRef = useRef(null);
+  const terminalLineRefs = useRef([]);
+  const portfolioSectionRef = useRef(null);
+  const portfolioRowRef = useRef(null);
+  const sobrePanelRef = useRef(null);
+  const glassCardRefs = useRef([]);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const onGlowScroll = () => {
+      const progress = Math.min(window.scrollY / (document.body.scrollHeight - window.innerHeight || 1), 1);
+      const x = 70 - progress * 55;
+      const y = 20 + progress * 55;
+      document.documentElement.style.setProperty("--glow-x", `${x}%`);
+      document.documentElement.style.setProperty("--glow-y", `${y}%`);
+
+      const currentY = window.scrollY;
+      const delta = currentY - lastScrollY.current;
+      lastScrollY.current = currentY;
+      glassCardRefs.current.forEach((el, i) => {
+        if (!el) return;
+        const speed = 0.04 + (i % 3) * 0.02;
+        el.style.transform = `translateY(${currentY * speed}px)`;
+      });
+    };
+    window.addEventListener("scroll", onGlowScroll, { passive: true });
+    onGlowScroll();
+    return () => window.removeEventListener("scroll", onGlowScroll);
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setShowScrollHint(window.scrollY < 80);
@@ -917,6 +992,67 @@ export default function FreelanceDevSite() {
     window.addEventListener("hashchange", onHashChange);
     return () => window.removeEventListener("hashchange", onHashChange);
   }, []);
+
+  useEffect(() => {
+    if (route !== "") return;
+
+    let ctx;
+    let cancelled = false;
+
+    // gsap + ScrollTrigger só são baixados quando essa seção realmente
+    // precisa deles, em vez de irem no bundle inicial da página.
+    Promise.all([import("gsap"), import("gsap/ScrollTrigger")]).then(
+      ([{ default: gsap }, { ScrollTrigger }]) => {
+        if (cancelled) return;
+        gsap.registerPlugin(ScrollTrigger);
+
+        ctx = gsap.context(() => {
+          // Portfolio: pin + horizontal scroll on desktop only
+          if (window.innerWidth >= 768 && portfolioSectionRef.current && portfolioRowRef.current) {
+            const row = portfolioRowRef.current;
+            const scrollDistance = () => Math.max(row.scrollWidth - window.innerWidth + 100, 0);
+            gsap.to(row, {
+              x: () => -scrollDistance(),
+              ease: "none",
+              scrollTrigger: {
+                trigger: portfolioSectionRef.current,
+                start: "top top",
+                end: () => "+=" + scrollDistance(),
+                pin: true,
+                scrub: 1,
+                invalidateOnRefresh: true,
+              },
+            });
+          }
+
+          // Sobre: overlay panel scales/fades in and out with scroll, reversible both directions
+          if (sobrePanelRef.current) {
+            gsap.fromTo(
+              sobrePanelRef.current,
+              { opacity: 0, scale: 0.9, y: 40 },
+              {
+                opacity: 1,
+                scale: 1,
+                y: 0,
+                ease: "none",
+                scrollTrigger: {
+                  trigger: sobrePanelRef.current,
+                  start: "top 90%",
+                  end: "top 35%",
+                  scrub: true,
+                },
+              }
+            );
+          }
+        });
+      }
+    );
+
+    return () => {
+      cancelled = true;
+      if (ctx) ctx.revert();
+    };
+  }, [route]);
 
   const FORMSPREE_ENDPOINT = "https://formspree.io/f/mpparweo";
 
@@ -979,11 +1115,31 @@ export default function FreelanceDevSite() {
   }
 
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", color: "#0F1420", background: "#F5F5F3" }}>
+    <div style={{ fontFamily: "'Inter', sans-serif", color: "#0F1420", background: "transparent" }}>
       <style>{FONTS}</style>
+      <div className="site-bg-fixed" aria-hidden="true" />
+
+      {/* MARQUEE */}
+      <div className="relative z-50 overflow-hidden" style={{ background: "#0B1220" }}>
+        <div className="marquee-track py-1.5">
+          {[0, 1].map((rep) => (
+            <div key={rep} className="flex items-center">
+              {[0, 1, 2, 3].map((n) => (
+                <span
+                  key={n}
+                  className="whitespace-nowrap px-6 text-xs"
+                  style={{ fontFamily: "'JetBrains Mono', monospace", color: "#8B96AB" }}
+                >
+                  Se quer o melhor para sua empresa, crie um site para ela
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
 
       {/* NAV */}
-      <header className="absolute top-0 left-0 right-0 z-50" style={{ background: "transparent" }}>
+      <header className="absolute top-0 left-0 right-0 z-50" style={{ background: "transparent", marginTop: "30px" }}>
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <Logo variant="light" />
           <nav className="hidden md:flex items-center gap-8">
@@ -1017,23 +1173,10 @@ export default function FreelanceDevSite() {
         )}
       </header>
 
+      {/* CONTENT LAYER (above floating icons, below header/marquee) */}
+      <div className="relative" style={{ zIndex: 2 }}>
       {/* HERO */}
-      <section className="relative overflow-hidden hero-glow-bg">
-        <div className="glass-card hidden md:flex" style={{ top: "18%", left: "38%", animationDuration: "3s", animationDelay: "0s" }}>
-          <Braces size={26} style={{ color: "#FFFFFF" }} />
-        </div>
-        <div className="glass-card hidden md:flex" style={{ top: "28%", left: "3%", animationDuration: "4.2s", animationDelay: "-1s" }}>
-          <Code2 size={26} style={{ color: "#94A3B8" }} />
-        </div>
-        <div className="glass-card hidden md:flex" style={{ top: "38%", right: "2%", animationDuration: "3.5s", animationDelay: "-2.2s" }}>
-          <Layers size={26} style={{ color: "#FFFFFF" }} />
-        </div>
-        <div className="glass-card hidden md:flex" style={{ bottom: "3%", left: "7%", animationDuration: "4.6s", animationDelay: "-0.6s" }}>
-          <FileCode2 size={26} style={{ color: "#94A3B8" }} />
-        </div>
-        <div className="glass-card hidden md:flex" style={{ bottom: "16%", left: "40%", animationDuration: "3.8s", animationDelay: "-1.8s" }}>
-          <Hourglass size={26} style={{ color: "#FFFFFF" }} />
-        </div>
+      <section ref={heroRef} className="relative overflow-hidden" style={{ background: "transparent" }}>
         <div className="max-w-6xl mx-auto px-6 py-20 md:py-28 grid md:grid-cols-2 gap-12 items-center relative" style={{ zIndex: 1 }}>
           <div>
             <span
@@ -1046,7 +1189,7 @@ export default function FreelanceDevSite() {
               className="text-4xl md:text-5xl font-semibold leading-tight mb-6"
               style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#F5F5F3" }}
             >
-              Sites rápidos, responsivos e que convertem — entregues em 15 dias.
+              Sites rápidos, responsivos e que convertem — no ar em poucas semanas.
             </h1>
             <p className="text-base md:text-lg mb-8" style={{ color: "#8B96AB" }}>
               Desenvolvimento web sob medida para negócios que precisam de presença digital de verdade: performance, design e resultado mensurável.
@@ -1085,11 +1228,11 @@ export default function FreelanceDevSite() {
       </section>
 
       {/* TRUST BADGES */}
-      <section className="py-8" style={{ borderBottom: "1px solid #E4E4E0" }}>
+      <section className="py-8" style={{ background: "transparent" }}>
         <div className="max-w-4xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-3 gap-6">
           {[
             { Icon: ShieldCheck, label: "Pagamento seguro" },
-            { Icon: Rocket, label: "Site no ar em 15 dias" },
+            { Icon: Rocket, label: "Site no ar em poucas semanas" },
             { Icon: MessageCircle, label: "Suporte via WhatsApp" },
           ].map(({ Icon, label }, i) => (
             <motion.div
@@ -1101,17 +1244,17 @@ export default function FreelanceDevSite() {
               transition={{ duration: 0.4, delay: i * 0.1 }}
             >
               <Icon size={20} style={{ color: "#3B6EF5" }} />
-              <p className="text-sm font-medium" style={{ color: "#333844" }}>{label}</p>
+              <p className="text-sm font-medium" style={{ color: "#F5F5F3" }}>{label}</p>
             </motion.div>
           ))}
         </div>
       </section>
 
       {/* SERVICES */}
-      <section id="servicos" className="max-w-6xl mx-auto px-6 py-20">
+      <section id="servicos" className="max-w-6xl mx-auto px-6 py-20 relative" style={{ background: "transparent" }}>
         <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#3B6EF5" }} className="text-xs mb-3">// serviços</p>
         <motion.h2
-          style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+          style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#F5F5F3" }}
           className="text-3xl font-semibold mb-12"
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -1126,13 +1269,12 @@ export default function FreelanceDevSite() {
             return (
               <motion.div
                 key={s.name}
-                className="p-6 rounded-lg border bg-white"
-                style={{ borderColor: "#E4E4E0" }}
+                className="glow-stat-card p-6 rounded-lg"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.4 }}
-                whileHover={{ y: -5, boxShadow: "0 12px 30px rgba(11,18,32,0.12)", borderColor: "#3B6EF5" }}
+                whileHover={{ y: -5, boxShadow: "0 0 0 1px rgba(59,110,245,0.35), 0 12px 30px rgba(59,110,245,0.3)" }}
               >
                 <Icon size={22} style={{ color: "#3B6EF5" }} className="mb-4" />
                 <h3 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="font-semibold text-lg mb-2">
@@ -1195,7 +1337,7 @@ export default function FreelanceDevSite() {
       </section>
 
       {/* PORTFOLIO */}
-      <section id="portfolio" className="py-20 relative overflow-hidden hero-stars-bg">
+      <section id="portfolio" ref={portfolioSectionRef} className="py-20 relative overflow-hidden" style={{ background: "transparent" }}>
         <div className="max-w-6xl mx-auto px-6">
           <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#F5A623" }} className="text-xs mb-3">// portfólio</p>
           <motion.h2
@@ -1208,12 +1350,12 @@ export default function FreelanceDevSite() {
           >
             Estudos de Caso
           </motion.h2>
-          <div className="grid sm:grid-cols-2 gap-5">
+          <div ref={portfolioRowRef} className="flex overflow-x-auto md:overflow-visible gap-5 pb-4 md:pb-0">
             {projects.map((p) => (
               <motion.div
                 key={p.name}
-                className="p-6 rounded-lg border"
-                style={{ borderColor: "#232D42", background: "#0F172A" }}
+                className="p-6 rounded-lg border flex-shrink-0"
+                style={{ borderColor: "#232D42", background: "#0F172A", width: "min(85vw, 380px)" }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
@@ -1263,10 +1405,10 @@ export default function FreelanceDevSite() {
       </section>
 
       {/* PROCESS */}
-      <section id="processo" className="max-w-6xl mx-auto px-6 py-20">
+      <section id="processo" className="max-w-6xl mx-auto px-6 py-20 relative" style={{ background: "transparent" }}>
         <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#3B6EF5" }} className="text-xs mb-3">// processo</p>
         <motion.h2
-          style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+          style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#F5F5F3" }}
           className="text-3xl font-semibold mb-12"
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -1287,10 +1429,10 @@ export default function FreelanceDevSite() {
               <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#3B6EF5" }} className="text-2xl font-medium mb-3">
                 {step.n}
               </p>
-              <h3 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="font-semibold mb-2">
+              <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#F5F5F3" }} className="font-semibold mb-2">
                 {step.title}
               </h3>
-              <p className="text-sm" style={{ color: "#555C6B" }}>
+              <p className="text-sm" style={{ color: "#B7BFD1" }}>
                 {step.desc}
               </p>
             </motion.div>
@@ -1299,72 +1441,66 @@ export default function FreelanceDevSite() {
       </section>
 
       {/* SOBRE */}
-      <section id="sobre" className="py-20" style={{ background: "#EAEAE6" }}>
+      <section id="sobre" className="py-24" style={{ background: "transparent" }}>
         <div className="max-w-4xl mx-auto px-6">
-          <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#3B6EF5" }} className="text-xs mb-3">// sobre</p>
-          <motion.h2
-            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-            className="text-3xl font-semibold mb-6"
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4 }}
+          <div
+            ref={sobrePanelRef}
+            className="sobre-panel p-8 md:p-12"
+            style={{ background: "#101830" }}
           >
-            Quem é o Design Sites
-          </motion.h2>
-          <div className="grid md:grid-cols-[1fr_auto] gap-8 items-start">
-            <motion.p
-              className="text-sm leading-relaxed"
-              style={{ color: "#333844" }}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+            <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#3B6EF5" }} className="text-xs mb-3">// sobre</p>
+            <h2
+              style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#F5F5F3" }}
+              className="text-3xl font-semibold mb-6"
             >
-              O Design Sites nasceu para resolver um problema comum: sites bonitos que não convertem, ou sites baratos que não têm cara de profissional. Aqui, cada projeto é acompanhado de perto, do briefing à entrega — sem processos engessados, sem terceirização, sem intermediários. Mais de 3 anos de experiência em desenvolvimento web sustentam um trabalho com foco em dois pilares: atendimento próximo, com resposta rápida e conversa direta em cada etapa, e qualidade técnica, com sites rápidos, responsivos e pensados para gerar resultado real para o seu negócio.
-            </motion.p>
-            <motion.div
-              className="grid grid-cols-3 md:grid-cols-1 gap-3 flex-shrink-0"
-              style={{ minWidth: "180px" }}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.15 }}
-            >
-              <div className="px-4 py-3 rounded-lg text-center" style={{ background: "#0B1220" }}>
-                <p style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#3B6EF5" }} className="text-xl font-semibold">
-                  +3
-                </p>
-                <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#8B96AB" }} className="text-[10px] mt-1">
-                  anos de experiência
-                </p>
+              Quem é o Design Sites
+            </h2>
+            <div className="grid md:grid-cols-[1fr_auto] gap-8 items-start">
+              <p
+                className="text-sm leading-relaxed"
+                style={{ color: "#B7BFD1" }}
+              >
+                O Design Sites nasceu para resolver um problema comum: sites bonitos que não convertem, ou sites baratos que não têm cara de profissional. Aqui, cada projeto é acompanhado de perto, do briefing à entrega — sem processos engessados, sem terceirização, sem intermediários. Mais de 3 anos de experiência em desenvolvimento web sustentam um trabalho com foco em dois pilares: atendimento próximo, com resposta rápida e conversa direta em cada etapa, e qualidade técnica, com sites rápidos, responsivos e pensados para gerar resultado real para o seu negócio.
+              </p>
+              <div
+                className="grid grid-cols-3 md:grid-cols-1 gap-3 flex-shrink-0"
+                style={{ minWidth: "180px" }}
+              >
+                <div className="glow-stat-card px-4 py-3 rounded-lg text-center">
+                  <p style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#3B6EF5" }} className="text-xl font-semibold">
+                    +3
+                  </p>
+                  <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#555C6B" }} className="text-[10px] mt-1">
+                    anos de experiência
+                  </p>
+                </div>
+                <div className="glow-stat-card px-4 py-3 rounded-lg text-center">
+                  <p style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#22C55E" }} className="text-xl font-semibold">
+                    100%
+                  </p>
+                  <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#555C6B" }} className="text-[10px] mt-1">
+                    nota de velocidade no Google
+                  </p>
+                </div>
+                <div className="glow-stat-card px-4 py-3 rounded-lg text-center">
+                  <p style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#F5A623" }} className="text-xl font-semibold">
+                    &lt;24h
+                  </p>
+                  <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#555C6B" }} className="text-[10px] mt-1">
+                    tempo médio de resposta
+                  </p>
+                </div>
               </div>
-              <div className="px-4 py-3 rounded-lg text-center" style={{ background: "#0B1220" }}>
-                <p style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#22C55E" }} className="text-xl font-semibold">
-                  100%
-                </p>
-                <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#8B96AB" }} className="text-[10px] mt-1">
-                  nota de velocidade no Google
-                </p>
-              </div>
-              <div className="px-4 py-3 rounded-lg text-center" style={{ background: "#0B1220" }}>
-                <p style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#F5A623" }} className="text-xl font-semibold">
-                  &lt;24h
-                </p>
-                <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#8B96AB" }} className="text-[10px] mt-1">
-                  tempo médio de resposta
-                </p>
-              </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="max-w-3xl mx-auto px-6 py-20">
+      <section className="max-w-3xl mx-auto px-6 py-20 relative" style={{ background: "transparent" }}>
         <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#3B6EF5" }} className="text-xs mb-3">// perguntas frequentes</p>
         <motion.h2
-          style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+          style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#F5F5F3" }}
           className="text-3xl font-semibold mb-8"
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -1494,11 +1630,11 @@ export default function FreelanceDevSite() {
       </section>
 
       {/* FOOTER */}
-      <footer className="py-10 border-t" style={{ borderColor: "#E4E4E0" }}>
+      <footer className="py-10" style={{ background: "transparent" }}>
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-6">
-            <Logo variant="dark" />
-            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs" style={{ color: "#555C6B" }}>
+            <Logo variant="light" />
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs" style={{ color: "#B7BFD1" }}>
               <span className="flex items-center gap-1.5">
                 <Mail size={13} style={{ color: "#3B6EF5" }} />
                 designsites.digital@gmail.com
@@ -1517,7 +1653,7 @@ export default function FreelanceDevSite() {
               </span>
             </div>
           </div>
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-6 border-t" style={{ borderColor: "#E4E4E0" }}>
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-6">
             <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#8B96AB" }} className="text-xs">
               © 2026 Design Sites · desenvolvido com <Rocket size={12} className="inline mb-0.5" style={{ color: "#F5A623" }} /> e café
             </p>
@@ -1528,6 +1664,32 @@ export default function FreelanceDevSite() {
           </div>
         </div>
       </footer>
+      </div>
+      <div ref={(el) => (glassCardRefs.current[0] = el)} className="fixed hidden md:block" style={{ top: "12vh", left: "38%", zIndex: 0, pointerEvents: "none" }}>
+        <div className="glass-card" style={{ position: "static", animationDuration: "3s", animationDelay: "0s" }}>
+          <Braces size={26} style={{ color: "#FFFFFF" }} />
+        </div>
+      </div>
+      <div ref={(el) => (glassCardRefs.current[1] = el)} className="fixed hidden md:block" style={{ top: "22vh", left: "3%", zIndex: 0, pointerEvents: "none" }}>
+        <div className="glass-card" style={{ position: "static", animationDuration: "4.2s", animationDelay: "-1s" }}>
+          <Code2 size={26} style={{ color: "#94A3B8" }} />
+        </div>
+      </div>
+      <div ref={(el) => (glassCardRefs.current[2] = el)} className="fixed hidden md:block" style={{ top: "32vh", right: "2%", zIndex: 0, pointerEvents: "none" }}>
+        <div className="glass-card" style={{ position: "static", animationDuration: "3.5s", animationDelay: "-2.2s" }}>
+          <Layers size={26} style={{ color: "#FFFFFF" }} />
+        </div>
+      </div>
+      <div ref={(el) => (glassCardRefs.current[3] = el)} className="fixed hidden md:block" style={{ top: "70vh", left: "7%", zIndex: 0, pointerEvents: "none" }}>
+        <div className="glass-card" style={{ position: "static", animationDuration: "4.6s", animationDelay: "-0.6s" }}>
+          <FileCode2 size={26} style={{ color: "#94A3B8" }} />
+        </div>
+      </div>
+      <div ref={(el) => (glassCardRefs.current[4] = el)} className="fixed hidden md:block" style={{ top: "62vh", left: "40%", zIndex: 0, pointerEvents: "none" }}>
+        <div className="glass-card" style={{ position: "static", animationDuration: "3.8s", animationDelay: "-1.8s" }}>
+          <Hourglass size={26} style={{ color: "#FFFFFF" }} />
+        </div>
+      </div>
       <WhatsAppButton />
       <CustomCursor />
     </div>
