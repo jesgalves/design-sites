@@ -1331,6 +1331,12 @@ export default function FreelanceDevSite() {
             );
           })}
         </div>
+        <p
+          className="text-xs mt-5 text-center"
+          style={{ fontFamily: "'JetBrains Mono', monospace", color: "#8B96AB" }}
+        >
+          * Descontos válidos para clientes que fecham o pacote de 12 meses com manutenção inclusa
+        </p>
         <div className="mt-10">
           <CountdownTimer />
         </div>
