@@ -1130,7 +1130,7 @@ export default function FreelanceDevSite() {
                   className="whitespace-nowrap px-6 text-xs"
                   style={{ fontFamily: "'JetBrains Mono', monospace", color: "#8B96AB" }}
                 >
-                  Se quer o melhor para sua empresa, crie um site para ela
+                  Invista no futuro da sua empresa: crie um site profissional com a gente
                 </span>
               ))}
             </div>
