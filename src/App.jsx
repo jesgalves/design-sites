@@ -475,7 +475,7 @@ function LegalPage() {
             </div>
             <div>
               <h3 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="font-semibold mb-1">Prazos</h3>
-              <p>O prazo padrão de entrega é de até 15 dias úteis, podendo variar conforme a complexidade e o escopo definidos no briefing.</p>
+              <p>O prazo padrão de entrega é de até 20 dias úteis, podendo variar conforme a complexidade e o escopo definidos no briefing.</p>
             </div>
             <div>
               <h3 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="font-semibold mb-1">Revisões</h3>
@@ -839,8 +839,8 @@ const services = [
     bullets: [
       "Atualizações e correções contínuas",
       "Backup periódico e segurança",
-      "Suporte prioritário (SLA definido)",
-      "1 ajuste/alteração por mês incluso",
+      "Suporte para dúvidas e ajustes (resposta em até 24h)",
+      "4 ajustes/alterações por mês incluso",
     ],
     note: "Disponível apenas junto com um pacote de criação",
   },
@@ -886,11 +886,11 @@ const projects = [
 ];
 
 const process = [
-  { n: "01", title: "Briefing", desc: "Entendemos o problema real do seu negócio antes de qualquer linha de código." },
-  { n: "02", title: "Protótipo", desc: "Layout navegável para validar estrutura e conteúdo antes de construir." },
-  { n: "03", title: "Desenvolvimento", desc: "Código limpo, performático e responsivo, com atualizações semanais." },
-  { n: "04", title: "Revisão", desc: "Ajustes finos com base no seu feedback, sem custo extra." },
-  { n: "05", title: "Entrega & Deploy", desc: "Site no ar, com domínio, SSL e treinamento básico incluídos." },
+  { n: "01", title: "Briefing", desc: "Você preenche o briefing contando sobre o seu negócio, e envia o material que já tiver (textos, logo, fotos) — o que faltar, a gente ajusta juntos ao longo do processo." },
+  { n: "02", title: "Protótipo", desc: "Você recebe um layout navegável pra validar a estrutura e o conteúdo do site antes de qualquer linha de código — assim a gente ajusta o que for preciso sem retrabalho depois." },
+  { n: "03", title: "Desenvolvimento", desc: "O site é construído com código limpo, performático e responsivo, e você recebe atualizações semanais de como está o andamento, sem precisar ficar cobrando." },
+  { n: "04", title: "Revisão", desc: "Você passa o feedback e a gente faz os ajustes finos necessários, dentro das duas rodadas de revisão já inclusas no pacote. Revisões extras além dessas são orçadas à parte, sob consulta." },
+  { n: "05", title: "Entrega & Deploy", desc: "O site vai ao ar de verdade, já configurado com domínio, certificado de segurança (SSL) e um treinamento básico pra você conseguir fazer pequenos ajustes sozinho, se quiser." },
 ];
 
 const faqs = [
