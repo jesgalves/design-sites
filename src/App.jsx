@@ -795,7 +795,7 @@ const services = [
       "Design otimizado para conversão",
       "Formulário de captura de leads",
       "Hospedagem e domínio configurados",
-      "Entrega em até 15 dias úteis",
+      "Entrega em até 20 dias úteis",
     ],
   },
   {
