@@ -659,7 +659,7 @@ function WhatsAppButton() {
 }
 
 function CountdownTimer() {
-  const targetDate = new Date("2026-08-16T23:59:59");
+  const targetDate = new Date("2026-09-01T23:59:59");
 
   const computeTimeLeft = () => {
     const diff = targetDate.getTime() - new Date().getTime();
@@ -894,7 +894,7 @@ const process = [
 ];
 
 const faqs = [
-  { q: "Qual o prazo médio de entrega?", a: "Entre 10 e 20 dias úteis, dependendo do escopo do projeto. Prazos exatos são definidos no briefing." },
+  { q: "Qual o prazo médio de entrega?", a: "Em 20 dias úteis, dependendo do escopo do projeto. Prazos exatos são definidos no briefing." },
   { q: "Hospedagem e domínio estão inclusos?", a: "Ajudamos na configuração de ambos, mas os custos de hospedagem e domínio são pagos diretamente ao provedor, sem intermediação." },
   { q: "Quantas revisões estão inclusas?", a: "Duas rodadas de revisão em cada etapa (protótipo e desenvolvimento) estão inclusas em todos os pacotes." },
   { q: "Como funciona o pagamento?", a: "50% no início do projeto e 50% na entrega. Para pacotes maiores, posso dividir em até 3 etapas." },
