@@ -63,9 +63,9 @@ body.custom-cursor-active, body.custom-cursor-active * {
   z-index: -1;
   background-color: #0B1220;
   background-image:
-    radial-gradient(circle at var(--glow-x, 70%) var(--glow-y, 20%), rgba(59,110,245,0.30) 0%, transparent 45%),
+    radial-gradient(circle at var(--glow-x, 70%) var(--glow-y, 20%), rgba(59,110,245,0.22) 0%, transparent 42%),
     radial-gradient(circle at 15% 85%, rgba(0,0,0,0.55) 0%, transparent 55%),
-    linear-gradient(180deg, rgba(11,18,32,0.6), rgba(11,18,32,0.7)),
+    linear-gradient(180deg, rgba(11,18,32,0.78), rgba(11,18,32,0.86)),
     url('/images/hero-stars.webp');
   background-size: auto, auto, auto, cover;
   background-position: 0 0, 0 0, 0 0, center;
@@ -79,14 +79,9 @@ body.custom-cursor-active, body.custom-cursor-active * {
 }
 
 .sobre-panel {
-  border-radius: 24px;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.45);
+  border-radius: 10px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
   will-change: transform, opacity;
-}
-
-.glow-stat-card {
-  background: #FFFFFF;
-  box-shadow: 0 0 0 1px rgba(59,110,245,0.15), 0 8px 24px rgba(59,110,245,0.25);
 }
 
 .glow-faq-card {
@@ -126,10 +121,15 @@ body.custom-cursor-active, body.custom-cursor-active * {
 }
 
 .portfolio-frame-img {
-  transition: transform 0.6s ease;
+  transition: transform 0.5s ease;
 }
 .portfolio-frame-wrap:hover .portfolio-frame-img {
-  transform: translateY(-12%);
+  transform: scale(1.02);
+}
+
+.ruler-line {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(139,150,171,0.35), rgba(139,150,171,0));
 }
 
 .form-input-wrap {
@@ -665,7 +665,7 @@ function WhatsAppButton() {
       } catch {
         // ignora se sessionStorage não estiver disponível
       }
-      const hideTimer = setTimeout(() => setShowBubble(false), 7000);
+      const hideTimer = setTimeout(() => setShowBubble(false), 5000);
       return () => clearTimeout(hideTimer);
     }, 6000);
     return () => clearTimeout(showTimer);
@@ -784,9 +784,10 @@ function TerminalPanel() {
 
 const services = [
   {
+    n: "01",
     icon: LayoutTemplate,
     name: "Landing Page",
-    desc: "Uma página estratégica para transformar tráfego em contatos e oportunidades.",
+    desc: "Uma página focada em transformar visitas em contatos.",
     price: "A partir de R$ 1.200",
     bullets: [
       "Design focado em conversão",
@@ -798,9 +799,10 @@ const services = [
     highlight: false,
   },
   {
+    n: "02",
     icon: Zap,
     name: "Site institucional",
-    desc: "Apresente sua empresa, serviços e diferenciais com uma presença digital profissional.",
+    desc: "Um site que apresenta sua empresa, seus serviços e o que te diferencia da concorrência.",
     price: "A partir de R$ 2.380",
     bullets: [
       "Páginas personalizadas",
@@ -812,6 +814,7 @@ const services = [
     highlight: true,
   },
   {
+    n: "03",
     icon: ShoppingCart,
     name: "E-commerce",
     desc: "Sua loja online pronta para apresentar produtos, receber pedidos e vender 24 horas por dia.",
@@ -828,7 +831,6 @@ const services = [
 ];
 
 const managementPlan = {
-  icon: Wrench,
   name: "Plano Gestão & Crescimento",
   desc: "Mantenha seu site atualizado, seguro e evoluindo junto com o seu negócio.",
   price: "A partir de R$ 250/mês",
@@ -847,7 +849,7 @@ const projects = [
     slug: "imobiliaria",
     name: "Vitrine Digital para Imobiliárias",
     category: "Imobiliário",
-    blurb: "Experiência digital para facilitar a descoberta de imóveis e gerar contato direto com o corretor.",
+    blurb: "Facilita a busca por imóveis e leva o visitante direto para o WhatsApp do corretor.",
     tags: ["Imobiliário", "Responsivo", "WhatsApp"],
     stack: ["React", "Filtros de busca", "WhatsApp"],
     images: ["/images/corretor-1.webp", "/images/corretor-2.webp", "/images/corretor-3.webp", "/images/corretor-4.webp"],
@@ -857,7 +859,7 @@ const projects = [
     slug: "loja-de-moveis",
     name: "Vitrine Digital para Lojas de Móveis",
     category: "Móveis & Decoração",
-    blurb: "Vitrine digital para apresentar produtos e reforçar a experiência da marca.",
+    blurb: "Mostra os produtos com fotos grandes, num visual que passa mais sofisticação.",
     tags: ["Móveis", "Design", "Responsivo"],
     stack: ["React", "Filtros de categoria"],
     images: ["/images/moveis-1.webp", "/images/moveis-2.webp", "/images/moveis-3.webp", "/images/moveis-4.webp"],
@@ -877,7 +879,7 @@ const projects = [
     slug: "landing-page",
     name: "Landing Page para Geração de Leads",
     category: "Geração de Leads",
-    blurb: "Página única para transformar visitantes de campanhas em contatos qualificados.",
+    blurb: "Pensada para quem chega direto de um anúncio e precisa decidir rápido se vale a pena falar com você.",
     tags: ["Geração de Leads", "Formulário", "Responsivo"],
     stack: ["React", "Formulário de captura"],
     images: ["/images/landing-1.webp", "/images/landing-2.webp", "/images/landing-3.webp"],
@@ -932,7 +934,7 @@ const testimonials = [];
 function ProcessStepBody({ step }) {
   return (
     <>
-      <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#3B6EF5" }} className="text-sm font-medium mb-2">
+      <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#3B6EF5" }} className="text-3xl font-medium mb-3 leading-none">
         {step.n}
       </p>
       <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#F5F5F3" }} className="font-semibold mb-2">
@@ -967,19 +969,13 @@ function FAQItem({ item, isOpen, onClick, index }) {
   const buttonId = `faq-button-${index}`;
   const panelId = `faq-panel-${index}`;
   return (
-    <motion.div
-      className="glow-faq-card px-5 rounded-xl mb-3"
-      initial={{ opacity: 0, y: 15 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: index * 0.08 }}
-    >
+    <div style={{ borderBottom: "1px solid #1c2540" }}>
       <button
         id={buttonId}
         onClick={onClick}
         aria-expanded={isOpen}
         aria-controls={panelId}
-        className="w-full flex items-center justify-between py-5 text-left rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B6EF5] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1220]"
+        className="w-full flex items-center justify-between py-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B6EF5] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1220]"
       >
         <span
           className="text-base md:text-lg font-medium pr-4"
@@ -988,10 +984,10 @@ function FAQItem({ item, isOpen, onClick, index }) {
           {item.q}
         </span>
         <ChevronDown
-          size={20}
+          size={18}
           aria-hidden="true"
           style={{
-            color: "#F5F5F3",
+            color: "#8B96AB",
             transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
             transition: "transform 0.25s ease",
             flexShrink: 0,
@@ -1009,11 +1005,11 @@ function FAQItem({ item, isOpen, onClick, index }) {
           overflow: "hidden",
         }}
       >
-        <p className="pb-5 text-[15px] leading-relaxed" style={{ color: "#B7BFD1" }}>
+        <p className="pb-5 text-[15px] leading-relaxed max-w-xl" style={{ color: "#8B96AB" }}>
           {item.a}
         </p>
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -1026,8 +1022,6 @@ export default function FreelanceDevSite() {
   const heroRef = useRef(null);
   const terminalLineRefs = useRef([]);
   const sobrePanelRef = useRef(null);
-  const glassCardRefs = useRef([]);
-  const lastScrollY = useRef(0);
 
   useEffect(() => {
     const onGlowScroll = () => {
@@ -1036,15 +1030,6 @@ export default function FreelanceDevSite() {
       const y = 20 + progress * 55;
       document.documentElement.style.setProperty("--glow-x", `${x}%`);
       document.documentElement.style.setProperty("--glow-y", `${y}%`);
-
-      const currentY = window.scrollY;
-      const delta = currentY - lastScrollY.current;
-      lastScrollY.current = currentY;
-      glassCardRefs.current.forEach((el, i) => {
-        if (!el) return;
-        const speed = 0.04 + (i % 3) * 0.02;
-        el.style.transform = `translateY(${currentY * speed}px)`;
-      });
     };
     window.addEventListener("scroll", onGlowScroll, { passive: true });
     onGlowScroll();
@@ -1250,10 +1235,25 @@ export default function FreelanceDevSite() {
         )}
       </header>
 
-      {/* CONTENT LAYER (above floating icons, below header/marquee) */}
+      {/* CONTENT LAYER (below header/marquee) */}
       <div className="relative" style={{ zIndex: 2 }}>
       {/* HERO */}
       <section ref={heroRef} className="relative overflow-hidden" style={{ background: "transparent" }}>
+        <div className="hidden md:block absolute" style={{ top: "10%", left: "40%", zIndex: 0, pointerEvents: "none" }}>
+          <div className="glass-card" style={{ position: "static", animationDuration: "3s", animationDelay: "0s" }}>
+            <Braces size={26} style={{ color: "#FFFFFF" }} />
+          </div>
+        </div>
+        <div className="hidden md:block absolute" style={{ top: "18%", left: "4%", zIndex: 0, pointerEvents: "none" }}>
+          <div className="glass-card" style={{ position: "static", animationDuration: "4.2s", animationDelay: "-1s" }}>
+            <Code2 size={26} style={{ color: "#94A3B8" }} />
+          </div>
+        </div>
+        <div className="hidden md:block absolute" style={{ top: "8%", right: "3%", zIndex: 0, pointerEvents: "none" }}>
+          <div className="glass-card" style={{ position: "static", animationDuration: "3.5s", animationDelay: "-2.2s" }}>
+            <Layers size={26} style={{ color: "#FFFFFF" }} />
+          </div>
+        </div>
         <div className="max-w-6xl mx-auto px-6 py-20 md:py-28 grid md:grid-cols-2 gap-12 items-center relative" style={{ zIndex: 1 }}>
           <div>
             <span
@@ -1269,7 +1269,7 @@ export default function FreelanceDevSite() {
               Seu negócio merece mais do que um site bonito.
             </h1>
             <p className="text-base md:text-lg mb-8 max-w-lg" style={{ color: "#8B96AB" }}>
-              Criamos sites estratégicos, rápidos e responsivos para transformar sua presença digital em oportunidades reais.
+              Cuidamos do design, do desenvolvimento e da publicação — para você ter um site rápido, responsivo e fácil de manter.
             </p>
             <div className="flex flex-wrap gap-4">
               <a
@@ -1290,8 +1290,14 @@ export default function FreelanceDevSite() {
               </a>
             </div>
           </div>
-          <div className="flex justify-center md:justify-end">
+          <div className="flex flex-col items-center md:items-end">
             <TerminalPanel />
+            <p
+              className="mt-3 text-[11px] w-full max-w-md text-right"
+              style={{ fontFamily: "'JetBrains Mono', monospace", color: "#3f4a66" }}
+            >
+              // designed &amp; developed
+            </p>
           </div>
         </div>
         {showScrollHint && (
@@ -1305,8 +1311,8 @@ export default function FreelanceDevSite() {
       </section>
 
       {/* TRUST BADGES */}
-      <section className="py-8" style={{ background: "transparent" }}>
-        <div className="max-w-4xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-3 gap-6">
+      <section className="py-10" style={{ background: "transparent" }}>
+        <div className="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row items-start sm:items-center gap-5 sm:gap-0">
           {[
             { Icon: ShieldCheck, label: "Pagamento seguro" },
             { Icon: Rocket, label: "Entrega em poucas semanas" },
@@ -1314,13 +1320,14 @@ export default function FreelanceDevSite() {
           ].map(({ Icon, label }, i) => (
             <motion.div
               key={label}
-              className="flex items-center justify-center gap-2.5"
+              className="flex items-center gap-2.5 sm:flex-1 sm:justify-center sm:px-4"
+              style={i > 0 ? { borderLeft: "1px solid #1c2540" } : undefined}
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
             >
-              <Icon size={20} style={{ color: "#3B6EF5" }} />
+              <Icon size={18} style={{ color: "#3B6EF5" }} />
               <p className="text-sm font-medium" style={{ color: "#F5F5F3" }}>{label}</p>
             </motion.div>
           ))}
@@ -1328,7 +1335,8 @@ export default function FreelanceDevSite() {
       </section>
 
       {/* SERVICES */}
-      <section id="servicos" className="max-w-6xl mx-auto px-6 py-16 md:py-28 relative" style={{ background: "transparent" }}>
+      <section id="servicos" className="py-16 md:py-28 relative" style={{ background: "#0B1220" }}>
+        <div className="max-w-6xl mx-auto px-6">
         <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#3B6EF5" }} className="text-xs mb-3">// serviços</p>
         <motion.h2
           style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#F5F5F3" }}
@@ -1341,7 +1349,7 @@ export default function FreelanceDevSite() {
           O que nós construímos
         </motion.h2>
         <p className="text-sm md:text-base mb-14 max-w-xl" style={{ color: "#8B96AB" }}>
-          Do primeiro site à sua loja online, criamos soluções digitais para diferentes momentos do seu negócio.
+          Do primeiro site à sua loja online — cada projeto parte do que o seu negócio precisa agora.
         </p>
         <div className="grid md:grid-cols-3 gap-6">
           {services.map((s) => {
@@ -1451,10 +1459,11 @@ export default function FreelanceDevSite() {
             </div>
           </motion.div>
         </div>
+        </div>
       </section>
 
       {/* PORTFOLIO */}
-      <section id="portfolio" className="py-16 md:py-28 relative overflow-hidden" style={{ background: "transparent" }}>
+      <section id="portfolio" className="py-16 md:py-28 relative overflow-hidden" style={{ background: "#0B1220" }}>
         <div className="max-w-6xl mx-auto px-6">
           <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#F5A623" }} className="text-xs mb-3">// portfólio</p>
           <motion.h2
@@ -1467,70 +1476,228 @@ export default function FreelanceDevSite() {
           >
             Projetos que mostram o que podemos construir
           </motion.h2>
-          <p className="text-sm md:text-base mb-14 max-w-xl" style={{ color: "#8B96AB" }}>
-            Conceitos e experiências digitais desenvolvidos para diferentes mercados, objetivos e públicos.
+          <p className="text-sm md:text-base mb-16 md:mb-20 max-w-xl" style={{ color: "#8B96AB" }}>
+            Cada projeto abaixo foi pensado para um tipo diferente de negócio — veja como isso aparece na tela.
           </p>
-          <div className="grid md:grid-cols-2 gap-8">
-            {projects.map((p) => (
-              <motion.a
-                key={p.slug}
-                href={`#/projeto/${p.slug}`}
-                className="group block rounded-xl overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B6EF5] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1220]"
-                style={{ background: "#0F172A", border: "1px solid #232D42" }}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.4 }}
-                whileHover={{ y: -4, boxShadow: "0 16px 34px rgba(59,110,245,0.18)", borderColor: "#3B6EF5" }}
+
+          {/* 01 — full-width hero shot */}
+          <motion.div
+            className="mb-24 md:mb-32"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="flex items-center justify-between mb-5">
+              <p className="text-xs" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#555C6B" }}>
+                01 / {projects[0].category}
+              </p>
+              <span className="text-[11px]" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#F5A623" }}>
+                Projeto conceito
+              </span>
+            </div>
+            <a
+              href={`#/projeto/${projects[0].slug}`}
+              className="group portfolio-frame-wrap block overflow-hidden mb-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B6EF5]"
+              style={{ background: "#fff", border: "1px solid #232D42" }}
+            >
+              <div className="overflow-hidden" style={{ aspectRatio: "16/8" }}>
+                <img
+                  src={projects[0].images[0]}
+                  alt={`${projects[0].name} — captura de tela`}
+                  className="portfolio-frame-img w-full h-full block"
+                  style={{ objectFit: "cover", objectPosition: "top" }}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </a>
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+              <div className="max-w-lg">
+                <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#F5F5F3" }} className="text-2xl md:text-3xl font-semibold mb-2">
+                  {projects[0].name}
+                </h3>
+                <p className="text-sm" style={{ color: "#8B96AB" }}>{projects[0].blurb}</p>
+              </div>
+              <a
+                href={`#/projeto/${projects[0].slug}`}
+                className="group/cta inline-flex items-center gap-1.5 text-sm font-semibold flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B6EF5] rounded-sm"
+                style={{ color: "#3B6EF5" }}
               >
-                <div className="portfolio-frame-wrap overflow-hidden" style={{ aspectRatio: "16/10", background: "#fff" }}>
+                Explorar projeto <ArrowUpRight size={14} className="transition-transform group-hover/cta:translate-x-1" />
+              </a>
+            </div>
+          </motion.div>
+
+          {/* 02 — overlapping screenshots */}
+          <motion.div
+            className="mb-24 md:mb-32"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="flex items-center justify-between mb-5">
+              <p className="text-xs" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#555C6B" }}>
+                02 / {projects[1].category}
+              </p>
+              <span className="text-[11px]" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#F5A623" }}>
+                Projeto conceito
+              </span>
+            </div>
+            <div className="grid md:grid-cols-2 gap-10 md:gap-8 items-center">
+              <div className="relative pb-10 md:pb-14 pr-10 md:pr-14">
+                <a
+                  href={`#/projeto/${projects[1].slug}`}
+                  className="group portfolio-frame-wrap block overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B6EF5]"
+                  style={{ background: "#fff", border: "1px solid #232D42" }}
+                >
+                  <div className="overflow-hidden" style={{ aspectRatio: "4/3" }}>
+                    <img
+                      src={projects[1].images[0]}
+                      alt={`${projects[1].name} — captura de tela`}
+                      className="portfolio-frame-img w-full h-full block"
+                      style={{ objectFit: "cover", objectPosition: "top" }}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                </a>
+                <a
+                  href={`#/projeto/${projects[1].slug}`}
+                  className="group portfolio-frame-wrap absolute overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B6EF5]"
+                  style={{ width: "58%", bottom: 0, right: 0, background: "#fff", border: "3px solid #0B1220", boxShadow: "0 16px 32px rgba(0,0,0,0.35)" }}
+                >
+                  <div className="overflow-hidden" style={{ aspectRatio: "4/3" }}>
+                    <img
+                      src={projects[1].images[1]}
+                      alt={`${projects[1].name} — detalhe da interface`}
+                      className="portfolio-frame-img w-full h-full block"
+                      style={{ objectFit: "cover", objectPosition: "center" }}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                </a>
+              </div>
+              <div>
+                <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#F5F5F3" }} className="text-2xl md:text-3xl font-semibold mb-2">
+                  {projects[1].name}
+                </h3>
+                <p className="text-sm mb-5 max-w-sm" style={{ color: "#8B96AB" }}>{projects[1].blurb}</p>
+                <a
+                  href={`#/projeto/${projects[1].slug}`}
+                  className="group/cta inline-flex items-center gap-1.5 text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B6EF5] rounded-sm"
+                  style={{ color: "#3B6EF5" }}
+                >
+                  Explorar projeto <ArrowUpRight size={14} className="transition-transform group-hover/cta:translate-x-1" />
+                </a>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* 03 — image shifted right */}
+          <motion.div
+            className="mb-24 md:mb-32"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="flex items-center justify-between mb-5">
+              <p className="text-xs" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#555C6B" }}>
+                03 / {projects[2].category}
+              </p>
+              <span className="text-[11px]" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#F5A623" }}>
+                Projeto conceito
+              </span>
+            </div>
+            <div className="grid md:grid-cols-[minmax(0,300px)_1fr] gap-8 md:gap-12 items-center">
+              <div className="order-2 md:order-1">
+                <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#F5F5F3" }} className="text-2xl md:text-3xl font-semibold mb-2">
+                  {projects[2].name}
+                </h3>
+                <p className="text-sm mb-5" style={{ color: "#8B96AB" }}>{projects[2].blurb}</p>
+                <a
+                  href={`#/projeto/${projects[2].slug}`}
+                  className="group/cta inline-flex items-center gap-1.5 text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B6EF5] rounded-sm"
+                  style={{ color: "#3B6EF5" }}
+                >
+                  Explorar projeto <ArrowUpRight size={14} className="transition-transform group-hover/cta:translate-x-1" />
+                </a>
+              </div>
+              <a
+                href={`#/projeto/${projects[2].slug}`}
+                className="order-1 md:order-2 group portfolio-frame-wrap block overflow-hidden md:-mr-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B6EF5]"
+                style={{ background: "#fff", border: "1px solid #232D42" }}
+              >
+                <div className="overflow-hidden" style={{ aspectRatio: "4/3" }}>
                   <img
-                    src={p.images[0]}
-                    alt={`${p.name} — captura de tela do projeto`}
+                    src={projects[2].images[0]}
+                    alt={`${projects[2].name} — captura de tela`}
                     className="portfolio-frame-img w-full h-full block"
                     style={{ objectFit: "cover", objectPosition: "top" }}
                     loading="lazy"
                     decoding="async"
                   />
                 </div>
-                <div className="p-6 md:p-7">
-                  <div className="flex items-center gap-2 mb-3">
-                    <span
-                      className="text-[11px] px-2 py-1 rounded"
-                      style={{ fontFamily: "'JetBrains Mono', monospace", color: "#F5A623", background: "rgba(245,166,35,0.12)" }}
-                    >
-                      Projeto conceito
-                    </span>
-                    <span className="text-[11px]" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#555C6B" }}>
-                      {p.category}
-                    </span>
-                  </div>
-                  <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#F5F5F3" }} className="font-semibold text-xl mb-2">
-                    {p.name}
-                  </h3>
-                  <p className="text-sm leading-relaxed mb-5" style={{ color: "#8B96AB" }}>
-                    {p.blurb}
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <p className="text-xs" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#555C6B" }}>
-                      {p.tags.join(" · ")}
-                    </p>
-                    <span
-                      className="inline-flex items-center gap-1.5 text-sm font-semibold transition-transform group-hover:translate-x-0.5"
-                      style={{ color: "#3B6EF5" }}
-                    >
-                      Explorar projeto <ArrowUpRight size={14} />
-                    </span>
-                  </div>
+              </a>
+            </div>
+          </motion.div>
+
+          {/* 04 — zoomed interface detail */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="flex items-center justify-between mb-5">
+              <p className="text-xs" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#555C6B" }}>
+                04 / {projects[3].category}
+              </p>
+              <span className="text-[11px]" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#F5A623" }}>
+                Projeto conceito
+              </span>
+            </div>
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <a
+                href={`#/projeto/${projects[3].slug}`}
+                className="group portfolio-frame-wrap block overflow-hidden max-w-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B6EF5]"
+                style={{ background: "#fff", border: "1px solid #232D42" }}
+              >
+                <div className="overflow-hidden" style={{ aspectRatio: "21/9" }}>
+                  <img
+                    src={projects[3].images[0]}
+                    alt={`${projects[3].name} — detalhe da interface`}
+                    className="portfolio-frame-img w-full h-full block"
+                    style={{ objectFit: "cover", objectPosition: "top" }}
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
-              </motion.a>
-            ))}
-          </div>
+              </a>
+              <div>
+                <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#F5F5F3" }} className="text-2xl md:text-3xl font-semibold mb-2">
+                  {projects[3].name}
+                </h3>
+                <p className="text-sm mb-5 max-w-sm" style={{ color: "#8B96AB" }}>{projects[3].blurb}</p>
+                <a
+                  href={`#/projeto/${projects[3].slug}`}
+                  className="group/cta inline-flex items-center gap-1.5 text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B6EF5] rounded-sm"
+                  style={{ color: "#3B6EF5" }}
+                >
+                  Explorar projeto <ArrowUpRight size={14} className="transition-transform group-hover/cta:translate-x-1" />
+                </a>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
       {/* PROCESS */}
-      <section id="processo" className="max-w-6xl mx-auto px-6 py-16 md:py-28 relative" style={{ background: "transparent" }}>
+      <section id="processo" className="py-16 md:py-28 relative" style={{ background: "#0B1220" }}>
+        <div className="max-w-6xl mx-auto px-6">
         <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#3B6EF5" }} className="text-xs mb-3">// processo</p>
         <motion.h2
           style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#F5F5F3" }}
@@ -1589,10 +1756,11 @@ export default function FreelanceDevSite() {
             ))}
           </div>
         </div>
+        </div>
       </section>
 
       {/* SOBRE */}
-      <section id="sobre" className="py-16 md:py-28" style={{ background: "transparent" }}>
+      <section id="sobre" className="py-16 md:py-28" style={{ background: "#0B1220" }}>
         <div className="max-w-4xl mx-auto px-6">
           <div
             ref={sobrePanelRef}
@@ -1615,34 +1783,21 @@ export default function FreelanceDevSite() {
                   Cada projeto é acompanhado de perto, do briefing à publicação. Unimos desenvolvimento, design e atendimento próximo para construir uma presença digital que realmente represente o seu negócio — com contato direto durante todo o projeto.
                 </p>
               </div>
-              <div
-                className="grid grid-cols-3 md:grid-cols-1 gap-3 flex-shrink-0"
-                style={{ minWidth: "180px" }}
-              >
-                <div className="glow-stat-card px-4 py-3 rounded-lg text-center">
-                  <p style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#3B6EF5" }} className="text-xl font-semibold">
-                    3+
-                  </p>
-                  <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#555C6B" }} className="text-[10px] mt-1">
-                    anos de experiência em desenvolvimento
-                  </p>
-                </div>
-                <div className="glow-stat-card px-4 py-3 rounded-lg text-center">
-                  <p style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#3B6EF5" }} className="text-xl font-semibold">
-                    100%
-                  </p>
-                  <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#555C6B" }} className="text-[10px] mt-1">
-                    projetos responsivos
-                  </p>
-                </div>
-                <div className="glow-stat-card px-4 py-3 rounded-lg text-center">
-                  <p style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#F5A623" }} className="text-xl font-semibold">
-                    &lt;24h
-                  </p>
-                  <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#555C6B" }} className="text-[10px] mt-1">
-                    tempo médio de resposta
-                  </p>
-                </div>
+              <div className="flex md:flex-col gap-6 md:gap-7 flex-shrink-0" style={{ minWidth: "160px" }}>
+                {[
+                  { value: "3+", label: "anos de experiência em desenvolvimento", color: "#3B6EF5" },
+                  { value: "100%", label: "projetos responsivos", color: "#3B6EF5" },
+                  { value: "<24h", label: "tempo médio de resposta", color: "#F5A623" },
+                ].map((stat) => (
+                  <div key={stat.label} className="pl-4" style={{ borderLeft: "2px solid #232D42" }}>
+                    <p style={{ fontFamily: "'Space Grotesk', sans-serif", color: stat.color }} className="text-2xl font-semibold leading-none mb-1.5">
+                      {stat.value}
+                    </p>
+                    <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#8B96AB" }} className="text-[10px] leading-snug max-w-[130px]">
+                      {stat.label}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -1669,7 +1824,8 @@ export default function FreelanceDevSite() {
       )}
 
       {/* FAQ */}
-      <section id="faq" className="max-w-3xl mx-auto px-6 py-16 md:py-28 relative" style={{ background: "transparent" }}>
+      <section id="faq" className="py-16 md:py-28 relative" style={{ background: "#0B1220" }}>
+        <div className="max-w-3xl mx-auto px-6">
         <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#3B6EF5" }} className="text-xs mb-3">// perguntas frequentes</p>
         <motion.h2
           style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#F5F5F3" }}
@@ -1681,10 +1837,11 @@ export default function FreelanceDevSite() {
         >
           Dúvidas comuns
         </motion.h2>
-        <div>
+        <div style={{ borderTop: "1px solid #1c2540" }}>
           {faqs.map((item, i) => (
             <FAQItem key={item.q} item={item} isOpen={openFaq === i} onClick={() => setOpenFaq(openFaq === i ? -1 : i)} index={i} />
           ))}
+        </div>
         </div>
       </section>
 
@@ -1921,21 +2078,6 @@ export default function FreelanceDevSite() {
           </div>
         </div>
       </footer>
-      </div>
-      <div ref={(el) => (glassCardRefs.current[0] = el)} className="fixed hidden md:block" style={{ top: "12vh", left: "38%", zIndex: 0, pointerEvents: "none" }}>
-        <div className="glass-card" style={{ position: "static", animationDuration: "3s", animationDelay: "0s" }}>
-          <Braces size={26} style={{ color: "#FFFFFF" }} />
-        </div>
-      </div>
-      <div ref={(el) => (glassCardRefs.current[1] = el)} className="fixed hidden md:block" style={{ top: "22vh", left: "3%", zIndex: 0, pointerEvents: "none" }}>
-        <div className="glass-card" style={{ position: "static", animationDuration: "4.2s", animationDelay: "-1s" }}>
-          <Code2 size={26} style={{ color: "#94A3B8" }} />
-        </div>
-      </div>
-      <div ref={(el) => (glassCardRefs.current[2] = el)} className="fixed hidden md:block" style={{ top: "32vh", right: "2%", zIndex: 0, pointerEvents: "none" }}>
-        <div className="glass-card" style={{ position: "static", animationDuration: "3.5s", animationDelay: "-2.2s" }}>
-          <Layers size={26} style={{ color: "#FFFFFF" }} />
-        </div>
       </div>
       <WhatsAppButton />
       <CustomCursor />
