@@ -319,6 +319,72 @@ function ProjectDetailPage({ project }) {
   );
 }
 
+function ProjectsArchivePage({ projects }) {
+  return (
+    <div style={{ fontFamily: "'Inter', sans-serif", color: "#F5F5F3", background: "#0B1220", minHeight: "100vh" }}>
+      <style>{FONTS}</style>
+      <header className="border-b" style={{ borderColor: "#161f36" }}>
+        <div className="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
+          <Logo variant="light" />
+          <a href="#/" className="text-sm font-medium" style={{ color: "#3B6EF5" }}>
+            Voltar para o site
+          </a>
+        </div>
+      </header>
+
+      <main className="max-w-6xl mx-auto px-6 py-16 md:py-24">
+        <p style={{ fontFamily: "'JetBrains Mono', monospace", color: "#F5A623" }} className="text-xs mb-3">
+          // arquivo de projetos
+        </p>
+        <h1 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="text-3xl md:text-5xl font-semibold mb-4">
+          Outros projetos
+        </h1>
+        <p className="text-sm md:text-base max-w-xl mb-12 md:mb-16" style={{ color: "#8B96AB" }}>
+          Conceitos desenvolvidos para explorar diferentes segmentos, estruturas e objetivos de negócio.
+        </p>
+
+        <div className="grid md:grid-cols-2 gap-x-8 gap-y-14">
+          {projects.map((project, index) => (
+            <article key={project.slug}>
+              <div className="flex items-center justify-between mb-4">
+                <p className="text-xs" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#555C6B" }}>
+                  {String(index + 1).padStart(2, "0")} / {project.category}
+                </p>
+                <span className="text-[11px]" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#F5A623" }}>
+                  Projeto conceito
+                </span>
+              </div>
+              <a
+                href={`#/projeto/${project.slug}`}
+                className="portfolio-frame-wrap block overflow-hidden mb-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B6EF5]"
+                style={{ border: "1px solid #232D42", background: "#fff" }}
+              >
+                <div className="overflow-hidden" style={{ aspectRatio: "16/10" }}>
+                  <img
+                    src={project.images[0]}
+                    alt={`${project.name} — captura de tela`}
+                    className="portfolio-frame-img w-full h-full block"
+                    style={{ objectFit: "cover", objectPosition: "top" }}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              </a>
+              <h2 style={{ fontFamily: "'Space Grotesk', sans-serif" }} className="text-xl md:text-2xl font-semibold mb-2">
+                {project.name}
+              </h2>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "#8B96AB" }}>{project.blurb}</p>
+              <a href={`#/projeto/${project.slug}`} className="inline-flex items-center gap-1.5 text-sm font-semibold" style={{ color: "#3B6EF5" }}>
+                Explorar projeto <ArrowUpRight size={14} />
+              </a>
+            </article>
+          ))}
+        </div>
+      </main>
+    </div>
+  );
+}
+
 function ExperimentePage() {
   const [demoName, setDemoName] = useState("");
 
@@ -844,7 +910,7 @@ const managementPlan = {
   note: "Disponível junto com um pacote de criação de site.",
 };
 
-const projects = [
+const archivedProjects = [
   {
     slug: "imobiliaria",
     name: "Vitrine Digital para Imobiliárias",
@@ -884,6 +950,33 @@ const projects = [
     stack: ["React", "Formulário de captura"],
     images: ["/images/landing-1.webp", "/images/landing-2.webp", "/images/landing-3.webp"],
     howItsMade: "Esse modelo serve para qualquer profissional ou negócio de serviços que queira transformar visitantes de anúncios em consultas agendadas — advogados, dentistas, consultores, clínicas, entre outros. No exemplo, a proposta de valor já vem acompanhada de uma lista de motivos para agendar e um botão de WhatsApp em destaque, com aviso de resposta rápida para reduzir a hesitação. Números como casos resolvidos e anos de mercado reforçam a autoridade, e as áreas de atuação deixam claro em que o profissional pode ajudar. No fim, um formulário simples capta nome, WhatsApp e a dúvida do visitante, dando duas formas de contato: preencher ou chamar direto.",
+  },
+];
+
+const featuredProjects = [
+  {
+    slug: "novitta",
+    name: "Novittá | Ambientes Planejados",
+    category: "Móveis planejados",
+    blurb: "Uma presença digital sofisticada para transformar projetos sob medida em desejo e novos orçamentos.",
+    image: "/images/novitta-home.webp",
+    siteUrl: "https://novitta.vercel.app/",
+  },
+  {
+    slug: "aurea",
+    name: "AURÉA Boutique Hotel",
+    category: "Hotelaria",
+    blurb: "Uma experiência digital imersiva que traduz exclusividade, natureza e o desejo de prolongar a estadia.",
+    image: "/images/aurea-home.webp",
+    siteUrl: "https://aurea-alpha-ten.vercel.app/",
+  },
+  {
+    slug: "oliva",
+    name: "OLIVA | Cucina & Vino",
+    category: "Gastronomia",
+    blurb: "Um site editorial para apresentar a atmosfera, a cucina e as experiências de um restaurante entre vinhedos.",
+    image: "/images/oliva-home.webp",
+    siteUrl: "https://oliva-zeta.vercel.app/",
   },
 ];
 
@@ -1142,9 +1235,13 @@ export default function FreelanceDevSite() {
     return <ExperimentePage />;
   }
 
+  if (route === "#/projetos") {
+    return <ProjectsArchivePage projects={archivedProjects} />;
+  }
+
   if (route.startsWith("#/projeto/")) {
     const slug = route.replace("#/projeto/", "");
-    const project = projects.find((p) => p.slug === slug);
+    const project = archivedProjects.find((p) => p.slug === slug);
     if (project) {
       return <ProjectDetailPage project={project} />;
     }
@@ -1474,224 +1571,93 @@ export default function FreelanceDevSite() {
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
           >
-            Projetos que mostram o que podemos construir
+            Projetos selecionados
           </motion.h2>
           <p className="text-sm md:text-base mb-16 md:mb-20 max-w-xl" style={{ color: "#8B96AB" }}>
-            Cada projeto abaixo foi pensado para um tipo diferente de negócio — veja como isso aparece na tela.
+            Experiências digitais criadas para negócios com identidades, públicos e objetivos diferentes.
           </p>
 
-          {/* 01 — full-width hero shot */}
-          <motion.div
-            className="mb-24 md:mb-32"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="flex items-center justify-between mb-5">
-              <p className="text-xs" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#555C6B" }}>
-                01 / {projects[0].category}
-              </p>
-              <span className="text-[11px]" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#F5A623" }}>
-                Projeto conceito
-              </span>
-            </div>
+          <div>
+            {featuredProjects.map((project, index) => {
+              const imageFirst = index !== 1;
+              const gridClass = index === 1
+                ? "md:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)]"
+                : index === 0
+                  ? "md:grid-cols-[minmax(0,1.3fr)_minmax(0,0.7fr)]"
+                  : "md:grid-cols-[minmax(0,1.18fr)_minmax(0,0.82fr)]";
+
+              return (
+                <motion.article
+                  key={project.slug}
+                  className="mb-24 md:mb-32 last:mb-0"
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <div className="flex items-center justify-between mb-5">
+                    <p className="text-xs" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#555C6B" }}>
+                      {String(index + 1).padStart(2, "0")} / {project.category}
+                    </p>
+                    <span className="text-[11px]" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#F5A623" }}>
+                      Projeto conceito
+                    </span>
+                  </div>
+
+                  <div className={`grid ${gridClass} gap-8 md:gap-12 items-center`}>
+                    <a
+                      href={project.siteUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`${imageFirst ? "md:order-1" : "md:order-2"} group portfolio-frame-wrap block overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B6EF5]`}
+                      style={{ background: "#fff", border: "1px solid #232D42", boxShadow: "0 18px 44px rgba(0,0,0,0.22)" }}
+                      aria-label={`Visitar o site ${project.name}`}
+                    >
+                      <div className="overflow-hidden" style={{ aspectRatio: "16/9" }}>
+                        <img
+                          src={project.image}
+                          alt={`${project.name} — página inicial`}
+                          className="portfolio-frame-img w-full h-full block"
+                          style={{ objectFit: "cover", objectPosition: "top" }}
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      </div>
+                    </a>
+
+                    <div className={`${imageFirst ? "md:order-2" : "md:order-1"}`}>
+                      <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#F5F5F3" }} className="text-2xl md:text-3xl font-semibold mb-3">
+                        {project.name}
+                      </h3>
+                      <p className="text-sm leading-relaxed mb-6 max-w-md" style={{ color: "#8B96AB" }}>{project.blurb}</p>
+                      <a
+                        href={project.siteUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group/cta inline-flex items-center gap-1.5 text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B6EF5] rounded-sm"
+                        style={{ color: "#3B6EF5" }}
+                      >
+                        Explorar projeto <ArrowUpRight size={14} className="transition-transform group-hover/cta:translate-x-1 group-hover/cta:-translate-y-0.5" />
+                      </a>
+                    </div>
+                  </div>
+                </motion.article>
+              );
+            })}
+          </div>
+
+          <div className="mt-16 md:mt-20 pt-8 border-t flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4" style={{ borderColor: "#1c2540" }}>
+            <p className="text-sm" style={{ color: "#8B96AB" }}>
+              Quer conhecer os conceitos anteriores?
+            </p>
             <a
-              href={`#/projeto/${projects[0].slug}`}
-              className="group portfolio-frame-wrap block overflow-hidden mb-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B6EF5]"
-              style={{ background: "#fff", border: "1px solid #232D42" }}
+              href="#/projetos"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold"
+              style={{ color: "#F5F5F3" }}
             >
-              <div className="overflow-hidden" style={{ aspectRatio: "16/8" }}>
-                <img
-                  src={projects[0].images[0]}
-                  alt={`${projects[0].name} — captura de tela`}
-                  className="portfolio-frame-img w-full h-full block"
-                  style={{ objectFit: "cover", objectPosition: "top" }}
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
+              Ver todos os projetos <ArrowUpRight size={14} />
             </a>
-            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-              <div className="max-w-lg">
-                <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#F5F5F3" }} className="text-2xl md:text-3xl font-semibold mb-2">
-                  {projects[0].name}
-                </h3>
-                <p className="text-sm" style={{ color: "#8B96AB" }}>{projects[0].blurb}</p>
-              </div>
-              <a
-                href={`#/projeto/${projects[0].slug}`}
-                className="group/cta inline-flex items-center gap-1.5 text-sm font-semibold flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B6EF5] rounded-sm"
-                style={{ color: "#3B6EF5" }}
-              >
-                Explorar projeto <ArrowUpRight size={14} className="transition-transform group-hover/cta:translate-x-1" />
-              </a>
-            </div>
-          </motion.div>
-
-          {/* 02 — overlapping screenshots */}
-          <motion.div
-            className="mb-24 md:mb-32"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="flex items-center justify-between mb-5">
-              <p className="text-xs" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#555C6B" }}>
-                02 / {projects[1].category}
-              </p>
-              <span className="text-[11px]" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#F5A623" }}>
-                Projeto conceito
-              </span>
-            </div>
-            <div className="grid md:grid-cols-2 gap-10 md:gap-8 items-center">
-              <div className="relative pb-10 md:pb-14 pr-10 md:pr-14">
-                <a
-                  href={`#/projeto/${projects[1].slug}`}
-                  className="group portfolio-frame-wrap block overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B6EF5]"
-                  style={{ background: "#fff", border: "1px solid #232D42" }}
-                >
-                  <div className="overflow-hidden" style={{ aspectRatio: "4/3" }}>
-                    <img
-                      src={projects[1].images[0]}
-                      alt={`${projects[1].name} — captura de tela`}
-                      className="portfolio-frame-img w-full h-full block"
-                      style={{ objectFit: "cover", objectPosition: "top" }}
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </div>
-                </a>
-                <a
-                  href={`#/projeto/${projects[1].slug}`}
-                  className="group portfolio-frame-wrap absolute overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B6EF5]"
-                  style={{ width: "58%", bottom: 0, right: 0, background: "#fff", border: "3px solid #0B1220", boxShadow: "0 16px 32px rgba(0,0,0,0.35)" }}
-                >
-                  <div className="overflow-hidden" style={{ aspectRatio: "4/3" }}>
-                    <img
-                      src={projects[1].images[1]}
-                      alt={`${projects[1].name} — detalhe da interface`}
-                      className="portfolio-frame-img w-full h-full block"
-                      style={{ objectFit: "cover", objectPosition: "center" }}
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </div>
-                </a>
-              </div>
-              <div>
-                <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#F5F5F3" }} className="text-2xl md:text-3xl font-semibold mb-2">
-                  {projects[1].name}
-                </h3>
-                <p className="text-sm mb-5 max-w-sm" style={{ color: "#8B96AB" }}>{projects[1].blurb}</p>
-                <a
-                  href={`#/projeto/${projects[1].slug}`}
-                  className="group/cta inline-flex items-center gap-1.5 text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B6EF5] rounded-sm"
-                  style={{ color: "#3B6EF5" }}
-                >
-                  Explorar projeto <ArrowUpRight size={14} className="transition-transform group-hover/cta:translate-x-1" />
-                </a>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* 03 — image shifted right */}
-          <motion.div
-            className="mb-24 md:mb-32"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="flex items-center justify-between mb-5">
-              <p className="text-xs" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#555C6B" }}>
-                03 / {projects[2].category}
-              </p>
-              <span className="text-[11px]" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#F5A623" }}>
-                Projeto conceito
-              </span>
-            </div>
-            <div className="grid md:grid-cols-[minmax(0,300px)_1fr] gap-8 md:gap-12 items-center">
-              <div className="order-2 md:order-1">
-                <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#F5F5F3" }} className="text-2xl md:text-3xl font-semibold mb-2">
-                  {projects[2].name}
-                </h3>
-                <p className="text-sm mb-5" style={{ color: "#8B96AB" }}>{projects[2].blurb}</p>
-                <a
-                  href={`#/projeto/${projects[2].slug}`}
-                  className="group/cta inline-flex items-center gap-1.5 text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B6EF5] rounded-sm"
-                  style={{ color: "#3B6EF5" }}
-                >
-                  Explorar projeto <ArrowUpRight size={14} className="transition-transform group-hover/cta:translate-x-1" />
-                </a>
-              </div>
-              <a
-                href={`#/projeto/${projects[2].slug}`}
-                className="order-1 md:order-2 group portfolio-frame-wrap block overflow-hidden md:-mr-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B6EF5]"
-                style={{ background: "#fff", border: "1px solid #232D42" }}
-              >
-                <div className="overflow-hidden" style={{ aspectRatio: "4/3" }}>
-                  <img
-                    src={projects[2].images[0]}
-                    alt={`${projects[2].name} — captura de tela`}
-                    className="portfolio-frame-img w-full h-full block"
-                    style={{ objectFit: "cover", objectPosition: "top" }}
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-              </a>
-            </div>
-          </motion.div>
-
-          {/* 04 — zoomed interface detail */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="flex items-center justify-between mb-5">
-              <p className="text-xs" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#555C6B" }}>
-                04 / {projects[3].category}
-              </p>
-              <span className="text-[11px]" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#F5A623" }}>
-                Projeto conceito
-              </span>
-            </div>
-            <div className="grid md:grid-cols-2 gap-8 items-center">
-              <a
-                href={`#/projeto/${projects[3].slug}`}
-                className="group portfolio-frame-wrap block overflow-hidden max-w-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B6EF5]"
-                style={{ background: "#fff", border: "1px solid #232D42" }}
-              >
-                <div className="overflow-hidden" style={{ aspectRatio: "21/9" }}>
-                  <img
-                    src={projects[3].images[0]}
-                    alt={`${projects[3].name} — detalhe da interface`}
-                    className="portfolio-frame-img w-full h-full block"
-                    style={{ objectFit: "cover", objectPosition: "top" }}
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-              </a>
-              <div>
-                <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#F5F5F3" }} className="text-2xl md:text-3xl font-semibold mb-2">
-                  {projects[3].name}
-                </h3>
-                <p className="text-sm mb-5 max-w-sm" style={{ color: "#8B96AB" }}>{projects[3].blurb}</p>
-                <a
-                  href={`#/projeto/${projects[3].slug}`}
-                  className="group/cta inline-flex items-center gap-1.5 text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B6EF5] rounded-sm"
-                  style={{ color: "#3B6EF5" }}
-                >
-                  Explorar projeto <ArrowUpRight size={14} className="transition-transform group-hover/cta:translate-x-1" />
-                </a>
-              </div>
-            </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
